@@ -6,6 +6,7 @@ import Home from './pages/Home/Home';
 import { AuthLayout } from './pages/Auth/AuthLayout';
 import Login from './pages/Auth/Login/Login';
 import Register from './pages/Auth/Register/Register';
+import { Error } from './components/Error/Error';
 // React-Router
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
         element: <Register />,
       },
     ],
+  },
+  {
+    path: '*',
+    element: <Error />,
   },
 ]);
 
