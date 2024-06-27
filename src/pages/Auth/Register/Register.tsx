@@ -1,9 +1,10 @@
 import React from 'react';
+import Headling from '../../../components/Headling/Headling';
 
 const Register: React.FC = () => {
   return (
     <div>
-      <h1>Register Page</h1>
+      <Headling>Регистрация</Headling>
       <form>{/* Набор полей для регистрации */}</form>
     </div>
   );
