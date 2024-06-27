@@ -5,7 +5,7 @@ module.exports = {
   'semi': true,
   'singleQuote': true,
   'quoteProps': 'consistent',
-  'prettier.trailingComma': 'none',
+  'prettier.trailingComma': true,
   'bracketSpacing': true,
   'arrowParens': 'always',
   'endOfLine': 'lf',
