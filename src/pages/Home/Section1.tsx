@@ -2,12 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '../../components/Button.tsx';
 
+const MainContainer = styled.div`
+  width: 100vw;
+  background-color: #f2f4f8;
+`;
+
 const Container = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   column-gap: 80px;
-  background-color: #f2f4f8;
   max-width: 1440px;
   height: 681px;
 `;
@@ -42,7 +46,6 @@ const Text = styled.p`
   line-height: 25.2px;
   color: #21272a;
   margin-bottom: 64px;
-  width: 600px;
   font-family: 'Roboto';
   font-weight: 400;
 `;
@@ -66,29 +69,31 @@ const SectionText = styled.div`
 
 const Section1: React.FC = () => {
   return (
-    <Container>
-      <SectionLeft>
-        <SectionText>
-          <Title>ДОКАЗАТЕЛЬНАЯ МЕДИЦИНА ДЛЯ ВСЕХ</Title>
-          <Text>
-            Мы еще очень молоды, но достаточно амбициозны и планируем <br /> каждого случайного гостя нашего сайта
-            превратить в его
-            <br /> постоянного пользователя.
-          </Text>
-        </SectionText>
-        <SectionButton>
-          <Button primary width="216px" height="56px">
-            Войти как врач
-          </Button>
-          <Button width="172px" height="56px">
-            Подробнее
-          </Button>
-        </SectionButton>
-      </SectionLeft>
-      <SectionRight>
-        <Img src="/src/assets/Pic1.png" alt="sectionPic1" />
-      </SectionRight>
-    </Container>
+    <MainContainer>
+      <Container>
+        <SectionLeft>
+          <SectionText>
+            <Title>ДОКАЗАТЕЛЬНАЯ МЕДИЦИНА ДЛЯ ВСЕХ</Title>
+            <Text>
+              Мы еще очень молоды, но достаточно амбициозны и планируем <br /> каждого случайного гостя нашего сайта
+              превратить в его
+              <br /> постоянного пользователя.
+            </Text>
+          </SectionText>
+          <SectionButton>
+            <Button primary width="216px" height="56px">
+              Войти как врач
+            </Button>
+            <Button width="172px" height="56px">
+              Подробнее
+            </Button>
+          </SectionButton>
+        </SectionLeft>
+        <SectionRight>
+          <Img src="/src/assets/Pic1.png" alt="sectionPic1" />
+        </SectionRight>
+      </Container>
+    </MainContainer>
   );
 };
 
