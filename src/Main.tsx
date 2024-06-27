@@ -6,15 +6,22 @@ import Home from './pages/Home/Home';
 import { AuthLayout } from './pages/Auth/AuthLayout';
 import Login from './pages/Auth/Login/Login';
 import Register from './pages/Auth/Register/Register';
-import { Error } from './components/Error/Error';
+import { Error } from './pages/Error/Error';
+import Navbar from './components/Navbar';
 // React-Router
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <Home />,
+    path: '/trafalgar/',
+    element: <Navbar />,
+    children: [
+      {
+        path: '',
+        element: <Home />,
+      },
+    ],
   },
   {
-    path: '/auth',
+    path: '/trafalgar/auth',
     element: <AuthLayout />,
     children: [
       {
