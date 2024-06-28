@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { useRef, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import Headling from '../../../components/Headling/Headling';
 import Input from '../../../components/Input/Input';
 import { Link, Navigate } from 'react-router-dom';
@@ -71,40 +71,53 @@ const Hr = styled.hr`
   border: 1px solid rgb(221, 225, 230);
   margin: 48px 0px;
 `;
-const INITIAL_STATE = {
-  email: '',
-  password: '',
-  isValid: false,
-};
+
 const Login: React.FC = () => {
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
-  const [state, setState] = useState(INITIAL_STATE);
-
-  const handleInputChange = () => {
-    const email = emailRef.current?.value || '';
-    const password = passwordRef.current?.value || '';
-    const isValid = email !== '' && password !== '';
-
-    setState({
-      email,
-      password,
-      isValid,
-    });
-  };
+  const [email, setEmail] = useState<string>();
+  const [password, setPasword] = useState<string>();
+  const [emailDirty, setEmailDirty] = useState(false);
+  const [passwordDirty, setPasswordDirty] = useState(false);
+  const [emailError, setEmailError] = useState('Не может быть пустым');
+  const [passwordError, setPasswordError] = useState('Не может быть пустым');
+  const [formValid, setFormValid] = useState(false);
 
   useEffect(() => {
-    const handleEmailInput = () => handleInputChange();
-    const handlePasswordInput = () => handleInputChange();
+    if (emailError || passwordError) {
+      setFormValid(false);
+    } else {
+      setFormValid(true);
+    }
+  }, [emailError, passwordError]);
 
-    emailRef.current?.addEventListener('input', handleEmailInput);
-    passwordRef.current?.addEventListener('input', handlePasswordInput);
+  const emailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!re.test(String(e.target.value).toLowerCase())) {
+      setEmailError('Некорректный email');
+    } else {
+      setEmailError('');
+    }
+  };
+  const passwordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPasword(e.target.value);
+    if (e.target.value.length < 4 || e.target.value.length > 15) {
+      setPasswordError('Пароль должен быть от 4 до 15 символов');
+    } else {
+      setPasswordError('');
+    }
+  };
 
-    return () => {
-      emailRef.current?.removeEventListener('input', handleEmailInput);
-      passwordRef.current?.removeEventListener('input', handlePasswordInput);
-    };
-  }, [state.isValid]);
+  const blurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
+    switch (e.target.name) {
+      case 'email':
+        setEmailDirty(true);
+        break;
+      case 'password':
+        setPasswordDirty(true);
+        break;
+    }
+  };
 
   return (
     <Wrapper>
@@ -112,16 +125,26 @@ const Login: React.FC = () => {
 
       <Form>
         <LabelTag htmlFor="email">Email</LabelTag>
-        <Input id="email" name="email" placeholder="Email" ref={emailRef} defaultValue={state.email} />
+        {emailDirty && emailError && <div style={{ color: 'red' }}>{emailError}</div>}
+        <Input
+          onChange={(e) => emailHandler(e)}
+          value={email}
+          id="email"
+          name="email"
+          placeholder="Email"
+          onBlur={(e) => blurHandler(e)}
+        />
 
         <LabelTag htmlFor="password">Пароль</LabelTag>
+        {passwordDirty && passwordError && <div style={{ color: 'red' }}>{passwordError}</div>}
         <Input
+          onChange={(e) => passwordHandler(e)}
+          value={password}
           id="password"
           name="password"
           type="password"
           placeholder="Password"
-          ref={passwordRef}
-          defaultValue={state.password}
+          onBlur={(e) => blurHandler(e)}
         />
       </Form>
 
@@ -131,7 +154,7 @@ const Login: React.FC = () => {
         <ForgotPasswordLink to="/forgot-password">Забыли пароль?</ForgotPasswordLink>
       </LoginContainer>
 
-      <BntEntry onClick={() => console.log(state.isValid)}>Вход</BntEntry>
+      <BntEntry>Вход</BntEntry>
 
       <ButtonLink />
 

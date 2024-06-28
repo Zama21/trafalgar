@@ -31,7 +31,7 @@ export function AuthLayout() {
           <Outlet />
         </Content>
         <Logo>
-          <StyledImage src="/placer.svg" alt="" />
+          <StyledImage src="/assets/placer.svg" alt="" />
         </Logo>
       </Layout>
     </>

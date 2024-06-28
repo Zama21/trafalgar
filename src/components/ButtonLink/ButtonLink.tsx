@@ -37,8 +37,8 @@ const AppleLogo = styled.img`
 
 const SignInButton: React.FC<ButtonLinkProps> = ({ provider, text, logo, link }) => (
   <StyledButton to={link}>
-    {logo === 'google' && <GoogleLogo src="/google-icon.svg" alt="Google Logo" />}
-    {logo === 'apple' && <AppleLogo src="/apple-icon.svg" alt="Apple Logo" />}
+    {logo === 'google' && <GoogleLogo src="/assets/google-icon.svg" alt="Google Logo" />}
+    {logo === 'apple' && <AppleLogo src="/assets/apple-icon.svg" alt="Apple Logo" />}
     {text}
   </StyledButton>
 );
