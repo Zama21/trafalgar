@@ -8,6 +8,8 @@ import Login from './pages/Auth/Login/Login';
 import Register from './pages/Auth/Register/Register';
 import { Error } from './pages/Error/Error';
 import Navbar from './components/Navbar';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './theme';
 // React-Router
 const router = createBrowserRouter([
   {
@@ -44,6 +46,8 @@ const rootElement = document.getElementById('root') as HTMLElement;
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  </React.StrictMode>,
 );
