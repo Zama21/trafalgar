@@ -11,7 +11,7 @@ const H1 = styled.h1`
   font-weight: ${({ theme }) => theme.typography.h1.fontWeight};
   font-size: ${({ theme }) => theme.typography.h1.fontSize};
   letter-spacing: ${({ theme }) => theme.typography.h1.letterSpacing};
-  line-height: ${({ theme }) => theme.typography.h1.lineHeight};
+  ${({ theme }) => theme.typography.h1}
 `;
 
 const Home: React.FC = () => {
