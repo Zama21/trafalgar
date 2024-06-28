@@ -1,4 +1,4 @@
-import { DefaultTheme, FlattenInterpolation, ThemeProps, css } from 'styled-components';
+import { css, DefaultTheme, FlattenInterpolation, ThemeProps } from 'styled-components';
 
 interface Colors {
   Primary90: string;

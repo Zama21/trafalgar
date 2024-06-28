@@ -4,7 +4,7 @@ import Button from '../../components/Button.tsx';
 
 const MainContainer = styled.div`
   width: 100vw;
-  background-color: #f2f4f8;
+  background-color: ${({ theme }) => theme.colors.coolGray10};
 `;
 
 const Container = styled.div`
@@ -17,37 +17,32 @@ const Container = styled.div`
 `;
 
 const SectionLeft = styled.section`
-  margin-top: 80px;
-  margin-bottom: 80px;
-  margin-left: 80px;
+  margin-top: ${({ theme }) => theme.spacing(10)};
+  margin-bottom: ${({ theme }) => theme.spacing(10)};
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
 
 const SectionRight = styled.section`
-  margin-top: 88px;
-  margin-right: 94.77px;
-  margin-bottom: 88px;
+  margin-top: ${({ theme }) => theme.spacing(11)};
+  margin-right: ${({ theme }) => theme.spacing(11.85)};
+  margin-bottom: ${({ theme }) => theme.spacing(11)};
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
 const Title = styled.h1`
-  font-weight: 700;
-  font-size: 54px;
-  line-height: 59.4px;
-  font-family: 'Roboto';
+  ${({ theme }) => theme.typography.h1};
+  font-family: ${({ theme }) => theme.fonts.primary};
 `;
 
 const Text = styled.p`
-  font-size: 18px;
-  line-height: 25.2px;
-  color: #21272a;
-  margin-bottom: 64px;
-  font-family: 'Roboto';
-  font-weight: 400;
+  ${({ theme }) => theme.typography.bodyL};
+  color: ${({ theme }) => theme.colors.coolGray90};
+  margin-bottom: ${({ theme }) => theme.spacing(8)};
+  font-family: ${({ theme }) => theme.fonts.primary};
 `;
 
 const Img = styled.img`
@@ -58,13 +53,13 @@ const Img = styled.img`
 const SectionButton = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 16px;
+  gap: ${({ theme }) => theme.spacing(2)};
 `;
 
 const SectionText = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: ${({ theme }) => theme.spacing(6)};
 `;
 
 const Section1: React.FC = () => {
