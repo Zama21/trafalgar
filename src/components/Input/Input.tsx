@@ -1,6 +1,6 @@
 import { InputProps } from './Input.props';
 import styled from 'styled-components';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 const TagInput = styled.input`
   color: rgb(105, 112, 119);
@@ -26,4 +26,5 @@ const TagInput = styled.input`
 const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   return <TagInput {...props} ref={ref} />;
 });
+
 export default Input;
