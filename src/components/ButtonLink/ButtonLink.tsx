@@ -10,17 +10,19 @@ const StyledContainer = styled.div`
 
 const StyledButton = styled(Link)`
   flex: 1;
-  border: 2px solid lightblue;
-  border-radius: 8px;
+  border: 2px solid rgb(69, 143, 246);
   padding: 10px 20px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0.5px;
   background-color: white;
   cursor: pointer;
   text-decoration: none;
+  color: rgb(69, 143, 246);
 `;
 
 const GoogleLogo = styled.img`
@@ -41,7 +43,6 @@ const SignInButton: React.FC<ButtonLinkProps> = ({ provider, text, logo, link })
   </StyledButton>
 );
 
-// Пример использования:
 const ButtonLink: React.FC = () => {
   return (
     <StyledContainer>
