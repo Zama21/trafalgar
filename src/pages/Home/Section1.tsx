@@ -17,6 +17,7 @@ const Container = styled.div`
 `;
 
 const SectionLeft = styled.section`
+  margin-left: ${({ theme }) => theme.spacing(10)};
   margin-top: ${({ theme }) => theme.spacing(10)};
   margin-bottom: ${({ theme }) => theme.spacing(10)};
   display: flex;
