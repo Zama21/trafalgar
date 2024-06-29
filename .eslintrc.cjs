@@ -36,9 +36,6 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'prettier/prettier': [
       'error',
-      {
-        trailingComma: 'none',
-      },
     ],
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
   },
