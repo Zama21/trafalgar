@@ -7,14 +7,14 @@ import { AuthLayout } from './pages/Auth/AuthLayout';
 import Login from './pages/Auth/Login/Login';
 import Register from './pages/Auth/Register/Register';
 import { Error } from './pages/Error/Error';
-import Navbar from './components/Navbar';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
+import Header from './pages/Home/Header/Header';
 // React-Router
 const router = createBrowserRouter([
   {
     path: '/trafalgar/',
-    element: <Navbar />,
+    element: <Header />,
     children: [
       {
         path: '',

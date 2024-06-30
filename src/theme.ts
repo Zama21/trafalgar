@@ -1,3 +1,5 @@
+import { DefaultTheme, FlattenInterpolation, ThemeProps, css } from 'styled-components';
+
 interface Colors {
   Primary90: string;
   Primary60: string;
@@ -19,36 +21,29 @@ interface Colors {
   coolGray100: string;
 }
 
-interface TypographyStyle {
-  fontWeight: number;
-  fontSize: string;
-  lineHeight: string;
-  letterSpacing: string;
+interface Fonts {
+  primary: string;
 }
 
 interface Typography {
-  h1: TypographyStyle;
-  h2: TypographyStyle;
-  h3: TypographyStyle;
-  h4: TypographyStyle;
-  h5: TypographyStyle;
-  h6: TypographyStyle;
-  subtitleM: TypographyStyle;
-  subtitleS: TypographyStyle;
-  bodyL: TypographyStyle;
-  bodyM: TypographyStyle;
-  bodyS: TypographyStyle;
-  bodyXS: TypographyStyle;
-  bodyXXS: TypographyStyle;
-  caption: TypographyStyle;
-  buttonL: TypographyStyle;
-  buttonM: TypographyStyle;
-  buttonS: TypographyStyle;
-  menuTabs: TypographyStyle;
-}
-
-interface Fonts {
-  primary: string;
+  h1: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  h2: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  h3: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  h4: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  h5: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  h6: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  subtitleM: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  subtitleS: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  bodyL: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  bodyM: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  bodyS: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  bodyXS: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  bodyXXS: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  caption: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  buttonL: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  buttonM: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  buttonS: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+  menuTabs: FlattenInterpolation<ThemeProps<DefaultTheme>>;
 }
 
 export interface Theme {
@@ -81,24 +76,114 @@ export const theme: Theme = {
   },
   spacing: (multiplier: number) => `${multiplier * 8}px`,
   typography: {
-    h1: { fontWeight: 700, fontSize: '54px', lineHeight: '110%', letterSpacing: '0px' },
-    h2: { fontWeight: 700, fontSize: '42px', lineHeight: '110%', letterSpacing: '0px' },
-    h3: { fontWeight: 700, fontSize: '32px', lineHeight: '110%', letterSpacing: '0px' },
-    h4: { fontWeight: 700, fontSize: '24px', lineHeight: '110%', letterSpacing: '0px' },
-    h5: { fontWeight: 700, fontSize: '20px', lineHeight: '110%', letterSpacing: '0px' },
-    h6: { fontWeight: 700, fontSize: '18px', lineHeight: '110%', letterSpacing: '0px' },
-    subtitleM: { fontWeight: 500, fontSize: '16px', lineHeight: '110%', letterSpacing: '0px' },
-    subtitleS: { fontWeight: 500, fontSize: '14px', lineHeight: '110%', letterSpacing: '0px' },
-    bodyL: { fontWeight: 400, fontSize: '18px', lineHeight: '140%', letterSpacing: '0px' },
-    bodyM: { fontWeight: 400, fontSize: '16px', lineHeight: '140%', letterSpacing: '0px' },
-    bodyS: { fontWeight: 400, fontSize: '14px', lineHeight: '140%', letterSpacing: '0px' },
-    bodyXS: { fontWeight: 400, fontSize: '12px', lineHeight: '140%', letterSpacing: '0px' },
-    bodyXXS: { fontWeight: 400, fontSize: '10px', lineHeight: '140%', letterSpacing: '0px' },
-    caption: { fontWeight: 700, fontSize: '20px', lineHeight: '100%', letterSpacing: '1px' },
-    buttonL: { fontWeight: 500, fontSize: '20px', lineHeight: '100%', letterSpacing: '0.5px' },
-    buttonM: { fontWeight: 500, fontSize: '16px', lineHeight: '100%', letterSpacing: '0.5px' },
-    buttonS: { fontWeight: 500, fontSize: '14px', lineHeight: '100%', letterSpacing: '0.5px' },
-    menuTabs: { fontWeight: 500, fontSize: '16px', lineHeight: '100%', letterSpacing: '0px' },
+    h1: css`
+      font-weight: 700;
+      font-size: 54px;
+      line-height: 110%;
+      letter-spacing: 0px;
+    `,
+    h2: css`
+      font-weight: 700;
+      font-size: 42px;
+      line-height: 110%;
+      letter-spacing: 0px;
+    `,
+    h3: css`
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 110%;
+      letter-spacing: 0px;
+    `,
+    h4: css`
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 110%;
+      letter-spacing: 0px;
+    `,
+    h5: css`
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 110%;
+      letter-spacing: 0px;
+    `,
+    h6: css`
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 110%;
+      letter-spacing: 0px;
+    `,
+    subtitleM: css`
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 110%;
+      letter-spacing: 0px;
+    `,
+    subtitleS: css`
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 110%;
+      letter-spacing: 0px;
+    `,
+    bodyL: css`
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 140%;
+      letter-spacing: 0px;
+    `,
+    bodyM: css`
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 140%;
+      letter-spacing: 0px;
+    `,
+    bodyS: css`
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 140%;
+      letter-spacing: 0px;
+    `,
+    bodyXS: css`
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 140%;
+      letter-spacing: 0px;
+    `,
+    bodyXXS: css`
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 140%;
+      letter-spacing: 0px;
+    `,
+    caption: css`
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 100%;
+      letter-spacing: 1px;
+    `,
+    buttonL: css`
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 100%;
+      letter-spacing: 0.5px;
+    `,
+    buttonM: css`
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 100%;
+      letter-spacing: 0.5px;
+    `,
+    buttonS: css`
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 100%;
+      letter-spacing: 0.5px;
+    `,
+    menuTabs: css`
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 100%;
+      letter-spacing: 0px;
+    `,
   },
   fonts: {
     primary: "'Roboto', sans-serif",
