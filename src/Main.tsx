@@ -9,6 +9,9 @@ import Register from './pages/Auth/Register/Register';
 import { Error } from './pages/Error/Error';
 import Navbar from './components/Navbar';
 import { Navigate } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './theme';
+
 // React-Router
 const router = createBrowserRouter([
   {
@@ -21,9 +24,9 @@ const router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: <Home />,
-      },
-    ],
+        element: <Home />
+      }
+    ]
   },
   {
     path: '/trafalgar/auth',
@@ -31,24 +34,26 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'login',
-        element: <Login />,
+        element: <Login />
       },
       {
         path: 'register',
-        element: <Register />,
-      },
-    ],
+        element: <Register />
+      }
+    ]
   },
   {
     path: '*',
-    element: <Error />,
-  },
+    element: <Error />
+  }
 ]);
 
 const rootElement = document.getElementById('root') as HTMLElement;
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>,
 );
