@@ -8,10 +8,16 @@ import Login from './pages/Auth/Login/Login';
 import Register from './pages/Auth/Register/Register';
 import { Error } from './pages/Error/Error';
 import Navbar from './components/Navbar';
+import { Navigate } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
+
 // React-Router
 const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Navigate to="/trafalgar/" replace />,
+  },
   {
     path: '/trafalgar/',
     element: <Navbar />,
