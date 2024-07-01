@@ -1,4 +1,4 @@
-import { DefaultTheme, FlattenInterpolation, ThemeProps, css } from 'styled-components';
+import { css } from 'styled-components';
 
 interface Colors {
   Primary90: string;
@@ -25,31 +25,31 @@ interface Fonts {
   primary: string;
 }
 
-interface Typography {
-  h1: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-  h2: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-  h3: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-  h4: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-  h5: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-  h6: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-  subtitleM: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-  subtitleS: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-  bodyL: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-  bodyM: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-  bodyS: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-  bodyXS: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-  bodyXXS: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-  caption: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-  buttonL: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-  buttonM: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-  buttonS: FlattenInterpolation<ThemeProps<DefaultTheme>>;
-  menuTabs: FlattenInterpolation<ThemeProps<DefaultTheme>>;
+export interface TypographyCustom {
+  h1: ReturnType<typeof css>;
+  h2: ReturnType<typeof css>;
+  h3: ReturnType<typeof css>;
+  h4: ReturnType<typeof css>;
+  h5: ReturnType<typeof css>;
+  h6: ReturnType<typeof css>;
+  subtitleM: ReturnType<typeof css>;
+  subtitleS: ReturnType<typeof css>;
+  bodyL: ReturnType<typeof css>;
+  bodyM: ReturnType<typeof css>;
+  bodyS: ReturnType<typeof css>;
+  bodyXS: ReturnType<typeof css>;
+  bodyXXS: ReturnType<typeof css>;
+  caption: ReturnType<typeof css>;
+  buttonL: ReturnType<typeof css>;
+  buttonM: ReturnType<typeof css>;
+  buttonS: ReturnType<typeof css>;
+  menuTabs: ReturnType<typeof css>;
 }
 
 export interface Theme {
   colors: Colors;
   spacing: (multiplier: number) => string;
-  typography: Typography;
+  typography: TypographyCustom;
   fonts: Fonts;
 }
 
