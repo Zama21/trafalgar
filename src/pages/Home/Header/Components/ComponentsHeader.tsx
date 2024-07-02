@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const HeaderWrapper = styled.header`
   position: fixed;
@@ -30,16 +30,6 @@ export const HeaderTopBar = styled.div`
   }
 `;
 
-export const HeaderCitySelector = styled.div`
-  display: flex;
-  align-items: center;
-  height: 48px;
-  padding: 12px 8px 12px 8px;
-  gap: 8px;
-
-  ${({ theme }) => theme.typography.menuTabs}
-`;
-
 export const HeaderProfileSection = styled.div`
   display: flex;
   align-items: center;
@@ -66,61 +56,5 @@ export const HeaderShoppingCart = styled.div`
 
 export interface HeaderMenuItem {
   label: string;
-  value: string;
-  width?: number;
-  hide?: boolean;
+  path: string;
 }
-
-const HeaderLogoStyles = styled.div<{ $CustomHeaderLogoStyles?: ReturnType<typeof css> }>`
-  display: flex;
-  align-items: center;
-  height: 41px;
-  img {
-    height: 100%;
-  }
-  ${({ $CustomHeaderLogoStyles }) => $CustomHeaderLogoStyles}
-`;
-
-interface HeaderProps {
-  CustomHeaderLogoStyles?: ReturnType<typeof css>;
-}
-
-export const HeaderLogo: React.FC<HeaderProps> = ({ CustomHeaderLogoStyles }) => {
-  return (
-    <HeaderLogoStyles $CustomHeaderLogoStyles={CustomHeaderLogoStyles}>
-      <img src="/public/assets/Header/icons/logo.svg" alt="LogoIcon" />
-    </HeaderLogoStyles>
-  );
-};
-
-const WrapperSearchInput = styled.div<{ $WrapperSearchInputStyles?: ReturnType<typeof css> }>`
-  display: flex;
-  padding: 12px 16px 12px 16px;
-  flex: 1;
-  gap: 8px;
-  ${({ $WrapperSearchInputStyles }) => $WrapperSearchInputStyles}
-
-  @media (max-width: 900px) {
-    padding: 12px 8px 12px 8px;
-  }
-`;
-
-const SearchInput = styled.input`
-  border: none;
-  outline: none;
-  ${({ theme }) => theme.typography.bodyM}
-  width: 100%;
-`;
-
-interface HeaderSearchInputProps {
-  wrapperSearchInputStyles?: ReturnType<typeof css>;
-}
-
-export const HeaderSearchInput: React.FC<HeaderSearchInputProps> = ({ wrapperSearchInputStyles }) => {
-  return (
-    <WrapperSearchInput $WrapperSearchInputStyles={wrapperSearchInputStyles}>
-      <img src="/public/assets/Header/icons/search.svg" alt="SearchIcon" />
-      <SearchInput placeholder="Поиск по ..." />
-    </WrapperSearchInput>
-  );
-};

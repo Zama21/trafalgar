@@ -2,6 +2,56 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+interface MenuItem {
+  label: string;
+  path: string;
+}
+
+export const ProfileButton: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const toggleDropdown = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  return (
+    <ProfileButtonContainer ref={containerRef}>
+      <HeaderBtn $isOpen={isOpen} onClick={toggleDropdown}>
+        <img src="/public/assets/Header/icons/user.svg" alt="UserIcon" />
+        Профиль
+        <img src="/public/assets/Header/icons/chevron-down.svg" alt="ArrowDownIcon" />
+      </HeaderBtn>
+      <DropdownMenu $isOpen={isOpen}>
+        {menuItems.map((item, index) => (
+          <MenuItemStyled key={index} to={item.path}>
+            {item.label}
+          </MenuItemStyled>
+        ))}
+      </DropdownMenu>
+    </ProfileButtonContainer>
+  );
+};
+
+const menuItems: MenuItem[] = [
+  { label: 'Вход', path: '/trafalgar/auth/login' },
+  { label: 'Регистрация', path: '/trafalgar/auth/register' },
+];
+
 const ProfileButtonContainer = styled.div`
   position: relative;
   display: inline-block;
@@ -49,53 +99,3 @@ const HeaderBtn = styled.button<{ $isOpen: boolean }>`
     gap: 4;
   }
 `;
-
-interface MenuItem {
-  label: string;
-  path: string;
-}
-
-const menuItems: MenuItem[] = [
-  { label: 'Вход', path: '/trafalgar/auth/login' },
-  { label: 'Регистрация', path: '/trafalgar/auth/register' },
-];
-
-export const ProfileButton: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const toggleDropdown = () => {
-    setIsOpen((prev) => !prev);
-  };
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-      setIsOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
-  return (
-    <ProfileButtonContainer ref={containerRef}>
-      <HeaderBtn $isOpen={isOpen} onClick={toggleDropdown}>
-        <img src="/public/assets/Header/icons/user.svg" alt="UserIcon" />
-        Профиль
-        <img src="/public/assets/Header/icons/chevron-down.svg" alt="ArrowDownIcon" />
-      </HeaderBtn>
-      <DropdownMenu $isOpen={isOpen}>
-        {menuItems.map((item, index) => (
-          <MenuItemStyled key={index} to={item.path}>
-            {item.label}
-          </MenuItemStyled>
-        ))}
-      </DropdownMenu>
-    </ProfileButtonContainer>
-  );
-};

@@ -1,6 +1,54 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
+interface Option {
+  label: string;
+  path: string;
+}
+
+interface MenuBtnProps {
+  options: Option[];
+}
+
+export const MenuBtn: React.FC<MenuBtnProps> = ({ options }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const toggleDropdown = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  return (
+    <ProfileButtonContainer ref={containerRef}>
+      <HeaderBtn $isOpen={isOpen} onClick={toggleDropdown}>
+        <img src="/public/assets/Header/icons/menu.svg" alt="MenuIcon" />
+        Меню
+      </HeaderBtn>
+      {options.length !== 0 && (
+        <DropdownMenu $isOpen={isOpen}>
+          {options.map((item) => (
+            <MenuItemStyled key={item.path}>{item.label}</MenuItemStyled>
+          ))}
+        </DropdownMenu>
+      )}
+    </ProfileButtonContainer>
+  );
+};
+
 const ProfileButtonContainer = styled.div`
   position: relative;
   display: inline-block;
@@ -48,50 +96,3 @@ const HeaderBtn = styled.button<{ $isOpen: boolean }>`
     transform: ${(props) => (props.$isOpen ? 'rotate(180deg)' : 'rotate(0)')};
   }
 `;
-interface Option {
-  label: string;
-  value: string;
-}
-
-interface MenuBtnProps {
-  options: Option[];
-}
-
-export const MenuBtn: React.FC<MenuBtnProps> = ({ options }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const toggleDropdown = () => {
-    setIsOpen((prev) => !prev);
-  };
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-      setIsOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
-  return (
-    <ProfileButtonContainer ref={containerRef}>
-      <HeaderBtn $isOpen={isOpen} onClick={toggleDropdown}>
-        <img src="/public/assets/Header/icons/menu.svg" alt="MenuIcon" />
-        Меню
-      </HeaderBtn>
-      {options.length !== 0 && (
-        <DropdownMenu $isOpen={isOpen}>
-          {options.map((item) => (
-            <MenuItemStyled key={item.value}>{item.label}</MenuItemStyled>
-          ))}
-        </DropdownMenu>
-      )}
-    </ProfileButtonContainer>
-  );
-};

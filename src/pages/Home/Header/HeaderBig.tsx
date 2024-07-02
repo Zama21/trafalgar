@@ -3,16 +3,10 @@ import SearchBar from './SearchBar/SearchBar';
 import MenuBar from './MenuBar/MenuBar';
 import { Button } from '../../../components/CustomButton/CustomButton';
 import { ProfileButton } from './ProfileButton/ProfileButton';
-import {
-  HeaderLogo,
-  HeaderCitySelector,
-  HeaderMenuItem,
-  HeaderWrapper,
-  HeaderProfileSection,
-  HeaderShoppingCart,
-  HeaderTopBar,
-} from './Components/ComponentsHeader';
+import { HeaderWrapper, HeaderProfileSection, HeaderShoppingCart, HeaderTopBar } from './Components/ComponentsHeader';
 import { forwardRef } from 'react';
+import Location from './Components/Location';
+import Logo from './Components/Logo';
 
 const NavBar = styled.div`
   display: flex;
@@ -26,17 +20,14 @@ const NavBar = styled.div`
   }
 `;
 
-interface HeaderBigProps {
-  menuItemsProps: HeaderMenuItem[];
-}
+// interface HeaderBigProps {
+//   menuItemsProps: HeaderMenuItem[];
+// }
 
-const HeaderBig = forwardRef<HTMLDivElement, HeaderBigProps>(({ menuItemsProps }, ref) => (
+const HeaderBig = forwardRef<HTMLDivElement>((props, ref) => (
   <HeaderWrapper ref={ref}>
     <HeaderTopBar>
-      <HeaderCitySelector>
-        <img src="/public/assets/Header/icons/map-marker.svg" alt="CityIcon" />
-        Москва
-      </HeaderCitySelector>
+      <Location location="Москва" />
       <HeaderProfileSection>
         <ProfileButton />
         <HeaderShoppingCart>
@@ -47,12 +38,11 @@ const HeaderBig = forwardRef<HTMLDivElement, HeaderBigProps>(({ menuItemsProps }
       </HeaderProfileSection>
     </HeaderTopBar>
     <NavBar>
-      <HeaderLogo />
-
+      <Logo />
       <SearchBar />
       <Button onClick={() => alert('Button Clicked!')}>Поиск</Button>
     </NavBar>
-    <MenuBar menuItems={menuItemsProps} />
+    <MenuBar />
   </HeaderWrapper>
 ));
 

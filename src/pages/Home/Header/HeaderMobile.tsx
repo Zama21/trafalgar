@@ -1,7 +1,36 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Sidebar from './Sidebar/Sidebar';
-import { HeaderLogo } from './Components/ComponentsHeader';
+import Logo from './Components/Logo';
+
+const HeaderMobile: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
+  return (
+    <>
+      <HeaderWrapper>
+        <Logo height="24px" />
+        <MenuWrapper>
+          <div className="cart">
+            <img src="/public/assets/Header/icons/shopping-cart.svg" alt="ShoppingCartIcon" />
+            <span>9</span>
+          </div>
+          <div className="menu" onClick={() => setIsOpen(!isOpen)}>
+            <img src="/public/assets/Header/icons/menu.svg" alt="MenuIcon" />
+            <span>Меню</span>
+          </div>
+        </MenuWrapper>
+      </HeaderWrapper>
+      <Sidebar isOpen={isOpen} onClose={handleClose} />
+    </>
+  );
+};
+
+export default HeaderMobile;
 
 const HeaderWrapper = styled.header`
   position: fixed;
@@ -16,10 +45,6 @@ const HeaderWrapper = styled.header`
   border-bottom: 1px solid;
   border-color: ${({ theme }) => theme.colors.coolGray20};
   font-family: ${({ theme }) => theme.fonts.primary};
-`;
-
-const LogoStyles = css`
-  height: 24px;
 `;
 
 const MenuWrapper = styled.div`
@@ -57,32 +82,3 @@ const MenuWrapper = styled.div`
     color: #001D6C;
   }
 `;
-
-const HeaderMobile: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleClose = () => {
-    setIsOpen(false);
-  };
-
-  return (
-    <>
-      <HeaderWrapper>
-        <HeaderLogo CustomHeaderLogoStyles={LogoStyles} />
-        <MenuWrapper>
-          <div className="cart">
-            <img src="/public/assets/Header/icons/shopping-cart.svg" alt="ShoppingCartIcon" />
-            <span>9</span>
-          </div>
-          <div className="menu" onClick={() => setIsOpen(!isOpen)}>
-            <img src="/public/assets/Header/icons/menu.svg" alt="MenuIcon" />
-            <span>Меню</span>
-          </div>
-        </MenuWrapper>
-      </HeaderWrapper>
-      <Sidebar isOpen={isOpen} onClose={handleClose} />
-    </>
-  );
-};
-
-export default HeaderMobile;
