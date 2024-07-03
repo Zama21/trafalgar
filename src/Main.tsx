@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import { AuthLayout } from './pages/Auth/AuthLayout';
 import Login from './pages/Auth/Login/Login';
@@ -24,9 +24,9 @@ const router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: <Home />
-      }
-    ]
+        element: <Home />,
+      },
+    ],
   },
   {
     path: '/trafalgar/auth',
@@ -34,18 +34,18 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'login',
-        element: <Login />
+        element: <Login />,
       },
       {
         path: 'register',
-        element: <Register />
-      }
-    ]
+        element: <Register />,
+      },
+    ],
   },
   {
     path: '*',
-    element: <Error />
-  }
+    element: <Error />,
+  },
 ]);
 
 const rootElement = document.getElementById('root') as HTMLElement;
