@@ -16,7 +16,6 @@ const Home: React.FC = () => {
   const isSmallScreen = useMediaQuery({ query: `(max-width: ${BREAKPOINTS.IPAD})` });
   return (
     <Div $isSmallScreen={isSmallScreen}>
-
       <Section1 />
       <Section2 />
       <Section3 />

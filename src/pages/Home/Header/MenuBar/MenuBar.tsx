@@ -51,7 +51,6 @@ const MenuBar: React.FC<MenuBarProps> = ({ isSmallHeader, menuContainerStyles })
   const deb = useDebounce(updateVisibleItems, 100);
 
   useLayoutEffect(() => {
-    updateVisibleItems();
     setTimeout(updateVisibleItems, 300);
 
     const container = containerRef.current;
@@ -85,7 +84,6 @@ export default MenuBar;
 const MenuBarContainer = styled.div<{ $menuContainerStyles?: ReturnType<typeof css> }>`
   display: flex;
   align-items: center;
-  /* overflow: hidden; */
   height: 48px;
   gap: 8px;
   padding: 8px 80px 8px 80px;

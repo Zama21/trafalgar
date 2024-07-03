@@ -2,7 +2,6 @@ import { css } from 'styled-components';
 
 import { BREAKPOINTS } from './constants';
 
-
 interface Colors {
   Primary90: string;
   Primary60: string;
@@ -29,7 +28,6 @@ interface Fonts {
 }
 
 type Breakpoints = typeof BREAKPOINTS;
-
 
 export interface TypographyCustom {
   h1: ReturnType<typeof css>;
