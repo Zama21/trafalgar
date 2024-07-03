@@ -1,8 +1,17 @@
 import styled from 'styled-components';
 
 import { ButtonProps } from './Button.props';
-import { theme } from '../../theme';
 import Typography from '../../Typography';
+
+function Button({ children, ...props }: ButtonProps) {
+  return (
+    <BntEntry {...props}>
+      <Typography variant="buttonM">{children}</Typography>
+    </BntEntry>
+  );
+}
+
+export default Button;
 
 const BntEntry = styled.button`
   font-family: ${({ theme }) => theme.fonts.primary};
@@ -19,12 +28,3 @@ const BntEntry = styled.button`
   margin-bottom: 48px;
   cursor: pointer;
 `;
-function Button({ children, ...props }: ButtonProps) {
-  return (
-    <BntEntry {...props}>
-      <Typography variant="buttonM">{children}</Typography>
-    </BntEntry>
-  );
-}
-
-export default Button;

@@ -1,57 +1,60 @@
 import styled from 'styled-components';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import Input from '../Input/Input';
 import Button from '../Button/Button';
-import Typography from '../../Typography';
+import ErrorValidation from '../ErrorValidation/ErrorValidation';
+import { LabelInput } from '../LabelInput/Label';
+import { IFormRegistration } from './FormRegistration.interface';
+import { schema } from '../../schema/schema';
 
 export function FormRegistration() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('Регистрация прошла успешно');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormRegistration>({ resolver: yupResolver(schema) });
+
+  const onSubmit: SubmitHandler<IFormRegistration> = (data) => {
+    // Добавление данных с полей в localStorage
+    localStorage.setItem('userData', JSON.stringify(data));
+    console.log(data);
   };
   return (
-    <Field onSubmit={handleSubmit}>
+    <Field onSubmit={handleSubmit(onSubmit)}>
       <WrapperNameSurname>
         <WrapperOneInput>
-          <Typography variant="bodyS">
-            <LabelTag htmlFor="name">Имя</LabelTag>
-          </Typography>
-          <Input id="name" name="name" placeholder="Имя" />
+          <LabelInput htmlFor="name">Имя</LabelInput>
+          <Input id="name" placeholder="Имя" {...register('name')} />
+          {<ErrorValidation>{errors.name?.message}</ErrorValidation>}
         </WrapperOneInput>
 
         <WrapperOneInput>
-          <Typography variant="bodyS">
-            <LabelTag htmlFor="name">Фамилия</LabelTag>
-          </Typography>
-          <Input id="surname" name="surname" placeholder="Фамилия" />
+          <LabelInput htmlFor="surname">Фамилия</LabelInput>
+          <Input id="surname" placeholder="Фамилия" {...register('surname')} />
+          {<ErrorValidation>{errors.surname?.message}</ErrorValidation>}
         </WrapperOneInput>
       </WrapperNameSurname>
 
-      <Typography variant="bodyS">
-        <LabelTag htmlFor="email">Email</LabelTag>
-      </Typography>
+      <LabelInput htmlFor="email">Email</LabelInput>
 
-      <Input id="email" name="email" placeholder="Email" />
-
-      <Typography variant="bodyS">
-        <LabelTag htmlFor="password">Пароль</LabelTag>
-      </Typography>
-      <Input id="password" name="password" type="password" placeholder="Password" />
+      <Input id="email" placeholder="Email" {...register('email')} />
+      {<ErrorValidation>{errors.email?.message}</ErrorValidation>}
+      <LabelInput htmlFor="password">Пароль</LabelInput>
+      <Input id="password" type="password" placeholder="Password" {...register('password')} />
+      {<ErrorValidation>{errors.password?.message}</ErrorValidation>}
 
       <LoginContainer>
-        <Checkbox id="rememberMe" />
-        <Label htmlFor="rememberMe">Согласен с политикой обработки персональных данных</Label>
+        <Checkbox id="agreeToTerms" {...register('agreeToTerms')} />
+        <Label htmlFor="agreeToTerms">Согласен с политикой обработки персональных данных</Label>
       </LoginContainer>
+      {<ErrorValidation>{errors.agreeToTerms?.message}</ErrorValidation>}
 
       <Button>Зарегестрироваться</Button>
     </Field>
   );
 }
-
-const LabelTag = styled.label`
-  color: ${({ theme }) => theme.colors.coolGray90};
-  text-align: left;
-`;
 
 const WrapperNameSurname = styled.div`
   display: flex;

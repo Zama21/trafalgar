@@ -2,49 +2,13 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import Typography from '../../Typography';
 
+import Typography from '../../Typography';
 import Button from '../Button/Button';
 import { Errors } from './Form.props';
 import { formData } from '../../constants/constants';
 import Input from '../Input/Input';
-
-const Field = styled.form`
-  font-family: ${({ theme }) => theme.fonts.primary};
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-`;
-const LabelTag = styled.label`
-  color: ${({ theme }) => theme.colors.coolGray90};
-  text-align: left;
-`;
-
-const LoginContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin: ${({ theme }) => theme.spacing(2)} 0px;
-`;
-
-const Checkbox = styled.input.attrs({ type: 'checkbox' })`
-  margin-right: ${({ theme }) => theme.spacing(1)};
-  cursor: pointer;
-`;
-
-const Label = styled.label`
-  margin-right: auto;
-`;
-
-const ForgotPasswordLink = styled(Link)`
-  color: ${({ theme }) => theme.colors.Primary90};
-  text-decoration: none;
-`;
-
-const ErrorText = styled.p`
-  color: ${({ theme }) => theme.colors.Error};
-
-  margin: 0;
-`;
+import { LabelInput } from '../LabelInput/Label';
 
 function Form() {
   const [errors, setErrors] = useState<Errors>({ email: '', password: '' });
@@ -86,9 +50,7 @@ function Form() {
   return (
     <>
       <Field onSubmit={handleSubmit}>
-        <Typography variant="bodyS">
-          <LabelTag htmlFor="email">Email</LabelTag>
-        </Typography>
+        <LabelInput htmlFor="email">Email</LabelInput>
         <Input id="email" name="email" placeholder="Email" onChange={handleChange} />
 
         {errors.email && (
@@ -97,9 +59,7 @@ function Form() {
           </Typography>
         )}
 
-        <Typography variant="bodyS">
-          <LabelTag htmlFor="password">Пароль</LabelTag>
-        </Typography>
+        <LabelInput htmlFor="password">Пароль</LabelInput>
         <Input id="password" name="password" type="password" placeholder="Password" onChange={handleChange} />
 
         {errors.password && (
@@ -121,5 +81,37 @@ function Form() {
     </>
   );
 }
-
 export default Form;
+
+const Field = styled.form`
+  font-family: ${({ theme }) => theme.fonts.primary};
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
+const LoginContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin: ${({ theme }) => theme.spacing(2)} 0px;
+`;
+
+const Checkbox = styled.input.attrs({ type: 'checkbox' })`
+  margin-right: ${({ theme }) => theme.spacing(1)};
+  cursor: pointer;
+`;
+
+const Label = styled.label`
+  margin-right: auto;
+`;
+
+const ForgotPasswordLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.Primary90};
+  text-decoration: none;
+`;
+
+const ErrorText = styled.p`
+  color: ${({ theme }) => theme.colors.Error};
+
+  margin: 0;
+`;

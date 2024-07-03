@@ -3,6 +3,12 @@ import { forwardRef } from 'react';
 
 import { InputProps } from './Input.props';
 
+const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+  return <TagInput {...props} ref={ref} />;
+});
+
+export default Input;
+
 const TagInput = styled.input`
   font-family: ${({ theme }) => theme.fonts.primary};
   color: ${({ theme }) => theme.colors.coolGray60};
@@ -23,9 +29,3 @@ const TagInput = styled.input`
   box-sizing: border-box;
   background: ${({ theme }) => theme.colors.coolGray10};
 `;
-
-const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  return <TagInput {...props} ref={ref} />;
-});
-
-export default Input;
