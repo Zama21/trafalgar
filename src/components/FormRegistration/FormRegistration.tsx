@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useNavigate } from 'react-router-dom';
 
 import Input from '../Input/Input';
 import Button from '../Button/Button';
@@ -10,6 +11,8 @@ import { IFormRegistration } from './FormRegistration.interface';
 import { schema } from '../../schema/schema';
 
 export function FormRegistration() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -20,6 +23,7 @@ export function FormRegistration() {
     // Добавление данных с полей в localStorage
     localStorage.setItem('userData', JSON.stringify(data));
     console.log(data);
+    navigate('/trafalgar/auth/login');
   };
   return (
     <Field onSubmit={handleSubmit(onSubmit)}>
@@ -38,9 +42,9 @@ export function FormRegistration() {
       </WrapperNameSurname>
 
       <LabelInput htmlFor="email">Email</LabelInput>
-
       <Input id="email" placeholder="Email" {...register('email')} />
       {<ErrorValidation>{errors.email?.message}</ErrorValidation>}
+
       <LabelInput htmlFor="password">Пароль</LabelInput>
       <Input id="password" type="password" placeholder="Password" {...register('password')} />
       {<ErrorValidation>{errors.password?.message}</ErrorValidation>}

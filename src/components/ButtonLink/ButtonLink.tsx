@@ -15,17 +15,15 @@ const SignInButton: React.FC<ButtonLinkProps> = ({ provider, text, logo, link })
 
 const ButtonLink: React.FC = () => {
   return (
-    <Typography variant="subtitleS">
-      <StyledContainer>
-        <SignInButton provider="google" text="Войти с помощью Google" logo="google" link="/error" />
-        <SignInButton provider="apple" text="Войти с помощью Apple" logo="apple" link="/error" />
-      </StyledContainer>
-    </Typography>
+    <StyledContainer variant="subtitleS">
+      <SignInButton provider="google" text="Войти с помощью Google" logo="google" link="/error" />
+      <SignInButton provider="apple" text="Войти с помощью Apple" logo="apple" link="/error" />
+    </StyledContainer>
   );
 };
 
 export default ButtonLink;
-const StyledContainer = styled.div`
+const StyledContainer = styled(Typography)`
   font-family: ${({ theme }) => theme.fonts.primary};
   display: flex;
   gap: 10px;

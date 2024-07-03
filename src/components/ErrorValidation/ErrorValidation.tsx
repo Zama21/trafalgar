@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 import Typography from '../../Typography';
 import { ErrorValidationProps } from './ErrorValidation.props';
 

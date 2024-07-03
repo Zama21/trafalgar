@@ -1,80 +1,58 @@
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect } from 'react';
 
 import Typography from '../../Typography';
 import Button from '../Button/Button';
-import { Errors } from './Form.props';
-import { formData } from '../../constants/constants';
+import { IFormLogin } from './Form.props';
+import ErrorValidation from '../ErrorValidation/ErrorValidation';
 import Input from '../Input/Input';
 import { LabelInput } from '../LabelInput/Label';
+import { schemaLoginPage } from '../../schema/schema';
 
 function Form() {
-  const [errors, setErrors] = useState<Errors>({ email: '', password: '' });
   const navigate = useNavigate();
 
-  // Обновление значений в formData
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    if (name in formData) {
-      formData[name as keyof typeof formData] = value;
-    }
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm<IFormLogin>({ resolver: yupResolver(schemaLoginPage) });
 
-  const validate = () => {
-    const newErrors: Errors = { email: '', password: '' };
-    if (!formData.email) {
-      newErrors.email = 'Поле Email должно быть заполнено';
+  useEffect(() => {
+    const storedUserData = localStorage.getItem('userData');
+    if (storedUserData) {
+      const userData = JSON.parse(storedUserData);
+      setValue('email', userData.email);
+      setValue('password', userData.password);
     }
-    if (!formData.password) {
-      newErrors.password = 'Поле Пароль должно быть заполнено';
-    }
-    setErrors(newErrors);
-    return !newErrors.email && !newErrors.password;
-  };
+  }, [setValue]);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formProps = Object.fromEntries(new FormData(e.target as HTMLFormElement)) as {
-      [key: string]: FormDataEntryValue;
-    };
-    formData.email = formProps.email as string;
-    formData.password = formProps.password as string;
-    if (validate()) {
-      console.log(formData);
-      navigate('/trafalgar/');
-    }
+  const onSubmit: SubmitHandler<IFormLogin> = () => {
+    navigate('/trafalgar/');
   };
 
   return (
     <>
-      <Field onSubmit={handleSubmit}>
+      <Field onSubmit={handleSubmit(onSubmit)}>
         <LabelInput htmlFor="email">Email</LabelInput>
-        <Input id="email" name="email" placeholder="Email" onChange={handleChange} />
+        <Input id="email" placeholder="Email" {...register('email')} />
 
-        {errors.email && (
-          <Typography variant="bodyS">
-            <ErrorText>{errors.email}</ErrorText>
-          </Typography>
-        )}
+        {<ErrorValidation>{errors.email?.message}</ErrorValidation>}
 
         <LabelInput htmlFor="password">Пароль</LabelInput>
-        <Input id="password" name="password" type="password" placeholder="Password" onChange={handleChange} />
+        <Input id="password" type="password" placeholder="Password" {...register('password')} />
 
-        {errors.password && (
-          <Typography variant="bodyS">
-            <ErrorText>{errors.password}</ErrorText>
-          </Typography>
-        )}
+        {<ErrorValidation>{errors.password?.message}</ErrorValidation>}
 
-        <Typography variant="bodyS">
-          <LoginContainer>
-            <Checkbox id="rememberMe" />
-            <Label htmlFor="rememberMe">Запомнить меня</Label>
-            <ForgotPasswordLink to="/forgot-password">Забыли пароль?</ForgotPasswordLink>
-          </LoginContainer>
-        </Typography>
+        <LoginContainer variant="bodyS">
+          <Checkbox id="rememberMe" />
+          <Label htmlFor="rememberMe">Запомнить меня</Label>
+          <ForgotPasswordLink to="/forgot-password">Забыли пароль?</ForgotPasswordLink>
+        </LoginContainer>
 
         <Button type="submit">Вход</Button>
       </Field>
@@ -90,7 +68,7 @@ const Field = styled.form`
   gap: 5px;
 `;
 
-const LoginContainer = styled.div`
+const LoginContainer = styled(Typography)`
   display: flex;
   align-items: center;
   margin: ${({ theme }) => theme.spacing(2)} 0px;
@@ -108,10 +86,4 @@ const Label = styled.label`
 const ForgotPasswordLink = styled(Link)`
   color: ${({ theme }) => theme.colors.Primary90};
   text-decoration: none;
-`;
-
-const ErrorText = styled.p`
-  color: ${({ theme }) => theme.colors.Error};
-
-  margin: 0;
 `;

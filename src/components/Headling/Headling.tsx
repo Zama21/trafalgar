@@ -4,16 +4,12 @@ import { HeadlingProps } from './Headling.props';
 import Typography from '../../Typography';
 
 function Headling({ children }: HeadlingProps) {
-  return (
-    <Typography variant="h2">
-      <StyledHeading>{children}</StyledHeading>
-    </Typography>
-  );
+  return <StyledHeading variant="h2">{children}</StyledHeading>;
 }
 
 export default Headling;
 
-const StyledHeading = styled.h1`
+const StyledHeading = styled(Typography)`
   color: ${({ theme }) => theme.colors.coolGray90};
   font-family: ${({ theme }) => theme.fonts.primary};
 
