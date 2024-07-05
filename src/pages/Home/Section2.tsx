@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Section2: React.FC = () => {
+const AboutProject: React.FC = () => {
   return (
     <MainContainer>
       <Container>
-        <AboutProject>
+        <AboutProjectContainer>
           <div>О проекте</div>
           <p>
             Наш проект создан группой врачей для популяризации современных медицинских знаний их доступности для всех,
             кто в этомзаинтересован.
           </p>
-        </AboutProject>
+        </AboutProjectContainer>
         <CardList>
           <Card>
             <StyledImg src="/src/assets/pillsPic.svg" alt="pils" />
@@ -94,7 +94,7 @@ const Container = styled.div`
   }
 `;
 
-const AboutProject = styled.div`
+const AboutProjectContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -199,4 +199,4 @@ const CustomButton = styled.button`
   margin-right: 16px;
 `;
 
-export default Section2;
+export default AboutProject;
