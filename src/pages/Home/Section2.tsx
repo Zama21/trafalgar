@@ -53,17 +53,19 @@ const Section2: React.FC = () => {
 };
 
 const MainContainer = styled.div`
-  //background-color: aqua;
   padding: 80px;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (max-width: 360px) {
-    padding: 48px 16px 48px 16px;
+  @media (max-width: 1024px) {
+    padding: 50px 0px 24px;
   }
   @media (max-width: 768px) {
-    padding: 48px 0px 24px;
+    padding: 48px 16px 24px;
+  }
+  @media (max-width: 360px) {
+    padding: 48px 16px 48px 16px;
   }
 `;
 const Container = styled.div`
@@ -73,26 +75,32 @@ const Container = styled.div`
   flex-direction: row;
   align-items: flex-start;
   gap: 80px;
+  @media (max-width: 1439px) {
+    flex-direction: column;
+  }
+  @media (max-width: 1024px) {
+    max-width: 600px;
+    flex-direction: column;
+    gap: 40px;
+  }
+  @media (max-width: 768px) {
+    max-width: 600px;
+    flex-direction: column;
+    gap: 32px;
+  }
   @media (max-width: 360px) {
     flex-direction: column;
     gap: 32px;
-  }
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 32px;
-  }
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    gap: 40px;
   }
 `;
 
 const AboutProject = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  @media (max-width: 768px) {
-    padding: 0px 10px 0px;
+  gap: 16px;
+  @media (max-width: 360px) {
+    max-width: 600px;
+    gap: 16px;
   }
   div {
     ${({ theme }) => theme.typography.h2};
@@ -102,6 +110,16 @@ const AboutProject = styled.div`
     @media (max-width: 1920px) {
       ${({ theme }) => theme.typography.h3}
     }
+    @media (max-width: 1440px) {
+      ${({ theme }) => theme.typography.h2}
+    }
+
+    @media (max-width: 1024px) {
+      ${({ theme }) => theme.typography.h2}
+    }
+    @media (max-width: 768px) {
+      ${({ theme }) => theme.typography.h2}
+    }
   }
   p {
     ${({ theme }) => theme.typography.bodyL};
@@ -109,12 +127,15 @@ const AboutProject = styled.div`
       ${({ theme }) => theme.typography.bodyM}
     }
     @media (max-width: 768px) {
-      ${({ theme }) => theme.typography.bodyM}
+      ${({ theme }) => theme.typography.bodyL}
+    }
+    @media (max-width: 1024px) {
     }
   }
 `;
 
 const CardList = styled.div`
+  max-width: 816px;
   display: flex;
   flex-direction: row;
   @media (max-width: 360px) {
@@ -122,6 +143,10 @@ const CardList = styled.div`
     gap: 32px;
   }
   @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 32px;
+  }
+  @media (max-width: 1024px) {
     flex-direction: column;
     gap: 32px;
   }
@@ -135,6 +160,9 @@ const CardMain = styled.div`
   }
   p {
     ${({ theme }) => theme.typography.bodyL};
+    @media (max-width: 360px) {
+      ${({ theme }) => theme.typography.bodyM}
+    }
   }
 `;
 
