@@ -22,6 +22,12 @@ const baseStyles = css`
   justify-content: center;
   text-align: center;
   letter-spacing: 0.5px;
+
+  @media (max-width: 360px) {
+    height: 40px;
+    font-size: 18px;
+    padding: 8px 12px 8px 12px;
+  }
 `;
 
 const primaryStyles = css`
@@ -35,9 +41,9 @@ const secondaryStyles = css`
   border: 2px solid #458ff6;
 `;
 
-const StyledButton = styled.button<ButtonProps>`
+const StyledButton = styled.button<{ $primary?: boolean; height?: string; width?: string; customStyles?: string }>`
   ${baseStyles}
-  ${(props) => (props.primary ? primaryStyles : secondaryStyles)}
+  ${(props) => (props.$primary ? primaryStyles : secondaryStyles)}
     ${(props) =>
     props.height &&
     css`
@@ -57,7 +63,7 @@ const StyledButton = styled.button<ButtonProps>`
 
 const Button: React.FC<ButtonProps> = ({ children, primary, height, width, customStyles }) => {
   return (
-    <StyledButton primary={primary} height={height} width={width} customStyles={customStyles}>
+    <StyledButton $primary={primary} height={height} width={width} customStyles={customStyles}>
       {children}
     </StyledButton>
   );
