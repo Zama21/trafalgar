@@ -25,7 +25,7 @@ const Home: React.FC = () => {
       <CustomTypography variant="h2">tag h2</CustomTypography>
 
       <QuestionBlock items={listQuestions} />
-      <Section1 />
+      {/* <Section1 /> */}
       <Section2 />
       <Section3 />
     </div>

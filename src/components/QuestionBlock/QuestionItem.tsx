@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import Typography from '../../Typography';
 
@@ -7,15 +7,27 @@ export interface QuestionItemProps {
   id: number;
   question: string;
   answer: string;
-  isOpen: boolean;
-  toggleQuestion: (id: number) => void;
 }
 
-const QuestionItem: React.FC<QuestionItemProps> = ({ id, question, answer, isOpen, toggleQuestion }) => {
+const QuestionItem: React.FC<QuestionItemProps> = ({ id, question, answer }) => {
+  // Стейт, который добавляет в массив id записей
+  const [openIds, setOpenIds] = useState<number[]>([]);
   // Когда ответ будет открыт, сюда будет записана высота тега с ответом
   const [height, setHeight] = useState('');
   // Тут хранится доступ к тегу с ответом
   const answerRef = useRef<HTMLDivElement>(null);
+
+  // Функция, она срабатывает когда мы кликнули по записи. Открылся ответ и его id попадает в стейт
+  // Ну и если мы повторно кликнули, то он проверяет есть ли этот id в массиве, если есть, то убирает его
+  const toggleQuestion = (id: number) => {
+    if (openIds.includes(id)) {
+      setOpenIds(openIds.filter((openId) => openId !== id));
+    } else {
+      setOpenIds([...openIds, id]);
+    }
+  };
+
+  const isOpen = openIds.includes(id);
 
   useEffect(() => {
     if (isOpen) {
@@ -36,7 +48,9 @@ const QuestionItem: React.FC<QuestionItemProps> = ({ id, question, answer, isOpe
           </IconWrapper>
         </Wrapper>
         <AnswerDiv ref={answerRef} style={{ height }} data-isopen={isOpen}>
-          <Typography variant="bodyM">{answer}</Typography>
+          <AnswerWrapper>
+            <Typography variant="bodyM">{answer}</Typography>
+          </AnswerWrapper>
         </AnswerDiv>
       </QuestionButton>
     </ListItem>
@@ -71,16 +85,16 @@ const Wrapper = styled.div`
 `;
 
 const IconWrapper = styled.div<{ 'data-isopen': boolean }>`
+  display: flex;
   transition: transform 0.3s ease;
   transform: ${({ 'data-isopen': isOpen }) => (isOpen ? 'rotate(360deg)' : 'rotate(0)')};
 `;
 
-const AnswerDiv = styled.div<{ 'data-isopen': boolean }>`
+const AnswerDiv = styled.div`
   overflow: hidden;
   transition: height 0.3s ease;
-  ${({ 'data-isopen': isOpen }) =>
-    isOpen &&
-    css`
-      padding-top: ${({ theme }) => theme.spacing(3)};
-    `}
+`;
+
+const AnswerWrapper = styled.div`
+  padding-top: 25px;
 `;
