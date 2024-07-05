@@ -1,11 +1,70 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const Section2: React.FC = () => {
+  return (
+    <MainContainer>
+      <Container>
+        <AboutProject>
+          <div>О проекте</div>
+          <p>
+            Наш проект создан группой врачей для популяризации современных медицинских знаний их доступности для всех,
+            кто в этомзаинтересован.
+          </p>
+        </AboutProject>
+        <CardList>
+          <Card>
+            <StyledImg src="/src/assets/pillsPic.svg" alt="pils" />
+            <CardMain>
+              <div>Консультация</div>
+              <p>На нашем форуме вы найдете ответы на вопросы</p>
+            </CardMain>
+            <CustomButton>
+              Узнать больше
+              <img src="/src/assets/arrow-right.svg" alt="arrow-right" />
+            </CustomButton>
+          </Card>
+          <Card>
+            <StyledImg1 src="/src/assets/tableIcon.svg" alt="table" />
+            <CardMain>
+              <div>Тесты</div>
+              <p>Вы можете пройти тесты на нашем сайте</p>
+            </CardMain>
+            <CustomButton>
+              Узнать больше
+              <img src="/src/assets/arrow-right.svg" alt="arrow-right" />
+            </CustomButton>
+          </Card>
+          <Card>
+            <StyledImg2 src="/src/assets/medicalKitIcon.svg" alt="medicalKit" />
+            <CardMain>
+              <div>Консультация</div>
+              <p>Мы поможем найти Вам ближайшую поликлинику</p>
+            </CardMain>
+            <CustomButton>
+              Узнать больше
+              <img src="/src/assets/arrow-right.svg" alt="arrow-right" />
+            </CustomButton>
+          </Card>
+        </CardList>
+      </Container>
+    </MainContainer>
+  );
+};
+
 const MainContainer = styled.div`
+  //background-color: aqua;
+  padding: 80px;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 360px) {
+    padding: 48px 16px 48px 16px;
+  }
+  @media (max-width: 768px) {
+    padding: 48px 0px 24px;
+  }
 `;
 const Container = styled.div`
   max-width: 1440px;
@@ -14,50 +73,68 @@ const Container = styled.div`
   flex-direction: row;
   align-items: flex-start;
   gap: 80px;
+  @media (max-width: 360px) {
+    flex-direction: column;
+    gap: 32px;
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 32px;
+  }
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 40px;
+  }
 `;
 
 const AboutProject = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-top: 80px;
+  @media (max-width: 768px) {
+    padding: 0px 10px 0px;
+  }
   div {
-    font-weight: 700;
-    font-family: 'Roboto';
-    font-size: 42px;
-    line-height: 46.2px;
+    ${({ theme }) => theme.typography.h2};
+    @media (max-width: 3240px) {
+      ${({ theme }) => theme.typography.h1}
+    }
+    @media (max-width: 1920px) {
+      ${({ theme }) => theme.typography.h3}
+    }
   }
   p {
-    font-weight: 400;
-    font-family: 'Roboto';
-    font-size: 18px;
-    line-height: 25.2px;
+    ${({ theme }) => theme.typography.bodyL};
+    @media (max-width: 360px) {
+      ${({ theme }) => theme.typography.bodyM}
+    }
+    @media (max-width: 768px) {
+      ${({ theme }) => theme.typography.bodyM}
+    }
   }
 `;
 
 const CardList = styled.div`
   display: flex;
   flex-direction: row;
-  margin-top: 80px;
+  @media (max-width: 360px) {
+    flex-direction: column;
+    gap: 32px;
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 32px;
+  }
 `;
 
 const CardMain = styled.div`
+  padding: 24px 16px 16px 16px;
   div {
-    margin-top: 24px;
-    margin-left: 16px;
+    ${({ theme }) => theme.typography.h5}
     margin-bottom: 16px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    line-height: 22px;
   }
-
   p {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22.4px;
-    margin-left: 16px;
-    margin-bottom: 16px;
+    ${({ theme }) => theme.typography.bodyL};
   }
 `;
 
@@ -89,69 +166,9 @@ const CustomButton = styled.button`
   border: none;
   background-color: white;
   color: #1a73e8;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 16px;
+  ${({ theme }) => theme.typography.bodyM}
   margin-left: 16px;
   margin-right: 16px;
-  padding: 0px;
 `;
-
-const Section2: React.FC = () => {
-  return (
-    <MainContainer>
-      <Container>
-        <AboutProject>
-          <div>О проекте</div>
-          <p>
-            Наш проект создан группой врачей для <br /> популяризации современных медицинских <br /> знаний их
-            доступности для всех, кто в этом <br /> заинтересован.
-          </p>
-        </AboutProject>
-        <CardList>
-          <Card>
-            <StyledImg src="/src/assets/pillsPic.svg" alt="pils" />
-            <CardMain>
-              <div>Консультация</div>
-              <p>
-                На нашем форуме вы <br /> найдете ответы на вопросы
-              </p>
-            </CardMain>
-            <CustomButton>
-              узнать больше
-              <img src="/src/assets/arrow-right.svg" alt="arrow-right" />
-            </CustomButton>
-          </Card>
-          <Card>
-            <StyledImg1 src="/src/assets/tableIcon.svg" alt="table" />
-            <CardMain>
-              <div>Консультация</div>
-              <p>
-                Вы можете пройти тесты на <br /> нашем сайте
-              </p>
-            </CardMain>
-            <CustomButton>
-              узнать больше
-              <img src="/src/assets/arrow-right.svg" alt="arrow-right" />
-            </CustomButton>
-          </Card>
-          <Card>
-            <StyledImg2 src="/src/assets/medicalKitIcon.svg" alt="medicalKit" />
-            <CardMain>
-              <div>Консультация</div>
-              <p>
-                Мы поможем найти Вам <br /> ближайшую поликлинику
-              </p>
-            </CardMain>
-            <CustomButton>
-              узнать больше
-              <img src="/src/assets/arrow-right.svg" alt="arrow-right" />
-            </CustomButton>
-          </Card>
-        </CardList>
-      </Container>
-    </MainContainer>
-  );
-};
 
 export default Section2;
