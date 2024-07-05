@@ -2,18 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '../../components/Button.tsx';
 
-const Section1: React.FC = () => {
+const Main: React.FC = () => {
   return (
     <MainContainer>
       <Container>
         <SectionLeft>
-          <SectionText>
+          <SectionLeftText>
             <Title>ДОКАЗАТЕЛЬНАЯ МЕДИЦИНА ДЛЯ ВСЕХ</Title>
             <Text>
               Мы еще очень молоды, но достаточно амбициозны и планируем каждого случайного гостя нашего сайта превратить
               в его постоянного пользователя.
             </Text>
-          </SectionText>
+          </SectionLeftText>
           <SectionButton>
             <Button primary width="216px" height="56px">
               Войти как врач
@@ -31,7 +31,7 @@ const Section1: React.FC = () => {
   );
 };
 
-const MainContainer = styled.div`
+const MainContainer = styled.main`
   width: 100vw;
   background-color: ${({ theme }) => theme.colors.coolGray10};
   display: flex;
@@ -42,25 +42,22 @@ const MainContainer = styled.div`
   @media (max-width: 3240px) {
     width: 100%;
   }
-
   @media (max-width: 1920px) {
     width: 100%;
   }
-
   @media (max-width: 1440px) {
     padding: 80px;
     max-width: 1440px;
   }
-
   @media (max-width: 1024px) {
+    align-items: center;
     width: 100%;
+    padding: 48px 80px 24px;
   }
-
   @media (max-width: 768px) {
     padding: 48px 16px 64px 16px;
     width: 100%;
   }
-
   @media (max-width: 360px) {
     padding: 48px 16px 64px 16px;
     max-width: 393px;
@@ -79,16 +76,8 @@ const Container = styled.div`
     max-width: 1440px;
   }
 
-  @media (max-width: 1920px) {
-    max-width: 1440px;
-  }
-
-  @media (max-width: 1440px) {
-    max-width: 1440px;
-  }
-
   @media (max-width: 1024px) {
-    width: 100%;
+    max-width: 600px;
     flex-direction: column;
     gap: 32px;
   }
@@ -106,34 +95,24 @@ const Container = styled.div`
   }
 `;
 
-const SectionLeft = styled.section`
+const SectionLeft = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
 
-const SectionRight = styled.section`
+const SectionRight = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
-
   @media (max-width: 1440px) {
     width: 100%;
     height: 100%;
   }
-
   @media (max-width: 1024px) {
     margin-top: 10px;
-  }
-
-  @media (max-width: 768px) {
-    margin: 32px 16px 64px;
-  }
-
-  @media (max-width: 360px) {
-    margin: 32px 16px 64px;
   }
 `;
 
@@ -150,7 +129,7 @@ const Title = styled.h1`
   }
 
   @media (max-width: 1440px) {
-    ${({ theme }) => theme.typography.h1};
+    ${({ theme }) => theme.typography.h3};
   }
 
   @media (max-width: 1024px) {
@@ -169,7 +148,7 @@ const Title = styled.h1`
 const Text = styled.p`
   ${({ theme }) => theme.typography.bodyL};
   color: ${({ theme }) => theme.colors.coolGray90};
-  margin-bottom: ${({ theme }) => theme.spacing(8)};
+  margin-bottom: 80px;
   font-family: ${({ theme }) => theme.fonts.primary};
 
   @media (max-width: 3240px) {
@@ -181,47 +160,41 @@ const Text = styled.p`
   }
 
   @media (max-width: 1440px) {
-    ${({ theme }) => theme.typography.bodyL};
+    ${({ theme }) => theme.typography.bodyM};
   }
 
   @media (max-width: 1024px) {
-    ${({ theme }) => theme.typography.bodyM};
+    ${({ theme }) => theme.typography.bodyL};
+    margin-bottom: 48px;
   }
 
   @media (max-width: 768px) {
     ${({ theme }) => theme.typography.bodyM};
+    margin-bottom: 48px;
   }
 
   @media (max-width: 360px) {
     ${({ theme }) => theme.typography.bodyM};
+    margin-bottom: 48px;
   }
 `;
 
 const Img = styled.img`
   width: 100%;
+  max-width: 500px;
+  height: auto;
   max-height: 505px;
   object-fit: contain;
 
-  @media (max-width: 3240px) {
-    max-width: 100%;
-  }
-
-  @media (max-width: 1920px) {
-    max-width: 100%;
-  }
-
   @media (max-width: 1440px) {
-    max-width: 100%;
+    max-width: 410px;
   }
-
   @media (max-width: 1024px) {
-    max-width: 500px;
+    max-width: 360px;
   }
-
   @media (max-width: 768px) {
-    max-width: 500px;
+    max-width: 400px;
   }
-
   @media (max-width: 360px) {
     max-width: 100%;
   }
@@ -230,18 +203,27 @@ const Img = styled.img`
 const SectionButton = styled.div`
   display: flex;
   flex-direction: row;
-  gap: ${({ theme }) => theme.spacing(2)};
+  gap: 16px;
 `;
 
-const SectionText = styled.div`
+const SectionLeftText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 60px;
+  @media (max-width: 1440px) {
+    gap: 48px;
+  }
+  @media (max-width: 1024px) {
+    gap: 48px;
+  }
 
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
   @media (max-width: 360px) {
     font-size: ${({ theme }) => theme.typography.bodyM};
     gap: 48px;
   }
 `;
 
-export default Section1;
+export default Main;
