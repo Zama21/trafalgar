@@ -10,29 +10,32 @@ interface ButtonProps {
 }
 
 const baseStyles = css`
-  font-weight: 500;
-  height: 56px;
+  font-weight: ${({ theme }) => theme.typography.buttonL.fontWeight};
   padding: 16px;
-  font-size: 20px;
+  font-size: ${({ theme }) => theme.typography.buttonL.fontSize};
   cursor: pointer;
   border: 2px solid transparent;
-  font-family: 'Roboto';
+  font-family: ${({ theme }) => theme.fonts.primary};
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  letter-spacing: 0.5px;
+
+  @media (max-width: 768px) {
+    height: 48px;
+    font-size: ${({ theme }) => theme.typography.buttonM.fontSize};
+  }
 
   @media (max-width: 360px) {
     height: 40px;
-    font-size: 18px;
-    padding: 8px 12px 8px 12px;
+    font-size: ${({ theme }) => theme.typography.buttonS.fontSize};
+    padding: 12px;
   }
 `;
 
 const primaryStyles = css`
   background-color: #458ff6;
-  color: white;
+  color: ${({ theme }) => theme.colors.White};
   border: none;
 `;
 
