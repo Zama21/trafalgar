@@ -1,26 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import { AuthLayout } from './pages/Auth/AuthLayout';
 import Login from './pages/Auth/Login/Login';
 import Register from './pages/Auth/Register/Register';
 import { Error } from './pages/Error/Error';
-import Navbar from './components/Navbar';
+
 import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
+import Header from './pages/Home/Header/Header';
+
 // React-Router
 const router = createBrowserRouter([
   {
+    path: '/',
+    element: <Navigate to="/trafalgar/" replace />,
+  },
+  {
     path: '/trafalgar/',
-    element: <Navbar />,
+    element: <Header />,
     children: [
       {
         path: '',
-        element: <Home />
-      }
-    ]
+        element: <Home />,
+      },
+    ],
   },
   {
     path: '/trafalgar/auth',
@@ -28,18 +34,18 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'login',
-        element: <Login />
+        element: <Login />,
       },
       {
         path: 'register',
-        element: <Register />
-      }
-    ]
+        element: <Register />,
+      },
+    ],
   },
   {
     path: '*',
-    element: <Error />
-  }
+    element: <Error />,
+  },
 ]);
 
 const rootElement = document.getElementById('root') as HTMLElement;
