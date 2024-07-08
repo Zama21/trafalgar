@@ -59,6 +59,12 @@ export function FormRegistration() {
     </Field>
   );
 }
+const Field = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+`;
 
 const WrapperNameSurname = styled.div`
   display: flex;
@@ -71,11 +77,6 @@ const WrapperOneInput = styled.div`
   gap: 5px;
   flex-grow: 1;
   flex-basis: 0;
-`;
-const Field = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
 `;
 
 const LoginContainer = styled.div`

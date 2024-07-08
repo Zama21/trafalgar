@@ -27,6 +27,12 @@ const StyledContainer = styled(Typography)`
   font-family: ${({ theme }) => theme.fonts.primary};
   display: flex;
   gap: 10px;
+  width: 100%;
+  @media (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 `;
 
 const StyledButton = styled(Link)`
@@ -35,6 +41,7 @@ const StyledButton = styled(Link)`
   padding: 10px 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: ${({ theme }) => theme.spacing(2)};
 
   background-color: ${({ theme }) => theme.colors.White};
