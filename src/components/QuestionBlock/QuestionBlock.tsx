@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import { QuestionBlockProps } from './QuestionsBlock.props';
 import QuestionItem from './QuestionItem';
-import Headling from '../Headling/Headling';
 import Typography from '../../Typography';
 
 const QuestionBlock: React.FC<QuestionBlockProps> = ({ items }) => {
@@ -11,8 +10,8 @@ const QuestionBlock: React.FC<QuestionBlockProps> = ({ items }) => {
       <TopLeftIcon src="/assets/sheet.svg" alt="Top Left Icon" />
       <BottomRightIcon src="/assets/sheet.svg" alt="Bottom Right Icon" />
       <TitleQuestion variant="h5">Вопросы</TitleQuestion>
-      <StyledHeadling>Ответы на частые вопросы</StyledHeadling>
-      <List variant="h5">
+      <QuestionHeadling variant="h2">Ответы на частые вопросы</QuestionHeadling>
+      <List>
         {items.map((item) => (
           <QuestionItem key={item.id} id={item.id} question={item.question} answer={item.answer} />
         ))}
@@ -31,8 +30,9 @@ const WrapperQuestionBlock = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: ${({ theme }) => theme.spacing(8)};
+  padding: ${({ theme }) => theme.spacing(10)};
   background: linear-gradient(180deg, rgb(103, 195, 243), rgb(90, 152, 242) 100%);
+
   @media screen and (max-width: 1200px) {
     > img {
       display: none;
@@ -45,13 +45,11 @@ const WrapperQuestionBlock = styled.div`
   }
 `;
 
-const List = styled(Typography)`
+const List = styled.ul`
   width: 100%;
   max-width: 900px;
   list-style-type: none;
-  @media screen and (max-width: 600px) {
-    font-size: 14px;
-  }
+  padding: 0 16px;
 `;
 
 const TopLeftIcon = styled.img`
@@ -66,8 +64,13 @@ const BottomRightIcon = styled.img`
   right: 0%;
 `;
 
-const StyledHeadling = styled(Headling)`
-  margin: 0 auto;
+const QuestionHeadling = styled(Typography)`
+  margin-bottom: ${({ theme }) => theme.spacing(8)};
+
+  @media screen and (max-width: 600px) {
+    font-size: 24px;
+    margin-bottom: ${({ theme }) => theme.spacing(4)};
+  }
 `;
 
 const TitleQuestion = styled(Typography)`
@@ -75,6 +78,6 @@ const TitleQuestion = styled(Typography)`
   letter-spacing: 1px;
   text-align: center;
   text-transform: uppercase;
-  padding-bottom: ${({ theme }) => theme.spacing(1)};
+  margin-bottom: ${({ theme }) => theme.spacing(1)};
   color: ${({ theme }) => theme.colors.Primary90};
 `;

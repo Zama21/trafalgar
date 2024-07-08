@@ -16,7 +16,7 @@ const CustomTypography = styled(Typography)`
 
 const Home: React.FC = () => {
   return (
-    <div>
+    <>
       <Typography variant="h1">tag h1</Typography>
       <Typography variant="h1" as="span">
         tag span
@@ -28,7 +28,7 @@ const Home: React.FC = () => {
       {/* <Section1 /> */}
       <Section2 />
       <Section3 />
-    </div>
+    </>
   );
 };
 

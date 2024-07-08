@@ -10,24 +10,17 @@ export interface QuestionItemProps {
 }
 
 const QuestionItem: React.FC<QuestionItemProps> = ({ id, question, answer }) => {
-  // Стейт, который добавляет в массив id записей
-  const [openIds, setOpenIds] = useState<number[]>([]);
+  // Булевое состояние для хранения информации, открыт вопрос или нет
+  const [isOpen, setIsOpen] = useState(false);
   // Когда ответ будет открыт, сюда будет записана высота тега с ответом
-  const [height, setHeight] = useState('');
+  const [height, setHeight] = useState('0');
   // Тут хранится доступ к тегу с ответом
   const answerRef = useRef<HTMLDivElement>(null);
 
-  // Функция, она срабатывает когда мы кликнули по записи. Открылся ответ и его id попадает в стейт
-  // Ну и если мы повторно кликнули, то он проверяет есть ли этот id в массиве, если есть, то убирает его
-  const toggleQuestion = (id: number) => {
-    if (openIds.includes(id)) {
-      setOpenIds(openIds.filter((openId) => openId !== id));
-    } else {
-      setOpenIds([...openIds, id]);
-    }
+  // Функция, она срабатывает когда мы кликнули по записи, переключает состояние isOpen
+  const toggleQuestion = () => {
+    setIsOpen(!isOpen);
   };
-
-  const isOpen = openIds.includes(id);
 
   useEffect(() => {
     if (isOpen) {
@@ -40,7 +33,7 @@ const QuestionItem: React.FC<QuestionItemProps> = ({ id, question, answer }) => 
 
   return (
     <ListItem>
-      <QuestionButton onClick={() => toggleQuestion(id)}>
+      <QuestionButton onClick={toggleQuestion}>
         <Wrapper>
           {question}
           <IconWrapper data-isopen={isOpen}>
@@ -76,12 +69,16 @@ const QuestionButton = styled.button`
   text-align: left;
   border-radius: ${({ theme }) => theme.spacing(1)};
   border: none;
+  @media screen and (max-width: 600px) {
+    font-size: 18px;
+  }
 `;
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
 `;
 
 const IconWrapper = styled.div<{ 'data-isopen': boolean }>`
