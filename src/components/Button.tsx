@@ -12,7 +12,7 @@ interface ButtonProps {
 const baseStyles = css`
   font-weight: ${({ theme }) => theme.typography.buttonL.fontWeight};
   padding: 16px;
-  font-size: ${({ theme }) => theme.typography.buttonL.fontSize};
+  font-size: ${({ theme }) => theme.typography.buttonL};
   cursor: pointer;
   border: 2px solid transparent;
   font-family: ${({ theme }) => theme.fonts.primary};
@@ -23,12 +23,12 @@ const baseStyles = css`
 
   @media (max-width: 768px) {
     height: 48px;
-    font-size: ${({ theme }) => theme.typography.buttonM.fontSize};
+    font-size: ${({ theme }) => theme.typography.buttonM};
   }
 
   @media (max-width: 360px) {
     height: 40px;
-    font-size: ${({ theme }) => theme.typography.buttonS.fontSize};
+    font-size: ${({ theme }) => theme.typography.buttonS};
     padding: 12px;
   }
 `;

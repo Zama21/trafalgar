@@ -24,7 +24,7 @@ const Main: React.FC = () => {
           </SectionButton>
         </SectionLeft>
         <SectionRight>
-          <Img src="/src/assets/Pic1.png" alt="sectionPic1" />
+          <img src="/src/assets/Pic1.png" alt="sectionPic1" />
         </SectionRight>
       </Container>
     </MainContainer>
@@ -32,34 +32,25 @@ const Main: React.FC = () => {
 };
 
 const MainContainer = styled.main`
-  width: 100vw;
+  max-width: 100vw;
   background-color: ${({ theme }) => theme.colors.coolGray10};
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 80px;
-
-  @media (max-width: 3240px) {
-    width: 100%;
-  }
-  @media (max-width: 1920px) {
-    width: 100%;
-  }
   @media (max-width: 1440px) {
-    padding: 80px;
     max-width: 1440px;
   }
   @media (max-width: 1024px) {
     align-items: center;
-    width: 100%;
     padding: 48px 80px 24px;
   }
   @media (max-width: 768px) {
     padding: 48px 16px 64px 16px;
-    width: 100%;
+    max-width: 100%;
   }
   @media (max-width: 360px) {
-    padding: 48px 16px 64px 16px;
+    gap: 32px;
     max-width: 393px;
   }
 `;
@@ -71,10 +62,7 @@ const Container = styled.div`
   column-gap: 80px;
   max-width: 1440px;
   height: 681px;
-
-  @media (max-width: 3240px) {
-    max-width: 1440px;
-  }
+  align-items: center;
 
   @media (max-width: 1024px) {
     max-width: 600px;
@@ -83,13 +71,13 @@ const Container = styled.div`
   }
 
   @media (max-width: 768px) {
-    max-width: 710px;
+    max-width: 100%;
     flex-direction: column;
     gap: 32px;
   }
 
   @media (max-width: 360px) {
-    max-width: 360px;
+    max-width: 100%;
     flex-direction: column;
     gap: 32px;
   }
@@ -99,20 +87,29 @@ const SectionLeft = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 100%;
 `;
 
 const SectionRight = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 600px;
+  max-height: 500px;
   width: 100%;
-  height: 100%;
-  @media (max-width: 1440px) {
-    width: 100%;
-    height: 100%;
-  }
+  height: auto;
   @media (max-width: 1024px) {
-    margin-top: 10px;
+    max-width: 400px;
+    max-height: 400px;
+  }
+  @media (max-width: 768px) {
+    max-width: 350px;
+    max-height: 400px;
+  }
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
 `;
 
@@ -128,19 +125,10 @@ const Title = styled.h1`
     ${({ theme }) => theme.typography.h1};
   }
 
-  @media (max-width: 1440px) {
-    ${({ theme }) => theme.typography.h3};
-  }
-
   @media (max-width: 1024px) {
     ${({ theme }) => theme.typography.h3};
   }
-
   @media (max-width: 768px) {
-    ${({ theme }) => theme.typography.h4};
-  }
-
-  @media (max-width: 360px) {
     ${({ theme }) => theme.typography.h4};
   }
 `;
@@ -154,11 +142,6 @@ const Text = styled.p`
   @media (max-width: 3240px) {
     ${({ theme }) => theme.typography.customXXL};
   }
-
-  @media (max-width: 1920px) {
-    ${({ theme }) => theme.typography.customTextXL};
-  }
-
   @media (max-width: 1440px) {
     ${({ theme }) => theme.typography.bodyM};
   }
@@ -166,37 +149,6 @@ const Text = styled.p`
   @media (max-width: 1024px) {
     ${({ theme }) => theme.typography.bodyL};
     margin-bottom: 48px;
-  }
-
-  @media (max-width: 768px) {
-    ${({ theme }) => theme.typography.bodyM};
-    margin-bottom: 48px;
-  }
-
-  @media (max-width: 360px) {
-    ${({ theme }) => theme.typography.bodyM};
-    margin-bottom: 48px;
-  }
-`;
-
-const Img = styled.img`
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  max-height: 505px;
-  object-fit: contain;
-
-  @media (max-width: 1440px) {
-    max-width: 410px;
-  }
-  @media (max-width: 1024px) {
-    max-width: 360px;
-  }
-  @media (max-width: 768px) {
-    max-width: 400px;
-  }
-  @media (max-width: 360px) {
-    max-width: 100%;
   }
 `;
 
@@ -216,13 +168,12 @@ const SectionLeftText = styled.div`
   @media (max-width: 1024px) {
     gap: 48px;
   }
-
   @media (max-width: 768px) {
     gap: 20px;
   }
   @media (max-width: 360px) {
     font-size: ${({ theme }) => theme.typography.bodyM};
-    gap: 48px;
+    gap: 24px;
   }
 `;
 
