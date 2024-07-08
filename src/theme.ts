@@ -1,5 +1,6 @@
 import { css } from 'styled-components';
 
+import { BREAKPOINTS } from './constants';
 
 interface Colors {
   Primary90: string;
@@ -25,6 +26,8 @@ interface Colors {
 interface Fonts {
   primary: string;
 }
+
+type Breakpoints = typeof BREAKPOINTS;
 
 export interface TypographyCustom {
   h1: ReturnType<typeof css>;
@@ -52,6 +55,7 @@ export interface Theme {
   spacing: (multiplier: number) => string;
   typography: TypographyCustom;
   fonts: Fonts;
+  breakpoints: Breakpoints;
 }
 
 export const theme: Theme = {
@@ -188,5 +192,8 @@ export const theme: Theme = {
   },
   fonts: {
     primary: "'Roboto', sans-serif",
+  },
+  breakpoints: {
+    ...BREAKPOINTS,
   },
 };
