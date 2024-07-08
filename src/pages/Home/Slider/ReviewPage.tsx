@@ -91,15 +91,6 @@ const StyledSlider = styled.div`
   }
   .slick-slider {
     max-width: 100%;
-    @media (max-width: 1440px) {
-      max-width: 100%;
-    }
-    @media (max-width: 1024px) {
-      max-width: 100%;
-    }
-    @media (max-width: 768px) {
-      max-width: 100%;
-    }
     @media (max-width: 360px) {
       max-width: 297px;
     }
@@ -128,8 +119,10 @@ const Container = styled.div`
   padding: 80px;
   display: flex;
   justify-content: center;
-  max-height: 100vh;
   max-width: 100vw;
+  @media (max-width: 1024px) {
+    max-width: 100vw;
+  }
   @media (max-width: 768px) {
     padding: 48px 16px;
   }
