@@ -9,7 +9,7 @@ export interface QuestionItemProps {
   answer: string;
 }
 
-const QuestionItem: React.FC<QuestionItemProps> = ({ id, question, answer }) => {
+const QuestionItem: React.FC<QuestionItemProps> = ({ question, answer }) => {
   // Булевое состояние для хранения информации, открыт вопрос или нет
   const [isOpen, setIsOpen] = useState(false);
   // Когда ответ будет открыт, сюда будет записана высота тега с ответом
