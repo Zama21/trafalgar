@@ -16,7 +16,7 @@ const StyledImage = styled.img`
   height: 100%;
 `;
 const Content = styled.div`
-  border-left: 1px solid var(--separator-color);
+  border-left: 1px solid black;
   flex: 1;
   display: flex;
   align-items: center;
