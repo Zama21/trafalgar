@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Typography from '../../Typography';
 import QuestionBlock from '../../components/QuestionBlock/QuestionBlock';
 import { listQuestions } from '../../constants/Questions';
+import Knowledge from '../../components/Knowledge/Knowledge';
 
 const CustomTypography = styled(Typography)`
   color: blue;
@@ -24,8 +25,9 @@ const Home: React.FC = () => {
       <Typography variant="bodyM">tag p</Typography>
       <CustomTypography variant="h2">tag h2</CustomTypography>
 
-      <QuestionBlock items={listQuestions} />
+      {/* <QuestionBlock items={listQuestions} /> */}
       {/* <Section1 /> */}
+      <Knowledge />
       <Section2 />
       <Section3 />
     </>
