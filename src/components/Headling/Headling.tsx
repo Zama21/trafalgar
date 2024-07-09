@@ -15,4 +15,13 @@ const StyledHeading = styled(Typography)`
 
   text-align: left;
   margin-bottom: ${({ theme }) => theme.spacing(6)};
+  @media (max-width: 1200px) {
+    margin-bottom: ${({ theme }) => theme.spacing(4)};
+  }
+  @media (max-width: 850px) {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 110%;
+    letter-spacing: 0%;
+  }
 `;
