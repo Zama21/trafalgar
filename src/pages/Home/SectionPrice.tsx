@@ -102,6 +102,7 @@ const SwitchToggle = styled.div`
 `;
 
 const ContainerCard = styled.div`
+  width: 1280px;
   display: flex;
   flex-direction: row;
   gap: 24px;
