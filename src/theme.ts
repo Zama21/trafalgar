@@ -1,5 +1,6 @@
 import { css } from 'styled-components';
 
+
 import { BREAKPOINTS } from './constants';
 
 interface Colors {
@@ -43,6 +44,8 @@ export interface TypographyCustom {
   bodyS: ReturnType<typeof css>;
   bodyXS: ReturnType<typeof css>;
   bodyXXS: ReturnType<typeof css>;
+  customXXL: ReturnType<typeof css>;
+  customTextXL: ReturnType<typeof css>;
   caption: ReturnType<typeof css>;
   buttonL: ReturnType<typeof css>;
   buttonM: ReturnType<typeof css>;
@@ -123,6 +126,17 @@ export const theme: Theme = {
       font-size: 16px;
       line-height: 110%;
       letter-spacing: 0px;
+    `,
+    customXXL: css`
+      font-weight: 400;
+      font-size: 25px;
+      line-height: 110%;
+      letter-spacing: 0px;
+    `,
+    customTextXL: css`
+      font-weight: 400;
+      font-size: 19px;
+      line-height: 25.2px;
     `,
     subtitleS: css`
       font-weight: 500;
