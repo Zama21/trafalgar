@@ -1,6 +1,7 @@
 import { ReactNode, ButtonHTMLAttributes } from 'react';
+import { css } from 'styled-components';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  kind?: 'doctor' | 'patient';
+  customStyles?: ReturnType<typeof css>;
 }

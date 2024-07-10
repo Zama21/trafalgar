@@ -2,9 +2,9 @@ import styled, { css } from 'styled-components';
 import { ButtonProps } from './Button.props';
 import Typography from '../../Typography';
 
-function Button({ children, kind, ...props }: ButtonProps) {
+function Button({ children, customStyles, ...props }: ButtonProps) {
   return (
-    <BntEntry kind={kind} {...props}>
+    <BntEntry customStyles={customStyles} {...props}>
       <Typography variant="buttonM">{children}</Typography>
     </BntEntry>
   );
@@ -12,7 +12,7 @@ function Button({ children, kind, ...props }: ButtonProps) {
 
 export default Button;
 
-const BntEntry = styled.button<{ kind?: 'doctor' | 'patient' }>`
+const BntEntry = styled.button<{ customStyles?: ReturnType<typeof css> }>`
   font-family: ${({ theme }) => theme.fonts.primary};
   display: flex;
   justify-content: center;
@@ -26,37 +26,5 @@ const BntEntry = styled.button<{ kind?: 'doctor' | 'patient' }>`
   margin-bottom: 48px;
   cursor: pointer;
   white-space: nowrap;
-
-  ${({ kind }) =>
-    kind === 'doctor' &&
-    css`
-      /* width: 200px;
-      height: 60px; */
-      background: ${({ theme }) => theme.colors.Primary60};
-      border: 2px solid blue;
-      @media (max-width: 850px) {
-        color: red;
-        margin-bottom: 32px;
-      }
-      @media (max-width: 460px) {
-        padding: 15px 15px;
-      }
-    `}
-
-  ${({ kind }) =>
-    kind === 'patient' &&
-    css`
-      width: 200px;
-      height: 60px;
-      background: ${({ theme }) => theme.colors.White};
-      border: 2px solid ${({ theme }) => theme.colors.Primary60};
-      color: ${({ theme }) => theme.colors.Primary60};
-      @media (max-width: 850px) {
-        color: red;
-        margin-bottom: 32px;
-      }
-      @media (max-width: 460px) {
-        padding: 15px 15px;
-      }
-    `}
+  ${({ customStyles }) => customStyles}
 `;

@@ -1,8 +1,11 @@
 import styled from 'styled-components';
+import { css } from 'styled-components';
 
 import Headling from '../Headling/Headling';
 import Button from '../../components/Button/Button';
 import Typography from '../../Typography';
+import { KnowledgeIcons } from '../../constants/KnowledgeIcons';
+import KnowledgeItem from '../KnowledgeItem/KnowledgeItem';
 
 function Knowledge() {
   return (
@@ -16,18 +19,18 @@ function Knowledge() {
       </Titles>
 
       <ButtonWrapper>
-        <Button kind="doctor">Для врачей</Button>
-        <Button kind="patient">Для пациентов</Button>
+        <Button customStyles={customDoctorStyles}>Для врачей</Button>
+        <Button customStyles={customPatientStyles}>Для пациентов</Button>
       </ButtonWrapper>
       <SecondContainer>
         <ContainerImg>
           <DashboardImage src="/assets/dashboardSection.svg" alt="" />
         </ContainerImg>
+
         <ContentContainer>
-          <ul style={{ width: '100%', height: '100%' }}>Knowledge</ul>
-          <ul style={{ width: '100%', height: '100%' }}>Knowledge</ul>
-          <ul style={{ width: '100%', height: '100%' }}>Knowledge</ul>
-          <ul style={{ width: '100%', height: '100%' }}>Knowledge</ul>
+          {KnowledgeIcons.map((item) => (
+            <KnowledgeItem key={item.id} link={item.link} number={item.number} text={item.text} />
+          ))}
         </ContentContainer>
       </SecondContainer>
     </PageKnowledge>
@@ -36,10 +39,6 @@ function Knowledge() {
 
 export default Knowledge;
 
-// const Item = styled.li`
-//   margin-left: 160px;
-// `;
-
 const Titles = styled.div`
   margin: 80px 80px 0 80px;
   @media (max-width: 1200px) {
@@ -47,6 +46,35 @@ const Titles = styled.div`
   }
   @media (max-width: 850px) {
     margin: 48px 16px 0 16px;
+  }
+`;
+
+const customDoctorStyles = css`
+  width: 200px;
+  height: 60px;
+  background: ${({ theme }) => theme.colors.Primary60};
+  border: 2px solid blue;
+  @media (max-width: 850px) {
+    color: red;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 460px) {
+    padding: 13px 13px;
+  }
+`;
+
+const customPatientStyles = css`
+  width: 200px;
+  height: 60px;
+  background: ${({ theme }) => theme.colors.White};
+  border: 2px solid ${({ theme }) => theme.colors.Primary60};
+  color: ${({ theme }) => theme.colors.Primary60};
+  @media (max-width: 850px) {
+    color: red;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 460px) {
+    padding: 13px 13px;
   }
 `;
 
@@ -83,14 +111,16 @@ const SecondContainer = styled.div`
   flex-direction: row;
   justify-content: baseline;
   margin: 0 80px 80px 80px;
+
   border: 1px solid purple;
 
   @media (max-width: 1200px) {
     margin: 0 40px 32px 40px;
   }
 
-  @media (max-width: 850px) {
+  @media (max-width: 950px) {
     flex-direction: column;
+    gap: 24px;
     margin: 0 16px 32px 16px;
   }
 `;
@@ -101,8 +131,8 @@ const ContainerImg = styled.div`
 `;
 
 const DashboardImage = styled.img`
-  width: 100%; /* Устанавливает изображение на всю ширину родительского блока */
-  height: auto; /* Автоматически изменяет высоту изображения */
+  width: 100%;
+  height: auto;
   border: 1px solid green;
 `;
 
@@ -110,8 +140,27 @@ const ContentContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap: 24px; /* Расстояние между элементами */
-  margin: 106px 0 106px 80px; /* Отступы: верх, низ, право, лево */
+  gap: 24px;
+  margin: auto 0 auto 80px;
   flex: 1;
   border: 1px solid blue;
+  height: 184px;
+  width: 100%;
+
+  font-family: ${({ theme }) => theme.fonts.primary};
+  @media (max-width: 1400px) {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+  @media (max-width: 1100px) {
+    margin: auto 0 auto 40px;
+  }
+
+  @media (max-width: 950px) {
+    margin: auto 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
 `;
