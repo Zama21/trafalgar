@@ -24,7 +24,10 @@ function Knowledge() {
           <DashboardImage src="/assets/dashboardSection.svg" alt="" />
         </ContainerImg>
         <ContentContainer>
-          <h1 style={{ marginLeft: '${80}px' }}>Knowledge</h1>
+          <ul style={{ width: '100%', height: '100%' }}>Knowledge</ul>
+          <ul style={{ width: '100%', height: '100%' }}>Knowledge</ul>
+          <ul style={{ width: '100%', height: '100%' }}>Knowledge</ul>
+          <ul style={{ width: '100%', height: '100%' }}>Knowledge</ul>
         </ContentContainer>
       </SecondContainer>
     </PageKnowledge>
@@ -32,6 +35,10 @@ function Knowledge() {
 }
 
 export default Knowledge;
+
+// const Item = styled.li`
+//   margin-left: 160px;
+// `;
 
 const Titles = styled.div`
   margin: 80px 80px 0 80px;
@@ -90,7 +97,7 @@ const SecondContainer = styled.div`
 
 const ContainerImg = styled.div`
   border: 1px solid red;
-  flex: 1; /* Позволяет блоку с изображением изменять размер пропорционально */
+  flex: 1;
 `;
 
 const DashboardImage = styled.img`
@@ -99,7 +106,12 @@ const DashboardImage = styled.img`
   border: 1px solid green;
 `;
 
-const ContentContainer = styled.div`
-  flex: 1; /* Позволяет блоку с контентом изменять размер пропорционально */
+const ContentContainer = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 24px; /* Расстояние между элементами */
+  margin: 106px 0 106px 80px; /* Отступы: верх, низ, право, лево */
+  flex: 1;
   border: 1px solid blue;
 `;
