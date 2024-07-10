@@ -27,4 +27,8 @@ const BntEntry = styled.button`
 
   margin-bottom: 48px;
   cursor: pointer;
+  @media (max-width: 579px) {
+    width: 360px;
+    margin: 16px auto 32px;
+  }
 `;

@@ -1,7 +1,7 @@
 export interface FormProps {
   children: React.ReactNode;
 }
-export interface Errors {
+export interface IFormLogin {
   email: string;
   password: string;
 }
