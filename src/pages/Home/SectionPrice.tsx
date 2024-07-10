@@ -43,13 +43,16 @@ const SectionPrice = () => {
             newPrice="$25"
             itemList={items.slice(0, 5)}
           />
-          <CardPrice
-            title="Специалист"
-            description="Для уверенных специалистов"
-            oldPrice="$50"
-            newPrice="$40"
-            itemList={items.slice(0, 8)}
-          />
+          <CardWrapper>
+            <PopularText>Популярный</PopularText>
+            <CardPrice
+              title="Специалист"
+              description="Для уверенных специалистов"
+              oldPrice="$50"
+              newPrice="$40"
+              itemList={items.slice(0, 8)}
+            />
+          </CardWrapper>
           <CardPrice
             title="Эксперт"
             description="Для шерстяных волчар"
@@ -211,6 +214,23 @@ const ContainerCard = styled.div`
     flex-direction: column;
     gap: 32px;
   }
+`;
+
+const CardWrapper = styled.div`
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const PopularText = styled.div`
+  position: absolute;
+  top: -10px;
+  background: #f2f4f8;
+  padding: 4px 8px;
+  border-radius: 12px;
+  ${({ theme }) => theme.typography.bodyXS}
 `;
 
 export default SectionPrice;
