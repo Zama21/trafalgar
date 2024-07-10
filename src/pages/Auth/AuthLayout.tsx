@@ -27,7 +27,7 @@ const Layout = styled.div`
   padding: 0;
   box-sizing: border-box;
 
-  @media (min-width: 1200px) {
+  @media (min-width: 800px) {
     flex-direction: row;
     justify-content: flex-start;
   }
@@ -40,7 +40,7 @@ const Content = styled.div`
   width: 100%;
   height: 100%;
 
-  @media (min-width: 1200px) {
+  @media (min-width: 800px) {
     height: 100vh;
     order: 1;
   }
@@ -48,11 +48,11 @@ const Content = styled.div`
 
 const Logo = styled.div`
   width: 100%;
-  height: 50%;
+  height: 100%;
 
-  @media (min-width: 1200px) {
+  @media (min-width: 800px) {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     order: 2;
   }
 `;
@@ -64,4 +64,7 @@ const StyledImage = styled.img`
   margin: 0;
   padding: 0;
   display: block;
+  @media (max-width: 800px) {
+    max-height: 280px;
+  }
 `;

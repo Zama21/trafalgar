@@ -18,14 +18,13 @@ const BntEntry = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px 20%;
+  padding: 16px 32px;
   background: ${({ theme }) => theme.colors.Primary60};
   border: 2px solid ${({ theme }) => theme.colors.Primary60};
   color: white;
-  width: 100%;
-
   margin-bottom: 48px;
   cursor: pointer;
+
   @media (max-width: 800px) {
     width: 100%;
     margin-bottom: 32px;

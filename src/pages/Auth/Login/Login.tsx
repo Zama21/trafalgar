@@ -27,11 +27,9 @@ const Wrapper = styled.div`
   margin: 80px;
 
   @media (max-width: 600px) {
-    border: 1px solid rebeccapurple;
     margin: 32px 16px;
   }
 `;
-const WrapperForm = styled.div``;
 
 const LinkToRegistration = styled(Link)`
   color: rgb(0, 29, 108);
