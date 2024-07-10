@@ -55,11 +55,13 @@ const Discount = styled.div`
   height: 20px;
   padding: 4px 8px;
   position: absolute;
-  top: -30px;
+  top: -15px;
+  transform: translate(-50%);
   ${({ theme }) => theme.typography.bodyXS}
 `;
 
 const TimeSwitch = styled.div`
+  position: relative;
   width: 149px;
   height: 25px;
   display: flex;
@@ -128,8 +130,8 @@ const SectionPrice = () => {
           </HeaderInfo>
         </ContainerHeader>
         <MainContainerInfo>
-          <Discount>20% дешевле</Discount>
           <TimeSwitch>
+            <Discount>20% дешевле</Discount>
             <TimeOption onClick={() => setChecked(false)}>Год</TimeOption>
             <Switch onClick={toggleSwitch}>
               <SwitchToggle checked={checked} />
