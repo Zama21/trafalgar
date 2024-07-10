@@ -3,9 +3,9 @@ import Slider from 'react-slick';
 import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Typography from '../../../Typography.tsx';
-import { cards } from '../../../constants/cards.ts';
-import { NextArrow, PrevArrow } from './ArrowSlider.tsx';
+import Typography from '../../Typography.tsx';
+import { cards } from '../../constants/cards.ts';
+import { NextArrow, PrevArrow } from './Slider/ArrowSlider.tsx';
 
 const settings = {
   dots: false,
