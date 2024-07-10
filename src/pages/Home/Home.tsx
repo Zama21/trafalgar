@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import { useMediaQuery } from 'bbbchut_test1_bbbchut13';
 import { BREAKPOINTS } from '../../constants';
+import RequestSection from './RequestSection/RequestSection';
 
 const Div = styled.div<{ $isSmallScreen: boolean }>`
   height: 1500px;
@@ -16,8 +17,10 @@ const Home: React.FC = () => {
   const isSmallScreen = useMediaQuery({ query: `(max-width: ${BREAKPOINTS.IPAD})` });
   return (
     <Div $isSmallScreen={isSmallScreen}>
-      <Section1 />
-      <Section2 />
+      {/* <Section1 /> */}
+      {/* <Section2 />*/}
+
+      <RequestSection />
       <Section3 />
     </Div>
   );

@@ -20,10 +20,6 @@ const NavBar = styled.div`
   }
 `;
 
-// interface HeaderBigProps {
-//   menuItemsProps: HeaderMenuItem[];
-// }
-
 const HeaderBig = forwardRef<HTMLDivElement>((props, ref) => (
   <HeaderWrapper ref={ref}>
     <HeaderTopBar>

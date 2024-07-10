@@ -25,13 +25,24 @@ const TypographyStl = styled.p<{ $variant: Variant }>`
 export interface TypographyProps extends HTMLAttributes<HTMLElement> {
   variant?: Variant;
   as?: ElementType;
+  htmlFor?: string;
 }
 
-export default function Typography({ variant = 'bodyL', as, children, ...props }: TypographyProps) {
+export default function Typography({ variant = 'bodyL', as, children, htmlFor, ...props }: TypographyProps) {
   const Component = as || getTagForVariant(variant);
 
+  const additionalProps = Component === 'label' ? { htmlFor } : {};
+
+  // export interface TypographyProps extends HTMLAttributes<HTMLElement> {
+  //   variant?: Variant;
+  //   as?: ElementType;
+  // }
+
+  // export default function Typography({ variant = 'bodyL', as, children, ...props }: TypographyProps) {
+  //   const Component = as || getTagForVariant(variant);
+
   return (
-    <TypographyStl as={Component} {...props} $variant={variant}>
+    <TypographyStl as={Component} {...props} {...additionalProps} $variant={variant}>
       {children}
     </TypographyStl>
   );
