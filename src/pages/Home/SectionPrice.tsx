@@ -3,20 +3,90 @@ import styled from 'styled-components';
 import { CardPrice } from '../../components/CardPrice/Card';
 import { items } from '../../constants/PriceConstant';
 
+const SectionPrice = () => {
+  const [checked, setChecked] = useState(false);
+
+  const toggleSwitch = () => {
+    setChecked((prev) => !prev);
+  };
+
+  return (
+    <MainContainer>
+      <Container>
+        <ContainerHeader>
+          <HeaderInfo>
+            <div>
+              <HeaderOne>ЦЕНЫ</HeaderOne>
+              <HeaderTwo>Лучший источник медицинской информации</HeaderTwo>
+            </div>
+            <HeaderText>
+              Сервис для врачей, доступный на разных устройствах по подписке на эксклюзивные статьи от ведущих экспертов
+              в сфере здравоохранения и охраны здоровья
+            </HeaderText>
+          </HeaderInfo>
+        </ContainerHeader>
+        <MainContainerInfo>
+          <TimeSwitch>
+            <Discount>20% дешевле</Discount>
+            <TimeOption onClick={() => setChecked(false)}>Год</TimeOption>
+            <Switch checked={checked} onClick={toggleSwitch}>
+              <SwitchToggle checked={checked} />
+            </Switch>
+            <TimeOption onClick={() => setChecked(true)}>Месяц</TimeOption>
+          </TimeSwitch>
+        </MainContainerInfo>
+        <ContainerCard>
+          <CardPrice
+            title="Стажер"
+            description="Для начинающих специалистов"
+            oldPrice="$35"
+            newPrice="$25"
+            itemList={items.slice(0, 5)}
+          />
+          <CardPrice
+            title="Специалист"
+            description="Для уверенных специалистов"
+            oldPrice="$50"
+            newPrice="$40"
+            itemList={items.slice(0, 8)}
+          />
+          <CardPrice
+            title="Эксперт"
+            description="Для шерстяных волчар"
+            oldPrice="$70"
+            newPrice="$60"
+            itemList={items.slice(0, 12)}
+          />
+        </ContainerCard>
+      </Container>
+    </MainContainer>
+  );
+};
+
 const MainContainer = styled.main`
   max-width: 100vw;
 `;
 
 const Container = styled.div`
-  max-width: 1280px;
+  //width: 1280px;
   padding: 80px;
   display: flex;
   flex-direction: column;
   gap: 48px;
   margin: 0 auto;
+  @media (max-width: 768px) {
+    padding: 48px 16px;
+    gap: 32px;
+  }
+  @media (max-width: 360px) {
+    padding: 48px 16px;
+    gap: 32px;
+  }
 `;
 
 const ContainerHeader = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
 `;
@@ -26,18 +96,41 @@ const HeaderInfo = styled.div`
   flex-direction: column;
   text-align: center;
   gap: 48px;
+  @media (max-width: 1024px) {
+    gap: 24px;
+  }
+  @media (max-width: 768px) {
+    gap: 24px;
+  }
 `;
 
 const HeaderOne = styled.div`
   ${({ theme }) => theme.typography.captionOther}
+  color: #001d6c;
 `;
 
 const HeaderTwo = styled.div`
-  ${({ theme }) => theme.typography.h2}
+  ${({ theme }) => theme.typography.h2};
+  @media (max-width: 1024px) {
+    ${({ theme }) => theme.typography.h4}
+  }
+  @media (max-width: 768px) {
+    ${({ theme }) => theme.typography.h4}
+  }
 `;
 
 const HeaderText = styled.div`
-  ${({ theme }) => theme.typography.bodyL}
+  display: flex;
+  text-align: center;
+  @media (max-width: 3240px) {
+    font-size: 22px;
+  }
+  @media (max-width: 1920px) {
+    font-size: 22px;
+  }
+  @media (max-width: 1440px) {
+    ${({ theme }) => theme.typography.bodyL};
+  }
 `;
 
 const MainContainerInfo = styled.div`
@@ -80,7 +173,7 @@ const Switch = styled.div`
   position: relative;
   width: 32px;
   height: 16px;
-  background: #458ff6;
+  background: ${(props) => (props.checked ? '#b0b0b0' : '#458ff6')}; /* Синий, если false, серый, если true */
   border-radius: 33px;
   padding: 2px;
   cursor: pointer;
@@ -102,70 +195,22 @@ const SwitchToggle = styled.div`
 `;
 
 const ContainerCard = styled.div`
-  width: 1280px;
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   gap: 24px;
+  @media (max-width: 1920px) {
+    width: 100%;
+  }
+  @media (max-width: 1024px) {
+    gap: 8px;
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 32px;
+  }
 `;
-
-const SectionPrice = () => {
-  const [checked, setChecked] = useState(false);
-
-  const toggleSwitch = () => {
-    setChecked(!checked);
-  };
-
-  return (
-    <MainContainer>
-      <Container>
-        <ContainerHeader>
-          <HeaderInfo>
-            <div>
-              <HeaderOne>цены</HeaderOne>
-              <HeaderTwo>Лучший источник медицинской информации</HeaderTwo>
-            </div>
-            <HeaderText>
-              Сервис для врачей, доступный на разных устройствах по подписке на эксклюзивные статьи от ведущих экспертов
-              в сфере здравоохранения и охраны здоровья
-            </HeaderText>
-          </HeaderInfo>
-        </ContainerHeader>
-        <MainContainerInfo>
-          <TimeSwitch>
-            <Discount>20% дешевле</Discount>
-            <TimeOption onClick={() => setChecked(false)}>Год</TimeOption>
-            <Switch onClick={toggleSwitch}>
-              <SwitchToggle checked={checked} />
-            </Switch>
-            <TimeOption onClick={() => setChecked(true)}>Месяц</TimeOption>
-          </TimeSwitch>
-        </MainContainerInfo>
-        <ContainerCard>
-          <CardPrice
-            title="Стажер"
-            description="Для начинающих специалистов"
-            oldPrice="$35"
-            newPrice="$25"
-            itemList={items.slice(0, 5)}
-          />
-          <CardPrice
-            title="Специалист"
-            description="Для специалистов среднего уровня"
-            oldPrice="$50"
-            newPrice="$40"
-            itemList={items.slice(0, 8)}
-          />
-          <CardPrice
-            title="Эксперт"
-            description="Для опытных специалистов"
-            oldPrice="$70"
-            newPrice="$60"
-            itemList={items.slice(0, 12)}
-          />
-        </ContainerCard>
-      </Container>
-    </MainContainer>
-  );
-};
 
 export default SectionPrice;
