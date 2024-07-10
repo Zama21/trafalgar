@@ -1,39 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ButtonLinkProps } from './ButtonLink.props';
 import { Link } from 'react-router-dom';
 
-const StyledContainer = styled.div`
-  display: flex;
-  gap: 10px;
-`;
-
-const StyledButton = styled(Link)`
-  flex: 1;
-  border: 2px solid rgb(69, 143, 246);
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 100%;
-  letter-spacing: 0.5px;
-  background-color: white;
-  cursor: pointer;
-  text-decoration: none;
-  color: rgb(69, 143, 246);
-`;
-
-const GoogleLogo = styled.img`
-  width: 24px;
-  height: 24px;
-`;
-
-const AppleLogo = styled.img`
-  width: 24px;
-  height: 24px;
-`;
+import { ButtonLinkProps } from './ButtonLink.props';
+import Typography from '../../Typography';
 
 const SignInButton: React.FC<ButtonLinkProps> = ({ provider, text, logo, link }) => (
   <StyledButton to={link}>
@@ -45,7 +15,7 @@ const SignInButton: React.FC<ButtonLinkProps> = ({ provider, text, logo, link })
 
 const ButtonLink: React.FC = () => {
   return (
-    <StyledContainer>
+    <StyledContainer variant="subtitleS">
       <SignInButton provider="google" text="Войти с помощью Google" logo="google" link="/error" />
       <SignInButton provider="apple" text="Войти с помощью Apple" logo="apple" link="/error" />
     </StyledContainer>
@@ -53,3 +23,32 @@ const ButtonLink: React.FC = () => {
 };
 
 export default ButtonLink;
+const StyledContainer = styled(Typography)`
+  font-family: ${({ theme }) => theme.fonts.primary};
+  display: flex;
+  gap: 10px;
+`;
+
+const StyledButton = styled(Link)`
+  flex: 1;
+  border: 2px solid ${({ theme }) => theme.colors.Primary60};
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing(2)};
+
+  background-color: ${({ theme }) => theme.colors.White};
+  cursor: pointer;
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.Primary60};
+`;
+
+const GoogleLogo = styled.img`
+  width: ${({ theme }) => theme.spacing(3)};
+  height: ${({ theme }) => theme.spacing(3)};
+`;
+
+const AppleLogo = styled.img`
+  width: ${({ theme }) => theme.spacing(3)};
+  height: ${({ theme }) => theme.spacing(3)};
+`;

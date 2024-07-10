@@ -20,15 +20,6 @@ const LinkToRegistration = styled(Link)`
   text-decoration: none;
 `;
 
-// const LabelTag = styled.label`
-//   color: rgb(33, 39, 42);
-//   font-size: 14px;
-//   font-weight: 400;
-//   line-height: 140%;
-//   letter-spacing: 0%;
-//   text-align: left;
-// `;
-
 const Hr = styled.hr`
   border: 1px solid rgb(221, 225, 230);
   margin: 48px 0px;
