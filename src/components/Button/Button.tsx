@@ -4,7 +4,7 @@ import Typography from '../../Typography';
 
 function Button({ children, customStyles, ...props }: ButtonProps) {
   return (
-    <BntEntry customStyles={customStyles} {...props}>
+    <BntEntry $customStyles={customStyles} {...props}>
       <Typography variant="buttonM">{children}</Typography>
     </BntEntry>
   );
@@ -12,19 +12,19 @@ function Button({ children, customStyles, ...props }: ButtonProps) {
 
 export default Button;
 
-const BntEntry = styled.button<{ customStyles?: ReturnType<typeof css> }>`
+const BntEntry = styled.button<{ $customStyles?: ReturnType<typeof css> }>`
   font-family: ${({ theme }) => theme.fonts.primary};
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 16px 32px;
   background: ${({ theme }) => theme.colors.Primary60};
-  box-sizing: border-box;
+
   border: 2px solid ${({ theme }) => theme.colors.Primary60};
   color: white;
 
   margin-bottom: 48px;
   cursor: pointer;
   white-space: nowrap;
-  ${({ customStyles }) => customStyles}
+  ${({ $customStyles }) => $customStyles}
 `;

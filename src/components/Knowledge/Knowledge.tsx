@@ -55,7 +55,6 @@ const customDoctorStyles = css`
   background: ${({ theme }) => theme.colors.Primary60};
   border: 2px solid blue;
   @media (max-width: 850px) {
-    color: red;
     margin-bottom: 32px;
   }
   @media (max-width: 460px) {
@@ -70,7 +69,6 @@ const customPatientStyles = css`
   border: 2px solid ${({ theme }) => theme.colors.Primary60};
   color: ${({ theme }) => theme.colors.Primary60};
   @media (max-width: 850px) {
-    color: red;
     margin-bottom: 32px;
   }
   @media (max-width: 460px) {
@@ -87,7 +85,6 @@ const TitleKnowledge = styled(Typography)`
 
 const PageKnowledge = styled.div`
   width: 100%;
-  border: 1px solid purple;
 `;
 
 const ButtonWrapper = styled.div`
@@ -112,8 +109,6 @@ const SecondContainer = styled.div`
   justify-content: baseline;
   margin: 0 80px 80px 80px;
 
-  border: 1px solid purple;
-
   @media (max-width: 1200px) {
     margin: 0 40px 32px 40px;
   }
@@ -126,14 +121,12 @@ const SecondContainer = styled.div`
 `;
 
 const ContainerImg = styled.div`
-  border: 1px solid red;
   flex: 1;
 `;
 
 const DashboardImage = styled.img`
   width: 100%;
   height: auto;
-  border: 1px solid green;
 `;
 
 const ContentContainer = styled.ul`
@@ -143,7 +136,7 @@ const ContentContainer = styled.ul`
   gap: 24px;
   margin: auto 0 auto 80px;
   flex: 1;
-  border: 1px solid blue;
+
   height: 184px;
   width: 100%;
 
