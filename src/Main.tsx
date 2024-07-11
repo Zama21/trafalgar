@@ -11,8 +11,8 @@ import Navbar from './components/Navbar';
 import { Navigate } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
+import RequireAuth from './pages/Auth/RequireAuth/RequireAuth';
 
-// React-Router
 const router = createBrowserRouter([
   {
     path: '/',
@@ -24,9 +24,13 @@ const router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: <Home />
-      }
-    ]
+        element: (
+          <RequireAuth>
+            <Home />
+          </RequireAuth>
+        ),
+      },
+    ],
   },
   {
     path: '/trafalgar/auth',
@@ -34,18 +38,18 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'login',
-        element: <Login />
+        element: <Login />,
       },
       {
         path: 'register',
-        element: <Register />
-      }
-    ]
+        element: <Register />,
+      },
+    ],
   },
   {
     path: '*',
-    element: <Error />
-  }
+    element: <Error />,
+  },
 ]);
 
 const rootElement = document.getElementById('root') as HTMLElement;
