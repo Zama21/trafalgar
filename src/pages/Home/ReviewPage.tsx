@@ -22,28 +22,7 @@ const settings = {
       },
     },
     {
-      breakpoint: 1920,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-      },
-    },
-    {
-      breakpoint: 1440,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-      },
-    },
-    {
       breakpoint: 768,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-    {
-      breakpoint: 360,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -126,10 +105,6 @@ const Container = styled.div`
   @media (max-width: 768px) {
     padding: 48px 16px;
   }
-  @media (max-width: 360px) {
-    max-width: 100vw;
-    padding: 48px 16px;
-  }
 `;
 
 const CarouselWrapper = styled.div`
@@ -172,7 +147,6 @@ const CardLogo = styled.div`
   margin-bottom: 16px;
   gap: 8px;
   color: ${({ theme }) => theme.colors.coolGray60};
-
   p {
     ${({ theme }) => theme.typography.h4}
   }
@@ -187,7 +161,6 @@ const CardUser = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   img {
     margin: 16px 0;
   }
