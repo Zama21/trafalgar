@@ -1,46 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Layout = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  min-height: 100vh;
-  @media (min-width: 1200px) {
-    flex-direction: row;
-  }
-`;
-const Content = styled.div`
-  border-left: 1px solid black;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  @media (min-width: 1200px) {
-    order: 1;
-    border-left: 1px solid black;
-  }
-`;
-const Logo = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  @media (min-width: 1200px) {
-    order: 2;
-  }
-`;
-const StyledImage = styled.img`
-  width: 100%;
-  height: 100%;
-  min-height: 300px; /* Раскомментируй эту строку */
-  @media (min-width: 1200px) {
-    height: auto;
-    width: 100%;
-    max-height: none;
-  }
-`;
-
 export function AuthLayout() {
   return (
     <>
@@ -56,4 +16,55 @@ export function AuthLayout() {
   );
 }
 
-// На месте Outlet рендерится children из маршрута
+const Layout = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  @media (min-width: 800px) {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+`;
+
+const Content = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  @media (min-width: 800px) {
+    height: 100vh;
+    order: 1;
+  }
+`;
+
+const Logo = styled.div`
+  width: 100%;
+  height: 100%;
+
+  @media (min-width: 800px) {
+    width: 100vw;
+    height: 100%;
+    order: 2;
+  }
+`;
+
+const StyledImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  display: block;
+  @media (max-width: 800px) {
+    max-height: 280px;
+  }
+`;

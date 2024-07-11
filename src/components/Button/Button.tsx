@@ -18,17 +18,15 @@ const BntEntry = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px 261px;
+  padding: 16px 32px;
   background: ${({ theme }) => theme.colors.Primary60};
-  box-sizing: border-box;
   border: 2px solid ${({ theme }) => theme.colors.Primary60};
   color: white;
-  width: 100%;
-
   margin-bottom: 48px;
   cursor: pointer;
-  @media (max-width: 579px) {
-    width: 360px;
-    margin: 16px auto 32px;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    margin-bottom: 32px;
   }
 `;

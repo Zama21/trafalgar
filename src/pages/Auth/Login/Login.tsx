@@ -5,9 +5,30 @@ import { Link } from 'react-router-dom';
 import ButtonLink from '../../../components/ButtonLink/ButtonLink';
 import Form from '../../../components/Form/Form';
 
+const Login: React.FC = () => {
+  return (
+    <Wrapper>
+      <Headling>Вход</Headling>
+      <Form />
+      <ButtonLink />
+      <Hr />
+      <LinkToRegistration to="/trafalgar/auth/register">Нет аккаута? Зарегестрироваться</LinkToRegistration>
+    </Wrapper>
+  );
+};
+
+export default Login;
 const Wrapper = styled.div`
-  width: 560px;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  margin: 80px;
+
+  @media (max-width: 600px) {
+    margin: 32px 16px;
+  }
 `;
 
 const LinkToRegistration = styled(Link)`
@@ -23,18 +44,8 @@ const LinkToRegistration = styled(Link)`
 const Hr = styled.hr`
   border: 1px solid rgb(221, 225, 230);
   margin: 48px 0px;
+  width: 100%;
+  @media (max-width: 600px) {
+    margin: 32px 0px;
+  }
 `;
-
-const Login: React.FC = () => {
-  return (
-    <Wrapper>
-      <Headling>Вход</Headling>
-      <Form />
-      <ButtonLink />
-      <Hr />
-      <LinkToRegistration to="/trafalgar/auth/register">Нет аккаута? Зарегестрироваться</LinkToRegistration>
-    </Wrapper>
-  );
-};
-
-export default Login;
