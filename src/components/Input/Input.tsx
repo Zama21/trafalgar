@@ -1,9 +1,17 @@
-import { InputProps } from './Input.props';
 import styled from 'styled-components';
 import { forwardRef } from 'react';
 
+import { InputProps } from './Input.props';
+
+const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+  return <TagInput {...props} ref={ref} />;
+});
+
+export default Input;
+
 const TagInput = styled.input`
-  color: rgb(105, 112, 119);
+  font-family: ${({ theme }) => theme.fonts.primary};
+  color: ${({ theme }) => theme.colors.coolGray60};
 
   font-size: 16px;
   font-weight: 400;
@@ -11,20 +19,14 @@ const TagInput = styled.input`
   letter-spacing: 0%;
   text-align: left;
 
-  border: 1px solid #c5c2c2;
+  border: none;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.coolGray30};
   box-shadow: 15px 20px 45px 0px rgba(233, 233, 233, 0.25);
 
-  padding: 13px 16px;
-  padding: 12px 16px 12px 16px;
-  margin: 8px 0px;
+  padding: ${({ theme }) => theme.spacing(2, 2)};
+  margin: ${({ theme }) => theme.spacing(1)} 0px;
 
   box-sizing: border-box;
-  border-bottom: 1px solid rgb(193, 199, 205);
-  background: rgb(242, 244, 248);
+  background: ${({ theme }) => theme.colors.coolGray10};
+  width: 100%;
 `;
-
-const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  return <TagInput {...props} ref={ref} />;
-});
-
-export default Input;

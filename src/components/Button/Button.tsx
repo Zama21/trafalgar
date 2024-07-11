@@ -1,24 +1,32 @@
-import { ButtonProps } from './Button.props';
 import styled from 'styled-components';
 
-const BntEntry = styled.button`
-  padding: 16px 261px;
-  background: rgb(69, 143, 246);
-  box-sizing: border-box;
-  border: 2px solid rgb(69, 143, 246);
-  color: white;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 100%;
-  letter-spacing: 0.5px;
-  width: 100%;
+import { ButtonProps } from './Button.props';
+import Typography from '../../Typography';
 
-  margin-bottom: 48px;
-  cursor: pointer;
-`;
 function Button({ children, ...props }: ButtonProps) {
-  return <BntEntry {...props}>{children}</BntEntry>;
+  return (
+    <BntEntry {...props}>
+      <Typography variant="buttonM">{children}</Typography>
+    </BntEntry>
+  );
 }
 
 export default Button;
+
+const BntEntry = styled.button`
+  font-family: ${({ theme }) => theme.fonts.primary};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 32px;
+  background: ${({ theme }) => theme.colors.Primary60};
+  border: 2px solid ${({ theme }) => theme.colors.Primary60};
+  color: white;
+  margin-bottom: 48px;
+  cursor: pointer;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    margin-bottom: 32px;
+  }
+`;
