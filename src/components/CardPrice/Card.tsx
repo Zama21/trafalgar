@@ -6,14 +6,14 @@ export const CardPrice = ({ title, description, oldPrice, newPrice, itemList }) 
   <Card>
     <CardHeader>
       <CardTitle>{title}</CardTitle>
-      <CardText variant="bodyL">{description}</CardText>
+      <CardText $variant="bodyL">{description}</CardText>
     </CardHeader>
     <Price>
       <PriceOld>{oldPrice}</PriceOld>
       <PriceNew>{newPrice}</PriceNew>
       <p>{newPrice} USD каждый месяц</p>
     </Price>
-    <Button width="135px" height="56px" primary="primary">
+    <Button width="135px" height="56px" $primary="primary">
       Начать
     </Button>
     <ListContainer>
