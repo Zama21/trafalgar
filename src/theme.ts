@@ -43,6 +43,8 @@ export interface TypographyCustom {
   bodyS: ReturnType<typeof css>;
   bodyXS: ReturnType<typeof css>;
   bodyXXS: ReturnType<typeof css>;
+  customXXL: ReturnType<typeof css>;
+  customTextXL: ReturnType<typeof css>;
   caption: ReturnType<typeof css>;
   buttonL: ReturnType<typeof css>;
   buttonM: ReturnType<typeof css>;
@@ -52,7 +54,7 @@ export interface TypographyCustom {
 
 export interface Theme {
   colors: Colors;
-  spacing: (multiplier: number) => string;
+  spacing: (multiplier: number, multiplier2?: number) => string;
   typography: TypographyCustom;
   fonts: Fonts;
   breakpoints: Breakpoints;
@@ -79,7 +81,8 @@ export const theme: Theme = {
     coolGray90: '#21272a',
     coolGray100: '#121619',
   },
-  spacing: (multiplier: number) => `${multiplier * 8}px`,
+  spacing: (multiplier: number, multiplier2?: number) =>
+    multiplier2 ? `${multiplier * 8}px ${multiplier2 * 8}px` : `${multiplier * 8}px `,
   typography: {
     h1: css`
       font-weight: 700;
@@ -122,6 +125,17 @@ export const theme: Theme = {
       font-size: 16px;
       line-height: 110%;
       letter-spacing: 0px;
+    `,
+    customXXL: css`
+      font-weight: 400;
+      font-size: 25px;
+      line-height: 110%;
+      letter-spacing: 0px;
+    `,
+    customTextXL: css`
+      font-weight: 400;
+      font-size: 19px;
+      line-height: 25.2px;
     `,
     subtitleS: css`
       font-weight: 500;

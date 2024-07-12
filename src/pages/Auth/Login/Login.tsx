@@ -5,35 +5,6 @@ import { Link } from 'react-router-dom';
 import ButtonLink from '../../../components/ButtonLink/ButtonLink';
 import Form from '../../../components/Form/Form';
 
-const Wrapper = styled.div`
-  width: 560px;
-  height: 100vh;
-`;
-
-const LinkToRegistration = styled(Link)`
-  color: rgb(0, 29, 108);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 140%;
-  letter-spacing: 0%;
-  text-align: left;
-  text-decoration: none;
-`;
-
-// const LabelTag = styled.label`
-//   color: rgb(33, 39, 42);
-//   font-size: 14px;
-//   font-weight: 400;
-//   line-height: 140%;
-//   letter-spacing: 0%;
-//   text-align: left;
-// `;
-
-const Hr = styled.hr`
-  border: 1px solid rgb(221, 225, 230);
-  margin: 48px 0px;
-`;
-
 const Login: React.FC = () => {
   return (
     <Wrapper>
@@ -47,3 +18,34 @@ const Login: React.FC = () => {
 };
 
 export default Login;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  margin: 80px;
+
+  @media (max-width: 600px) {
+    margin: 32px 16px;
+  }
+`;
+
+const LinkToRegistration = styled(Link)`
+  color: rgb(0, 29, 108);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0%;
+  text-align: left;
+  text-decoration: none;
+`;
+
+const Hr = styled.hr`
+  border: 1px solid rgb(221, 225, 230);
+  margin: 48px 0px;
+  width: 100%;
+  @media (max-width: 600px) {
+    margin: 32px 0px;
+  }
+`;

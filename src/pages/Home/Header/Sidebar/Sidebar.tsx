@@ -16,7 +16,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   return (
     <SidebarWrapper $isOpen={isOpen}>
       <Logo height="39px" />
-      <SearchInput wrapperSearchInputStyles={WrapperSearchInputStyles} />
+      <SearchInput
+        wrapperSearchInputStyles={WrapperSearchInputStyles}
+        srcImg="/public/assets/Header/icons/search.svg"
+        altImg="SearchIcon"
+        placeholder="Поиск по ..."
+      />
       <MenuList>
         {MENU_ITEMS.map((item) => (
           <li key={item.path}>

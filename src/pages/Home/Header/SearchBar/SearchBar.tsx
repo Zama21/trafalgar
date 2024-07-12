@@ -13,7 +13,7 @@ interface CustomSelectProps {
 const SearchBar: React.FC<CustomSelectProps> = ({ searchContainerStyles, selectContainerStyles, selectStyles }) => {
   return (
     <SearchBarContainer $ContainerStyles={searchContainerStyles}>
-      <SearchInput />
+      <SearchInput srcImg="/public/assets/Header/icons/search.svg" altImg="SearchIcon" placeholder="Поиск по ..." />
       <CustomSelectOptions
         options={MEDICAL_SPECIALTY_OPTIONS}
         placeholder="Все категории"
