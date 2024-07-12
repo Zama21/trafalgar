@@ -1,8 +1,19 @@
+
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
+
+import { useNavigate, Link } from 'react-router-dom';
+import styled from 'styled-components';
+import Input from '../Input/Input';
+import { useState } from 'react';
+import Button from '../Button/Button';
+
+import { Errors } from './Form.props';
+import { formData } from '../../constants/constants';
+
 
 import Typography from '../../Typography';
 import Button from '../Button/Button';
@@ -62,10 +73,13 @@ function Form() {
 export default Form;
 
 const Field = styled.form`
+  display: flex;
+  flex-direction: column;
   font-family: ${({ theme }) => theme.fonts.primary};
   display: flex;
   flex-direction: column;
   gap: 5px;
+  width: 100%;
 `;
 
 const LoginContainer = styled(Typography)`

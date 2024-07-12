@@ -28,4 +28,5 @@ const TagInput = styled.input`
 
   box-sizing: border-box;
   background: ${({ theme }) => theme.colors.coolGray10};
+  width: 100%;
 `;
