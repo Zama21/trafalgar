@@ -2,13 +2,21 @@ import styled, { css } from 'styled-components';
 
 interface HeaderSearchInputProps {
   wrapperSearchInputStyles?: ReturnType<typeof css>;
+  srcImg?: string;
+  altImg?: string;
+  placeholder?: string;
 }
 
-export const SearchInput: React.FC<HeaderSearchInputProps> = ({ wrapperSearchInputStyles }) => {
+export const SearchInput: React.FC<HeaderSearchInputProps> = ({
+  wrapperSearchInputStyles,
+  srcImg,
+  altImg,
+  placeholder,
+}) => {
   return (
     <WrapperSearchInput $WrapperSearchInputStyles={wrapperSearchInputStyles}>
-      <img src="/public/assets/Header/icons/search.svg" alt="SearchIcon" />
-      <Input placeholder="Поиск по ..." />
+      <img src={srcImg} alt={altImg} />
+      <Input placeholder={placeholder} />
     </WrapperSearchInput>
   );
 };
