@@ -20,15 +20,15 @@ const router = createBrowserRouter([
   },
   {
     path: '/trafalgar/',
-    element: <Navbar />,
+    element: (
+      <RequireAuth>
+        <Navbar />
+      </RequireAuth>
+    ),
     children: [
       {
         path: '',
-        element: (
-          <RequireAuth>
-            <Home />
-          </RequireAuth>
-        ),
+        element: <Home />,
       },
     ],
   },
@@ -38,7 +38,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'login',
-        element: <Login />,
+        element: (
+          <RequireAuth>
+            <Login />
+          </RequireAuth>
+        ),
       },
       {
         path: 'register',
