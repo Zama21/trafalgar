@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import {CardPrice} from '../../components/CardPrice/CardPrice';
 import {items} from '../../constants/PriceConstant';
+import {CardPrice} from "../../components/CardPrice/Card";
 
 const SectionPrice = () => {
     const [checked, setChecked] = useState(false);
@@ -81,10 +81,6 @@ const Container = styled.div`
     padding: 48px 16px;
     gap: 32px;
   }
-  @media (max-width: 360px) {
-    padding: 48px 16px;
-    gap: 32px;
-  }
 `;
 
 const ContainerHeader = styled.div`
@@ -102,9 +98,6 @@ const HeaderInfo = styled.div`
   @media (max-width: 1024px) {
     gap: 24px;
   }
-  @media (max-width: 768px) {
-    gap: 24px;
-  }
 `;
 
 const HeaderOne = styled.h1`
@@ -117,18 +110,12 @@ const HeaderTwo = styled.h2`
   @media (max-width: 1024px) {
     ${({theme}) => theme.typography.h4}
   }
-  @media (max-width: 768px) {
-    ${({theme}) => theme.typography.h4}
-  }
 `;
 
 const HeaderText = styled.p`
   display: flex;
   text-align: center;
   @media (max-width: 3240px) {
-    font-size: 22px;
-  }
-  @media (max-width: 1920px) {
     font-size: 22px;
   }
   @media (max-width: 1440px) {
