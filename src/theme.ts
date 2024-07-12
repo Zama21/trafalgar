@@ -1,6 +1,5 @@
 import { css } from 'styled-components';
 
-
 import { BREAKPOINTS } from './constants';
 
 interface Colors {
