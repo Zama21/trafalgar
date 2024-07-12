@@ -5,6 +5,9 @@ import { useMediaQuery } from 'bbbchut_test1_bbbchut13';
 
 import QuestionBlock from '../../components/QuestionBlock/QuestionBlock';
 import { listQuestions } from '../../constants/Questions';
+
+import Knowledge from '../../components/Knowledge/Knowledge';
+
 import { BREAKPOINTS } from '../../constants';
 import SectionsSponsors from './SectionSponsors';
 import Footer from './Footer';
@@ -19,7 +22,9 @@ const Home: React.FC = () => {
     <>
       <Div $isSmallScreen={isSmallScreen}>
         <QuestionBlock items={listQuestions} />
-        {/* <Section2 /> */}
+        <Knowledge />
+      <Section2 />
+      <Section3 />
         <SectionsSponsors />
         <Footer />
       </Div>
