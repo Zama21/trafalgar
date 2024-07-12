@@ -37,6 +37,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 export default Sidebar;
 
 const SidebarWrapper = styled.div<{ $isOpen: boolean }>`
+  z-index: 15;
   display: flex;
   flex-direction: column;
   gap: 16px;

@@ -9,6 +9,9 @@ import { listQuestions } from '../../constants/Questions';
 import Knowledge from '../../components/Knowledge/Knowledge';
 
 import { BREAKPOINTS } from '../../constants';
+
+import RequestSection from './RequestSection/RequestSection';
+
 import SectionsSponsors from './SectionSponsors';
 import Footer from './Footer';
 
@@ -19,16 +22,14 @@ const Div = styled.div<{ $isSmallScreen: boolean }>`
 const Home: React.FC = () => {
   const isSmallScreen = useMediaQuery({ query: `(max-width: ${BREAKPOINTS.IPAD})` });
   return (
-    <>
-      <Div $isSmallScreen={isSmallScreen}>
-        <QuestionBlock items={listQuestions} />
-        <Knowledge />
+    <Div $isSmallScreen={isSmallScreen}>
+      <QuestionBlock items={listQuestions} />
+      <Knowledge />
       <Section2 />
-      <Section3 />
-        <SectionsSponsors />
-        <Footer />
-      </Div>
-    </>
+      <RequestSection />
+      <SectionsSponsors />
+      <Footer />
+    </Div>
   );
 };
 
