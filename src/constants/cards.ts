@@ -1,4 +1,4 @@
-export interface Cards {
+interface Cards {
   logoSrc: string;
   logoAlt: string;
   title: string;
@@ -8,7 +8,7 @@ export interface Cards {
   userRole: string;
 }
 
-export const cards = [
+export const cards: Cards[] = [
   {
     logoSrc: '/public/assets/cardlogo.svg',
     logoAlt: 'cardLogo',

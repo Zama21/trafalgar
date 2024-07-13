@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useMediaQuery } from 'bbbchut_test1_bbbchut13';
 
 import { BREAKPOINTS } from '../../constants';
-import ArtiklePage from './ArtikelPage';
+import ArtiklePage from './ArticelPage.tsx';
 
 const Div = styled.div<{ $isSmallScreen: boolean }>`
   margin-top: ${(props) => (props.$isSmallScreen ? '80px' : '208px')};
