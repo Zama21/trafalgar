@@ -19,10 +19,12 @@ export const ArticleCard: React.FC<Article> = ({ img, title, text }) => {
           </AnimationImg>
         </AnimationContainer>
       ) : (
-        <img src={img} alt="img" />
+        <CardImageContainer>
+          <CardImage src={img} alt="img" />
+        </CardImageContainer>
       )}
       <CardContent>
-        <CartTitle>{title}</CartTitle>
+        <CardTitle>{title}</CardTitle>
         <CardText>{text}</CardText>
       </CardContent>
       <CustomButton onClick={() => {}}>
@@ -36,7 +38,30 @@ export const ArticleCard: React.FC<Article> = ({ img, title, text }) => {
 const Card = styled.div`
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.colors.coolGray20};
+  width: 100%;
   max-width: 308px;
+  margin: 0 auto;
+`;
+
+const CardImageContainer = styled.div`
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+`;
+
+const CardImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+`;
+
+const CardTitle = styled.div`
+  ${({ theme }) => theme.typography.h5};
+  @media (max-width: 768px) {
+    font-size: ${({ theme }) => theme.typography.bodyM};
+    font-weight: 700;
+  }
 `;
 
 const CardContent = styled.div`
@@ -44,22 +69,23 @@ const CardContent = styled.div`
   flex-direction: column;
   padding: 24px 16px 16px 16px;
   gap: 16px;
-`;
-
-const CartTitle = styled.div`
-  color: ${({ theme }) => theme.colors.coolGray90};
-  font-size: ${({ theme }) => theme.typography.caption};
-  font-weight: 700;
+  @media (max-width: 768px) {
+    gap: 8px;
+  }
 `;
 
 const CardText = styled.div`
   font-size: ${({ theme }) => theme.typography.bodyM};
+  color: ${({ theme }) => theme.colors.coolGray90};
   max-height: 66px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  @media (max-width: 360px) {
+    font-size: ${({ theme }) => theme.typography.bodyS};
+  }
 `;
 
 const CustomButton = styled.button`
@@ -72,18 +98,22 @@ const CustomButton = styled.button`
   background-color: white;
   color: #1a73e8;
   font-size: ${({ theme }) => theme.typography.bodyL};
-
+  @media (max-width: 360px) {
+    ${({ theme }) => theme.typography.buttonS};
+  }
   &:active {
     color: #0d47a1;
   }
 `;
 
 const AnimationContainer = styled.div`
-  background-image: url('/public/picture.png');
+  background-image: url('/assets/AritcleAnimation/picture.png');
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 308px;
+  width: 100%;
   height: 220px;
 `;
 
