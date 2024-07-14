@@ -1,5 +1,5 @@
-import { IQuestion } from '../../constants/Questions';
+// import { IQuestion } from '../../constants/Questions';
 
-export interface QuestionBlockProps {
-  items: IQuestion[];
-}
+// export interface QuestionBlockProps {
+//   items: IQuestion[];
+// }

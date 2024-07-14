@@ -1,5 +1,6 @@
-import { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
+import { useLocation } from 'react-router-dom';
 
 import { HeaderMenuItem } from '../Components/ComponentsHeader';
 import Logo from '../Components/Logo';
@@ -15,8 +16,10 @@ interface MenuBarProps {
 const MenuBar: React.FC<MenuBarProps> = ({ isSmallHeader, menuContainerStyles }) => {
   const [visibleItems, setVisibleItems] = useState<HeaderMenuItem[]>(MENU_ITEMS);
   const [hiddenItems, setHiddenItems] = useState<HeaderMenuItem[]>([]);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeTab, setActiveTab] = useState<string>(MENU_ITEMS[0].id);
+  const location = useLocation();
+  const containerRef = useRef<HTMLUListElement | null>(null);
+  const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
 
   const updateVisibleItems = useCallback(() => {
     const container = containerRef.current;
@@ -64,14 +67,18 @@ const MenuBar: React.FC<MenuBarProps> = ({ isSmallHeader, menuContainerStyles })
     };
   }, [updateVisibleItems, deb]);
 
+  useEffect(() => {
+    setActiveTab(`${location.pathname + location.hash}`);
+  }, [location.hash]);
+
   return (
     <MenuBarContainer $menuContainerStyles={menuContainerStyles}>
       {isSmallHeader && <Logo />}
-      <MenuBtn options={hiddenItems} />
+      <MenuBtn options={hiddenItems} isActive={hiddenItems.some((item) => item.path === activeTab)} />
       <MenuItemContainer ref={containerRef}>
         {visibleItems.map(({ label, path }, index) => (
-          <MenuItem key={path} ref={(el) => (itemRefs.current[index] = el)}>
-            {label}
+          <MenuItem key={path} $active={activeTab === path} ref={(el) => (itemRefs.current[index] = el)}>
+            <MenuItemLink href={path}>{label}</MenuItemLink>
           </MenuItem>
         ))}
       </MenuItemContainer>
@@ -81,7 +88,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ isSmallHeader, menuContainerStyles })
 
 export default MenuBar;
 
-const MenuBarContainer = styled.div<{ $menuContainerStyles?: ReturnType<typeof css> }>`
+const MenuBarContainer = styled.nav<{ $menuContainerStyles?: ReturnType<typeof css> }>`
   display: flex;
   align-items: center;
   height: 48px;
@@ -94,7 +101,7 @@ const MenuBarContainer = styled.div<{ $menuContainerStyles?: ReturnType<typeof c
   }
 `;
 
-const MenuItemContainer = styled.div`
+const MenuItemContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -103,13 +110,19 @@ const MenuItemContainer = styled.div`
   overflow: hidden;
 `;
 
-const MenuItem = styled.div`
+const MenuItem = styled.li<{ $active: boolean }>`
+  cursor: pointer;
+  background-color: ${({ $active, theme }) => ($active ? theme.colors.White : theme.colors.coolGray10)};
+  border: ${({ $active, theme }) => ($active ? `1px solid ${theme.colors.coolGray30}` : 'none')};
+  ${({ theme }) => theme.typography.menuTabs}
+  height: 100%;
+  transition: all 0.5s ease;
+`;
+
+const MenuItemLink = styled.a`
   display: flex;
   align-items: center;
   padding: 8px 16px 8px 16px;
-  gap: 8px;
-  cursor: pointer;
   white-space: nowrap;
   user-select: none;
-  ${({ theme }) => theme.typography.menuTabs}
 `;

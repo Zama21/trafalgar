@@ -110,7 +110,7 @@ const Container = styled.div`
 const CarouselWrapper = styled.div`
   max-width: 1280px;
   padding: 16px;
-  width: 100vw;
+  width: 100%;
   @media (max-width: 1440px) {
     max-width: 90vw;
   }

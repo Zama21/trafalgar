@@ -9,7 +9,7 @@ const AboutProject: React.FC = () => {
           <div>О проекте</div>
           <p>
             Наш проект создан группой врачей для популяризации современных медицинских знаний их доступности для всех,
-            кто в этомзаинтересован.
+            кто в этом заинтересован.
           </p>
         </AboutProjectContainer>
         <CardList>
@@ -54,7 +54,7 @@ const AboutProject: React.FC = () => {
 
 const MainContainer = styled.div`
   padding: 80px;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
