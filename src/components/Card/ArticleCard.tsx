@@ -156,7 +156,7 @@ const CustomButton = styled.button`
 `;
 
 const AnimationContainer = styled.div`
-  background-image: url('/assets/AritcleAnimation/picture.png');
+  background-image: url('/assets/Article/picture.png');
   background-size: cover;
   background-position: center;
   display: flex;
