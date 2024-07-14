@@ -19,7 +19,7 @@ const ArticlePage = () => {
             <ArticleCard key={index} img={el.img} title={el.title} text={el.text} />
           ))}
         </ArticleCardList>
-        <Button primary="primary " width="171px" height="56px">
+        <Button $primary="primary " width="171px" height="56px">
           Все статьи
         </Button>
       </ArticleContent>
@@ -44,7 +44,6 @@ const ArticleContent = styled.div`
 
 const ArticleHeader = styled.div`
   max-width: 1280px;
-
   text-align: center;
   display: flex;
   flex-direction: column;

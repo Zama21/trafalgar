@@ -1,5 +1,5 @@
-interface Article {
-  img: string;
+export interface Article {
+  img: string | string[];
   title: string;
   text: string;
 }
@@ -11,12 +11,7 @@ export const articles: Article[] = [
     text: 'Врач-невролог из Москвы, Иванов Иван Иванович, отвечает на частые вопросы, касающиеся проблемы головной боли...',
   },
   {
-    img: '/assets/ArticleImg3.svg',
-    title: 'Мигрень',
-    text: 'Информация для пациентов. Мигрень. Симптомы, диагностика, лечение, профилактика',
-  },
-  {
-    img:[
+    img: [
       '/assets/Article/01.png',
       '/assets/Article/02.png',
       '/assets/Article/03.png',
@@ -28,9 +23,12 @@ export const articles: Article[] = [
       '/assets/Article/09.png',
       '/assets/Article/10.png',
       '/assets/Article/11.png',
-
-    ]
-    img: '/public/picture.png',
+    ],
+    title: 'Мигрень',
+    text: 'Информация для пациентов. Мигрень. Симптомы, диагностика, лечение, профилактика',
+  },
+  {
+    img: '/assets/ArticleImg3.svg',
     title: 'Доказательная медицина',
     text: 'Читая статьи, и получая консультации на нашем сайте, вы часто будете встречаться...',
   },
