@@ -20,7 +20,6 @@ const BntEntry = styled.button<{ $customStyles?: ReturnType<typeof css> }>`
   padding: 16px 32px;
   background: ${({ theme }) => theme.colors.Primary60};
 
-
   border: 2px solid ${({ theme }) => theme.colors.Primary60};
   color: white;
 

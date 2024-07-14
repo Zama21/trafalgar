@@ -14,6 +14,7 @@ import RequestSection from './RequestSection/RequestSection';
 
 import SectionsSponsors from './SectionSponsors';
 import Footer from './Footer';
+import ReviewPage from './ReviewPage';
 
 const Div = styled.div<{ $isSmallScreen: boolean }>`
   margin-top: ${(props) => (props.$isSmallScreen ? '80px' : '208px')};
@@ -27,6 +28,7 @@ const Home: React.FC = () => {
       <Knowledge />
       <Section2 />
       <RequestSection />
+      <ReviewPage />
       <SectionsSponsors />
       <Footer />
     </Div>
