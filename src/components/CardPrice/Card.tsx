@@ -1,31 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../Button.tsx';
+import { CardPriceProps } from '../../constants/PriceConstant.ts';
 
-export const CardPrice = ({title, description, oldPrice, newPrice, itemList}) => (
-    <Card>
-        <CardHeader>
-            <CardTitle>{title}</CardTitle>
-            <CardText $variant="bodyL">{description}</CardText>
-        </CardHeader>
-        <Price>
-            <PriceOld>{oldPrice}</PriceOld>
-            <PriceNew>{newPrice}</PriceNew>
-            <p>{newPrice} USD каждый месяц</p>
-        </Price>
-        <Button width="135px" height="56px" $primary="primary">
-            Начать
-        </Button>
-        <ListContainer>
-            {itemList &&
-                itemList.map((item, index) => (
-                    <ListItem key={index}>
-                        <img src="/assets/check.svg" alt="check"/>
-                        {item}
-                    </ListItem>
-                ))}
-        </ListContainer>
-    </Card>
+export const CardPrice: React.FC<CardPriceProps> = ({ title, description, oldPrice, newPrice, itemList }) => (
+  <Card>
+    <CardHeader>
+      <CardTitle>{title}</CardTitle>
+      <CardText $variant="bodyL">{description}</CardText>
+    </CardHeader>
+    <Price>
+      <PriceOld>{oldPrice}</PriceOld>
+      <PriceNew>{newPrice}</PriceNew>
+      <p>{newPrice} USD каждый месяц</p>
+    </Price>
+    <Button width="135px" height="56px" $primary="primary">
+      Начать
+    </Button>
+    <ListContainer>
+      {itemList &&
+        itemList.map((item, index) => (
+          <ListItem key={index}>
+            <img src="/assets/check.svg" alt="check" />
+            {item}
+          </ListItem>
+        ))}
+    </ListContainer>
+  </Card>
 );
 
 const Card = styled.article`
@@ -37,7 +38,7 @@ const Card = styled.article`
   max-width: 410px;
   width: 100%;
   border: 1px solid;
-  border-color: ${({theme}) => theme.colors.coolGray20};
+  border-color: ${({ theme }) => theme.colors.coolGray20};
   border-radius: 8px;
   padding: 48px 24px;
   @media (max-width: 768px) {
@@ -53,13 +54,13 @@ const CardHeader = styled.header`
 `;
 
 const CardTitle = styled.h3`
-  ${({theme}) => theme.typography.h3};
+  ${({ theme }) => theme.typography.h3};
 `;
 
-const CardText = styled.p`
-  ${({theme}) => theme.typography.bodyL};
+const CardText = styled.p<{ $variant: string }>`
+  ${({ theme }) => theme.typography.bodyL};
   @media (max-width: 360px) {
-    ${({theme}) => theme.typography.bodyM}
+    ${({ theme }) => theme.typography.bodyM}
   }
 `;
 
@@ -70,22 +71,22 @@ const Price = styled.div`
   gap: 8px;
 
   p {
-    font-size: ${({theme}) => theme.typography.bodyS};
+    font-size: ${({ theme }) => theme.typography.bodyS};
   }
 `;
 
 const PriceOld = styled.span`
   text-decoration: line-through;
-  color: ${({theme}) => theme.colors.coolGray40};
-  font-size: ${({theme}) => theme.typography.h1};
+  color: ${({ theme }) => theme.colors.coolGray40};
+  font-size: ${({ theme }) => theme.typography.h1};
 `;
 
 const PriceNew = styled.span`
-  font-size: ${({theme}) => theme.typography.h1};
+  font-size: ${({ theme }) => theme.typography.h1};
 `;
 
 const ListContainer = styled.ul`
-  ${({theme}) => theme.typography.bodyL};
+  ${({ theme }) => theme.typography.bodyL};
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -103,6 +104,6 @@ const ListItem = styled.li`
     font-size: 20px;
   }
   @media (max-width: 1440px) {
-    ${({theme}) => theme.typography.bodyL}
+    ${({ theme }) => theme.typography.bodyL}
   }
 `;

@@ -1,70 +1,69 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import {items} from '../../constants/PriceConstant';
-import {CardPrice} from "../../components/CardPrice/Card";
+import { items } from '../../constants/PriceConstant';
+import { CardPrice } from '../../components/CardPrice/Card';
 
 const SectionPrice = () => {
-    const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(false);
 
-    const toggleSwitch = () => {
-        setChecked((prev) => !prev);
-    };
+  const toggleSwitch = () => {
+    setChecked((prev) => !prev);
+  };
 
-    return (
-        <MainContainer>
-            <Container>
-                <ContainerHeader>
-                    <HeaderInfo>
-                        <div>
-                            <HeaderOne>ЦЕНЫ</HeaderOne>
-                            <HeaderTwo>Лучший источник медицинской информации</HeaderTwo>
-                        </div>
-                        <HeaderText>
-                            Сервис для врачей, доступный на разных устройствах по подписке на эксклюзивные статьи от
-                            ведущих экспертов
-                            в сфере здравоохранения и охраны здоровья
-                        </HeaderText>
-                    </HeaderInfo>
-                </ContainerHeader>
-                <MainContainerInfo>
-                    <TimeSwitch>
-                        <Discount>20% дешевле</Discount>
-                        <TimeOption onClick={() => setChecked(false)}>Год</TimeOption>
-                        <Switch checked={checked} onClick={toggleSwitch}>
-                            <SwitchToggle checked={checked}/>
-                        </Switch>
-                        <TimeOption onClick={() => setChecked(true)}>Месяц</TimeOption>
-                    </TimeSwitch>
-                </MainContainerInfo>
-                <ContainerCard>
-                    <CardPrice
-                        title="Стажер"
-                        description="Для начинающих специалистов"
-                        oldPrice="$35"
-                        newPrice="$25"
-                        itemList={items.slice(0, 5)}
-                    />
-                    <CardWrapper>
-                        <PopularText>Популярный</PopularText>
-                        <CardPrice
-                            title="Специалист"
-                            description="Для уверенных специалистов"
-                            oldPrice="$50"
-                            newPrice="$40"
-                            itemList={items.slice(0, 8)}
-                        />
-                    </CardWrapper>
-                    <CardPrice
-                        title="Эксперт"
-                        description="Для шерстяных волчар"
-                        oldPrice="$70"
-                        newPrice="$60"
-                        itemList={items.slice(0, 12)}
-                    />
-                </ContainerCard>
-            </Container>
-        </MainContainer>
-    );
+  return (
+    <MainContainer>
+      <Container>
+        <ContainerHeader>
+          <HeaderInfo>
+            <div>
+              <HeaderOne>ЦЕНЫ</HeaderOne>
+              <HeaderTwo>Лучший источник медицинской информации</HeaderTwo>
+            </div>
+            <HeaderText>
+              Сервис для врачей, доступный на разных устройствах по подписке на эксклюзивные статьи от ведущих экспертов
+              в сфере здравоохранени я и охраны здоровья
+            </HeaderText>
+          </HeaderInfo>
+        </ContainerHeader>
+        <MainContainerInfo>
+          <TimeSwitch>
+            <Discount>20% дешевле</Discount>
+            <TimeOption onClick={() => setChecked(false)}>Год</TimeOption>
+            <Switch checked={checked} onClick={toggleSwitch}>
+              <SwitchToggle checked={checked} />
+            </Switch>
+            <TimeOption onClick={() => setChecked(true)}>Месяц</TimeOption>
+          </TimeSwitch>
+        </MainContainerInfo>
+        <ContainerCard>
+          <CardPrice
+            title="Стажер"
+            description="Для начинающих специалистов"
+            oldPrice="$35"
+            newPrice="$25"
+            itemList={items.slice(0, 5)}
+          />
+          <CardWrapper>
+            <PopularText>Популярный</PopularText>
+            <CardPrice
+              title="Специалист"
+              description="Для уверенных специалистов"
+              oldPrice="$50"
+              newPrice="$40"
+              itemList={items.slice(0, 8)}
+            />
+          </CardWrapper>
+          <CardPrice
+            title="Эксперт"
+            description="Для шерстяных волчар"
+            oldPrice="$70"
+            newPrice="$60"
+            itemList={items.slice(0, 12)}
+          />
+        </ContainerCard>
+      </Container>
+    </MainContainer>
+  );
 };
 
 const MainContainer = styled.main`
@@ -101,14 +100,14 @@ const HeaderInfo = styled.div`
 `;
 
 const HeaderOne = styled.h1`
-  ${({theme}) => theme.typography.captionOther}
+  ${({ theme }) => theme.typography.captionOther}
   color: #001d6c;
 `;
 
 const HeaderTwo = styled.h2`
-  ${({theme}) => theme.typography.h2};
+  ${({ theme }) => theme.typography.h2};
   @media (max-width: 1024px) {
-    ${({theme}) => theme.typography.h4}
+    ${({ theme }) => theme.typography.h4}
   }
 `;
 
@@ -119,7 +118,7 @@ const HeaderText = styled.p`
     font-size: 22px;
   }
   @media (max-width: 1440px) {
-    ${({theme}) => theme.typography.bodyL};
+    ${({ theme }) => theme.typography.bodyL};
   }
 `;
 
@@ -140,7 +139,7 @@ const Discount = styled.div`
   position: absolute;
   top: -15px;
   transform: translate(-50%);
-  ${({theme}) => theme.typography.bodyXS}
+  ${({ theme }) => theme.typography.bodyXS}
 `;
 
 const TimeSwitch = styled.div`
@@ -152,7 +151,7 @@ const TimeSwitch = styled.div`
   gap: 16px;
   align-items: center;
   margin: 0 auto;
-  ${({theme}) => theme.typography.bodyL}
+  ${({ theme }) => theme.typography.bodyL}
 `;
 
 const TimeOption = styled.span`
@@ -163,7 +162,7 @@ const Switch = styled.div`
   position: relative;
   width: 32px;
   height: 16px;
-  background: ${(props) => (props.checked ? '#b0b0b0' : '#458ff6')}; /* Синий, если false, серый, если true */
+  background: ${(props) => (props.checked ? '#b0b0b0' : '#458ff6')};
   border-radius: 33px;
   padding: 2px;
   cursor: pointer;
@@ -217,7 +216,7 @@ const PopularText = styled.div`
   background: #f2f4f8;
   padding: 4px 8px;
   border-radius: 12px;
-  ${({theme}) => theme.typography.bodyXS}
+  ${({ theme }) => theme.typography.bodyXS}
 `;
 
 export default SectionPrice;
