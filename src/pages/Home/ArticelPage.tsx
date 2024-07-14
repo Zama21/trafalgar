@@ -19,7 +19,7 @@ const ArticlePage = () => {
             <ArticleCard key={index} img={el.img} title={el.title} text={el.text} />
           ))}
         </ArticleCardList>
-        <Button $primary="primary" width="171px" height="56px">
+        <Button primary="primary" width="171px" height="56px">
           Все статьи
         </Button>
       </ArticleContent>
@@ -31,8 +31,17 @@ const ArticleContainer = styled.div`
   width: 100%;
   padding: 80px;
   background-color: ${({ theme }) => theme.colors.White};
+
   @media (max-width: 768px) {
-    padding: 48px 16px 48px 16px;
+    padding: 48px 16px;
+  }
+
+  @media (min-width: 1920px) {
+    padding: 120px 48px;
+  }
+
+  @media (min-width: 3840px) {
+    padding: 160px 64px;
   }
 `;
 
@@ -44,8 +53,17 @@ const ArticleContent = styled.div`
   max-width: 1280px;
   margin: 0 auto;
   width: 100%;
+
   @media (max-width: 768px) {
     gap: 32px;
+  }
+
+  @media (min-width: 1920px) {
+    gap: 96px;
+  }
+
+  @media (min-width: 3840px) {
+    gap: 128px;
   }
 `;
 
@@ -61,13 +79,21 @@ const ArticleHeader = styled.div`
 const ArticleTitle = styled.h1`
   ${({ theme }) => theme.typography.caption}
   color: #001D6C;
+  @media (min-width: 3840px) {
+    font-size: ${({ theme }) => theme.typography.h1};
+  }
 `;
 
 const ArticleSubtitle = styled.div`
   font-size: ${({ theme }) => theme.typography.h2};
   color: ${({ theme }) => theme.colors.coolGray70};
+
   @media (max-width: 768px) {
     font-size: ${({ theme }) => theme.typography.h4};
+  }
+
+  @media (min-width: 3840px) {
+    font-size: ${({ theme }) => theme.typography.h2};
   }
 `;
 
@@ -93,6 +119,22 @@ const ArticleCardList = styled.div`
     & > div {
       flex: 1 1 calc(50% - 16px);
       max-width: calc(50% - 16px);
+    }
+  }
+
+  @media (min-width: 1920px) {
+    gap: 32px;
+    & > div {
+      flex: 1 1 calc(25% - 32px);
+      max-width: calc(25% - 32px);
+    }
+  }
+
+  @media (min-width: 3840px) {
+    gap: 48px;
+    & > div {
+      flex: 1 1 calc(20% - 48px);
+      max-width: calc(20% - 48px);
     }
   }
 `;

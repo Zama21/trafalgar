@@ -41,12 +41,28 @@ const Card = styled.div`
   width: 100%;
   max-width: 308px;
   margin: 0 auto;
+
+  @media (min-width: 1920px) {
+    max-width: 360px;
+  }
+
+  @media (min-width: 3840px) {
+    max-width: 480px;
+  }
 `;
 
 const CardImageContainer = styled.div`
   width: 100%;
   height: 220px;
   overflow: hidden;
+
+  @media (min-width: 1920px) {
+    height: 280px;
+  }
+
+  @media (min-width: 3840px) {
+    height: 400px;
+  }
 `;
 
 const CardImage = styled.img`
@@ -58,9 +74,18 @@ const CardImage = styled.img`
 
 const CardTitle = styled.div`
   ${({ theme }) => theme.typography.h5};
+
   @media (max-width: 768px) {
     font-size: ${({ theme }) => theme.typography.bodyM};
     font-weight: 700;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: ${({ theme }) => theme.typography.h3};
+  }
+
+  @media (min-width: 3840px) {
+    font-size: ${({ theme }) => theme.typography.h1};
   }
 `;
 
@@ -69,8 +94,17 @@ const CardContent = styled.div`
   flex-direction: column;
   padding: 24px 16px 16px 16px;
   gap: 16px;
+
   @media (max-width: 768px) {
     gap: 8px;
+  }
+
+  @media (min-width: 1920px) {
+    padding: 32px 24px 24px 24px;
+  }
+
+  @media (min-width: 3840px) {
+    padding: 48px 32px 32px 32px;
   }
 `;
 
@@ -83,8 +117,13 @@ const CardText = styled.div`
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+
   @media (max-width: 360px) {
     font-size: ${({ theme }) => theme.typography.bodyS};
+  }
+
+  @media (min-width: 1920px) {
+    font-size: ${({ theme }) => theme.typography.bodyL};
   }
 `;
 
@@ -98,9 +137,19 @@ const CustomButton = styled.button`
   background-color: white;
   color: #1a73e8;
   font-size: ${({ theme }) => theme.typography.bodyL};
+
   @media (max-width: 360px) {
     ${({ theme }) => theme.typography.buttonS};
   }
+
+  @media (min-width: 1920px) {
+    font-size: ${({ theme }) => theme.typography.h4};
+  }
+
+  @media (min-width: 3840px) {
+    font-size: ${({ theme }) => theme.typography.h3};
+  }
+
   &:active {
     color: #0d47a1;
   }
@@ -115,6 +164,14 @@ const AnimationContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: 220px;
+
+  @media (min-width: 1920px) {
+    height: 280px;
+  }
+
+  @media (min-width: 3840px) {
+    height: 400px;
+  }
 `;
 
 const AnimationImg = styled.div`
