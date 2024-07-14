@@ -9,6 +9,7 @@ import { listQuestions } from '../../constants/Questions';
 import Knowledge from '../../components/Knowledge/Knowledge';
 
 import { BREAKPOINTS } from '../../constants';
+import SectionPrice from "./SectionPrice";
 
 import RequestSection from './RequestSection/RequestSection';
 
@@ -29,6 +30,7 @@ const Home: React.FC = () => {
       <RequestSection />
       <SectionsSponsors />
       <Footer />
+      <SectionPrice />
     </Div>
   );
 };
