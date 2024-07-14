@@ -45,7 +45,7 @@ const ReviewPage = () => {
           <Card key={index}>
             <CardLogo>
               <img src={card.logoSrc} alt={card.logoAlt} />
-              <p>{card.title}</p>
+              <Typography variant="h4">{card.title}</Typography>
             </CardLogo>
             <CardText>
               <Typography variant="bodyL">{card.text}</Typography>
@@ -71,6 +71,7 @@ const Container = styled.div`
   justify-content: center;
   max-width: 100%;
   width: 100%;
+  font-family: ${({ theme }) => theme.fonts.primary};
 
   @media (max-width: 968px) {
     padding: 48px 16px;
@@ -118,9 +119,6 @@ const CardLogo = styled.div`
   min-height: 64px;
   gap: 8px;
   color: ${({ theme }) => theme.colors.coolGray60};
-  p {
-    ${({ theme }) => theme.typography.h4}
-  }
 `;
 
 const CardText = styled.div`
