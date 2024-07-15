@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { HEADER_Z_INDEX } from '../../../../constants/constants';
 
 export const HeaderWrapper = styled.header`
   width: 100%;
