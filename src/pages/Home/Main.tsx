@@ -61,7 +61,6 @@ const Container = styled.div`
   flex-direction: row;
   column-gap: 80px;
   max-width: 1440px;
-  height: 681px;
   align-items: center;
 
   @media (max-width: 1024px) {
@@ -86,7 +85,7 @@ const Container = styled.div`
 const SectionLeft = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding: 80px 0px 80px 0px;
   max-width: 100%;
 `;
 
@@ -124,8 +123,7 @@ const Title = styled.h1`
   @media (max-width: 1920px) {
     ${({ theme }) => theme.typography.h1};
   }
-
-  @media (max-width: 1024px) {
+  @media (max-width: 1339px) {
     ${({ theme }) => theme.typography.h3};
   }
   @media (max-width: 768px) {

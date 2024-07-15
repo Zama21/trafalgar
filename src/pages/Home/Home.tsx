@@ -9,12 +9,13 @@ import { listQuestions } from '../../constants/Questions';
 import Knowledge from '../../components/Knowledge/Knowledge';
 
 import { BREAKPOINTS } from '../../constants';
-import SectionPrice from "./SectionPrice";
+import SectionPrice from './SectionPrice';
 
 import RequestSection from './RequestSection/RequestSection';
 
 import SectionsSponsors from './SectionSponsors';
 import Footer from './Footer';
+import Main from './Main.tsx';
 
 const Div = styled.div<{ $isSmallScreen: boolean }>`
   margin-top: ${(props) => (props.$isSmallScreen ? '80px' : '208px')};
@@ -25,6 +26,7 @@ const Home: React.FC = () => {
   return (
     <Div $isSmallScreen={isSmallScreen}>
       <QuestionBlock items={listQuestions} />
+      <Main />
       <Knowledge />
       <Section2 />
       <RequestSection />
