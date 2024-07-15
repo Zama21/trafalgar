@@ -22,7 +22,6 @@ export function FormRegistration() {
   const onSubmit: SubmitHandler<IFormRegistration> = (data) => {
     // Добавление данных с полей в localStorage
     localStorage.setItem('userData', JSON.stringify(data));
-    console.log(data);
     navigate('/trafalgar/auth/login');
   };
   return (

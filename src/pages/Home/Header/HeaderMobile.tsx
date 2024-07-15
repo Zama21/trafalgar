@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Sidebar from './Sidebar/Sidebar';
 import Logo from './Components/Logo';
-import { HEADER_Z_INDEX } from '../../../constants/constants';
 
 const HeaderMobile: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,9 +33,6 @@ const HeaderMobile: React.FC = () => {
 export default HeaderMobile;
 
 const HeaderWrapper = styled.header`
-  z-index: ${HEADER_Z_INDEX};
-  position: fixed;
-  top: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;

@@ -6,6 +6,7 @@ import { InputProps } from './Input.props';
 const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   return <TagInput {...props} ref={ref} />;
 });
+Input.displayName = 'Input';
 
 export default Input;
 
