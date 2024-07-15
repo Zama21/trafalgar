@@ -50,6 +50,7 @@ export interface TypographyCustom {
   buttonM: ReturnType<typeof css>;
   buttonS: ReturnType<typeof css>;
   menuTabs: ReturnType<typeof css>;
+  captionOther: ReturnType<typeof css>;
 }
 
 export interface Theme {
@@ -202,6 +203,12 @@ export const theme: Theme = {
       font-size: 16px;
       line-height: 100%;
       letter-spacing: 0px;
+    `,
+    captionOther: css`
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 20px;
+      letter-spacing: 1px;
     `,
   },
   fonts: {

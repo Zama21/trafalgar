@@ -201,3 +201,7 @@ input {
     position: relative;
      z-index: 1000;
 }
+
+html {
+    scroll-behavior: smooth;
+}

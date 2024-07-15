@@ -4,11 +4,6 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
 
-// import { useState } from 'react';
-
-// import { Errors } from './Form.props';
-// import { formData } from '../../constants/constants';
-
 import Typography from '../../Typography';
 import Button from '../Button/Button';
 import { IFormLogin } from './Form.props';

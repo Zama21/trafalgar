@@ -1,8 +1,8 @@
-import React, { useEffect, useCallback, DependencyList } from 'react';
+import React, { useCallback, useEffect, DependencyList } from 'react';
 
-type DebounceFunction<T extends (...args: unknown[]) => unknown> = (...args: Parameters<T>) => void;
+type DebounceFunction<T extends (...args: any[]) => any> = (...args: Parameters<T>) => void;
 
-const useDebounce = <T extends (...args: unknown[]) => unknown>(
+const useDebounce = <T extends (...args: any[]) => any>(
   func: T,
   wait: number,
   deps: DependencyList = [],
@@ -18,7 +18,7 @@ const useDebounce = <T extends (...args: unknown[]) => unknown>(
         func(...args);
       }, wait);
     },
-    [func, wait],
+    [func, wait, ...deps],
   );
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const useDebounce = <T extends (...args: unknown[]) => unknown>(
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [deps]);
+  }, deps);
 
   return debouncedFunction;
 };

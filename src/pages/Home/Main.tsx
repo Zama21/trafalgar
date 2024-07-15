@@ -32,7 +32,6 @@ const Main: React.FC = () => {
 };
 
 const MainContainer = styled.main`
-  max-width: 100vw;
   background-color: ${({ theme }) => theme.colors.coolGray10};
   display: flex;
   justify-content: center;
@@ -47,7 +46,6 @@ const MainContainer = styled.main`
   }
   @media (max-width: 768px) {
     padding: 48px 16px 64px 16px;
-    max-width: 100%;
   }
   @media (max-width: 360px) {
     gap: 32px;
