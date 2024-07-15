@@ -1,6 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
-
 import Typography from '../../Typography';
 
 export interface QuestionItemProps {
@@ -10,26 +9,11 @@ export interface QuestionItemProps {
 }
 
 const QuestionItem: React.FC<QuestionItemProps> = ({ question, answer }) => {
-  // Булевое состояние для хранения информации, открыт вопрос или нет
   const [isOpen, setIsOpen] = useState(false);
-  // Когда ответ будет открыт, сюда будет записана высота тега с ответом
-  const [height, setHeight] = useState('0');
-  // Тут хранится доступ к тегу с ответом
-  const answerRef = useRef<HTMLDivElement>(null);
 
-  // Функция, она срабатывает когда мы кликнули по записи, переключает состояние isOpen
   const toggleQuestion = () => {
     setIsOpen(!isOpen);
   };
-
-  useEffect(() => {
-    if (isOpen) {
-      // ${answerRef.current?.scrollHeight - так мы получаем значение высоты для тега с ответом
-      setHeight(`${answerRef.current?.scrollHeight}px`);
-    } else {
-      setHeight('0');
-    }
-  }, [isOpen]);
 
   return (
     <ListItem>
@@ -40,10 +24,10 @@ const QuestionItem: React.FC<QuestionItemProps> = ({ question, answer }) => {
             <img src={isOpen ? '/assets/minus.svg' : '/assets/plus.svg'} alt="" />
           </IconWrapper>
         </Wrapper>
-        <AnswerDiv ref={answerRef} style={{ height }} data-isopen={isOpen}>
-          <AnswerWrapper>
+        <AnswerDiv data-isopen={isOpen}>
+          <Wrapp data-isopen={isOpen}>
             <Typography variant="bodyM">{answer}</Typography>
-          </AnswerWrapper>
+          </Wrapp>
         </AnswerDiv>
       </QuestionButton>
     </ListItem>
@@ -83,15 +67,21 @@ const Wrapper = styled.div`
 
 const IconWrapper = styled.div<{ 'data-isopen': boolean }>`
   display: flex;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease-in-out;
   transform: ${({ 'data-isopen': isOpen }) => (isOpen ? 'rotate(360deg)' : 'rotate(0)')};
 `;
 
-const AnswerDiv = styled.div`
-  overflow: hidden;
-  transition: height 0.3s ease;
+const AnswerDiv = styled.div<{ 'data-isopen': boolean }>`
+  padding: ${({ 'data-isopen': isOpen }) => (isOpen ? '25px 0 0 0' : '0')};
+  transition: padding 0.4s ease-in-out;
 `;
 
-const AnswerWrapper = styled.div`
-  padding-top: 25px;
+const Wrapp = styled.div<{ 'data-isopen': boolean }>`
+  overflow: auto;
+  max-height: ${({ 'data-isopen': isOpen }) => (isOpen ? '500px' : '0')};
+  opacity: ${({ 'data-isopen': isOpen }) => (isOpen ? '1' : '0')};
+
+  transition:
+    max-height 0.4s ease-in-out,
+    opacity 0.4s ease-in-out;
 `;

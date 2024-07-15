@@ -61,6 +61,22 @@ const Home: React.FC = () => {
   };
 
   return (
+
+    <>
+      <Typography variant="h1">tag h1</Typography>
+      <Typography variant="h1" as="span">
+        tag span
+      </Typography>
+      <Typography variant="bodyM">tag p</Typography>
+      <CustomTypography variant="h2">tag h2</CustomTypography>
+
+      <QuestionBlock items={listQuestions} />
+      {/* <Section1 /> */}
+      <Knowledge />
+      <Section2 />
+      <Section3 />
+    </>
+
     <div>
       {MENU_ITEMS.map((item) => {
         const SectionComponent = item.section;
@@ -80,6 +96,7 @@ const Home: React.FC = () => {
 
       <Footer />
     </div>
+
   );
 };
 
