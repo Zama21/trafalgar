@@ -31,17 +31,14 @@ const ArticleContainer = styled.div`
   width: 100%;
   padding: 80px;
   background-color: ${({ theme }) => theme.colors.White};
-
-  @media (max-width: 768px) {
-    padding: 48px 16px;
+  @media (min-width: 3840px) {
+    padding: 160px 64px;
   }
-
   @media (min-width: 1920px) {
     padding: 120px 48px;
   }
-
-  @media (min-width: 3840px) {
-    padding: 160px 64px;
+  @media (max-width: 768px) {
+    padding: 48px 16px;
   }
 `;
 
@@ -53,17 +50,14 @@ const ArticleContent = styled.div`
   max-width: 1280px;
   margin: 0 auto;
   width: 100%;
-
-  @media (max-width: 768px) {
-    gap: 32px;
+  @media (min-width: 3840px) {
+    gap: 128px;
   }
-
   @media (min-width: 1920px) {
     gap: 96px;
   }
-
-  @media (min-width: 3840px) {
-    gap: 128px;
+  @media (max-width: 768px) {
+    gap: 32px;
   }
 `;
 
@@ -87,13 +81,11 @@ const ArticleTitle = styled.h1`
 const ArticleSubtitle = styled.div`
   font-size: ${({ theme }) => theme.typography.h2};
   color: ${({ theme }) => theme.colors.coolGray70};
-
-  @media (max-width: 768px) {
-    font-size: ${({ theme }) => theme.typography.h4};
-  }
-
   @media (min-width: 3840px) {
     font-size: ${({ theme }) => theme.typography.h2};
+  }
+  @media (max-width: 768px) {
+    font-size: ${({ theme }) => theme.typography.h4};
   }
 `;
 
@@ -103,33 +95,6 @@ const ArticleCardList = styled.div`
   gap: 16px;
   width: 100%;
   justify-content: center;
-
-  @media (max-width: 1339px) {
-    justify-content: space-around;
-  }
-
-  @media (max-width: 1339px) {
-    & > div {
-      flex: 1 1 calc(50% - 16px);
-      max-width: calc(50% - 16px);
-    }
-  }
-
-  @media (max-width: 768px) {
-    & > div {
-      flex: 1 1 calc(50% - 16px);
-      max-width: calc(50% - 16px);
-    }
-  }
-
-  @media (min-width: 1920px) {
-    gap: 32px;
-    & > div {
-      flex: 1 1 calc(25% - 32px);
-      max-width: calc(25% - 32px);
-    }
-  }
-
   @media (min-width: 3840px) {
     gap: 48px;
     & > div {
@@ -137,6 +102,33 @@ const ArticleCardList = styled.div`
       max-width: calc(20% - 48px);
     }
   }
+  @media (min-width: 1920px) {
+    gap: 32px;
+    & > div {
+      flex: 1 1 calc(25% - 32px);
+      max-width: calc(25% - 32px);
+    }
+  }
+  @media (max-width: 1339px) {
+    justify-content: space-around;
+    & > div {
+      flex: 1 1 calc(50% - 16px);
+      max-width: calc(50% - 16px);
+    }
+  }
+  @media (max-width: 768px) {
+    gap: 8px;
+    & > div {
+      flex: 1 1 calc(50% );
+      max-width: calc(50% );
+    }
+  }
+  @media (max-width: 768px) {
+    gap: 8px;
+    & > div {
+      flex: 1 1 calc(50% - 8px);
+      max-width: calc(50% - 8px);
+    }
 `;
 
 export default ArticlePage;
