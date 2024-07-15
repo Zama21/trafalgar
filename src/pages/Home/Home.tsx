@@ -25,7 +25,7 @@ const Home: React.FC = () => {
       <Typography variant="bodyM">tag p</Typography>
       <CustomTypography variant="h2">tag h2</CustomTypography>
 
-      {/* <QuestionBlock items={listQuestions} /> */}
+      <QuestionBlock items={listQuestions} />
       {/* <Section1 /> */}
       <Knowledge />
       <Section2 />
