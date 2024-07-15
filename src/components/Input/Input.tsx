@@ -6,6 +6,7 @@ import { InputProps } from './Input.props';
 const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   return <TagInput {...props} ref={ref} />;
 });
+Input.displayName = 'Input';
 
 export default Input;
 
@@ -28,4 +29,5 @@ const TagInput = styled.input`
 
   box-sizing: border-box;
   background: ${({ theme }) => theme.colors.coolGray10};
+  width: 100%;
 `;

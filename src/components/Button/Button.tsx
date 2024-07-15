@@ -27,4 +27,14 @@ const BntEntry = styled.button<{ $customStyles?: ReturnType<typeof css> }>`
   cursor: pointer;
   white-space: nowrap;
   ${({ $customStyles }) => $customStyles}
+
+  border: 2px solid ${({ theme }) => theme.colors.Primary60};
+  color: white;
+  margin-bottom: 48px;
+  cursor: pointer;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    margin-bottom: 32px;
+  }
 `;

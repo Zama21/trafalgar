@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import { AuthLayout } from './pages/Auth/AuthLayout';
 import Login from './pages/Auth/Login/Login';
 import Register from './pages/Auth/Register/Register';
 import { Error } from './pages/Error/Error';
-import Navbar from './components/Navbar';
-import { Navigate } from 'react-router-dom';
+
 import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
 import RequireAuth from './pages/Auth/RequireAuth/RequireAuth';
+import Header from './pages/Home/Header/Header';
+
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,8 @@ const router = createBrowserRouter([
         <Navbar />
       </RequireAuth>
     ),
+    element: <Header />,
+
     children: [
       {
         path: '',
@@ -38,11 +41,14 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'login',
+
         element: (
           <RequireAuth>
             <Login />
           </RequireAuth>
         ),
+        element: <Login />,
+
       },
       {
         path: 'register',

@@ -62,10 +62,13 @@ function Form() {
 export default Form;
 
 const Field = styled.form`
+  display: flex;
+  flex-direction: column;
   font-family: ${({ theme }) => theme.fonts.primary};
   display: flex;
   flex-direction: column;
   gap: 5px;
+  width: 100%;
 `;
 
 const LoginContainer = styled(Typography)`

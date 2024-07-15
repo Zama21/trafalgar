@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 
+import { BREAKPOINTS } from './constants';
+
 interface Colors {
   Primary90: string;
   Primary60: string;
@@ -25,6 +27,8 @@ interface Fonts {
   primary: string;
 }
 
+type Breakpoints = typeof BREAKPOINTS;
+
 export interface TypographyCustom {
   h1: ReturnType<typeof css>;
   h2: ReturnType<typeof css>;
@@ -39,11 +43,14 @@ export interface TypographyCustom {
   bodyS: ReturnType<typeof css>;
   bodyXS: ReturnType<typeof css>;
   bodyXXS: ReturnType<typeof css>;
+  customXXL: ReturnType<typeof css>;
+  customTextXL: ReturnType<typeof css>;
   caption: ReturnType<typeof css>;
   buttonL: ReturnType<typeof css>;
   buttonM: ReturnType<typeof css>;
   buttonS: ReturnType<typeof css>;
   menuTabs: ReturnType<typeof css>;
+  captionOther: ReturnType<typeof css>;
 }
 
 export interface Theme {
@@ -51,6 +58,7 @@ export interface Theme {
   spacing: (multiplier: number, multiplier2?: number) => string;
   typography: TypographyCustom;
   fonts: Fonts;
+  breakpoints: Breakpoints;
 }
 
 export const theme: Theme = {
@@ -119,6 +127,17 @@ export const theme: Theme = {
       line-height: 110%;
       letter-spacing: 0px;
     `,
+    customXXL: css`
+      font-weight: 400;
+      font-size: 25px;
+      line-height: 110%;
+      letter-spacing: 0px;
+    `,
+    customTextXL: css`
+      font-weight: 400;
+      font-size: 19px;
+      line-height: 25.2px;
+    `,
     subtitleS: css`
       font-weight: 500;
       font-size: 14px;
@@ -185,8 +204,17 @@ export const theme: Theme = {
       line-height: 100%;
       letter-spacing: 0px;
     `,
+    captionOther: css`
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 20px;
+      letter-spacing: 1px;
+    `,
   },
   fonts: {
     primary: "'Roboto', sans-serif",
+  },
+  breakpoints: {
+    ...BREAKPOINTS,
   },
 };

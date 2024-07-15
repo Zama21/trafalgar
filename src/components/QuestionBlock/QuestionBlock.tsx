@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-import { QuestionBlockProps } from './QuestionsBlock.props';
 import QuestionItem from './QuestionItem';
 import Typography from '../../Typography';
+import { listQuestions } from '../../constants/Questions';
 
-const QuestionBlock: React.FC<QuestionBlockProps> = ({ items }) => {
+const QuestionBlock: React.FC = () => {
   return (
     <WrapperQuestionBlock>
       <TopLeftIcon src="/assets/sheet.svg" alt="Top Left Icon" />
@@ -12,7 +12,7 @@ const QuestionBlock: React.FC<QuestionBlockProps> = ({ items }) => {
       <TitleQuestion variant="h5">Вопросы</TitleQuestion>
       <QuestionHeadling variant="h2">Ответы на частые вопросы</QuestionHeadling>
       <List>
-        {items.map((item) => (
+        {listQuestions.map((item) => (
           <QuestionItem key={item.id} id={item.id} question={item.question} answer={item.answer} />
         ))}
       </List>

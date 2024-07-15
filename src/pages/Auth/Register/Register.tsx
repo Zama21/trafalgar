@@ -11,7 +11,7 @@ const Register: React.FC = () => {
   return (
     <Wrapper>
       <Headling>Регистрация</Headling>
-      <FormRegistration></FormRegistration>
+      <FormRegistration />
       <ButtonLink />
       <Hr />
       <Typography variant="bodyS">
@@ -22,13 +22,21 @@ const Register: React.FC = () => {
 };
 
 const Wrapper = styled.div`
-  width: 560px;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  margin: 80px;
+
+  @media (max-width: 600px) {
+    /* border: 1px solid rebeccapurple; */
+    margin: 32px 16px;
+  }
 `;
 
 const LinkToRegistration = styled(Link)`
   color: ${({ theme }) => theme.colors.Primary90};
-
   text-align: left;
   text-decoration: none;
 `;
@@ -36,6 +44,10 @@ const LinkToRegistration = styled(Link)`
 const Hr = styled.hr`
   border: 1px solid ${({ theme }) => theme.colors.coolGray20};
   margin: ${({ theme }) => theme.spacing(6)} 0px;
+  width: 100%;
+  @media (max-width: 600px) {
+    margin: 32px 0px;
+  }
 `;
 
 export default Register;
