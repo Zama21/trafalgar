@@ -18,6 +18,7 @@ const Home: React.FC = () => {
   }, 300);
 
 
+
   useEffect(() => {
     if (location.hash) {
       window.location.href = location.hash;
@@ -78,6 +79,7 @@ const Home: React.FC = () => {
           </WrapperSection>
         );
       })}
+
       <Footer />
 
     </div>

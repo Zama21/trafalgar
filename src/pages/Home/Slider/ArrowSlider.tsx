@@ -1,31 +1,42 @@
 import styled from 'styled-components';
 
-const ArrowRight = styled.div`
-  &:before {
-    display: none; /* скрываем стандартные стрелки */
-  }
-`;
+interface ArrowProps {
+  className?: string;
+  style?: React.CSSProperties;
+  onClick?: () => void;
+}
 
-const ArrowLeft = styled.div`
-  &:before {
-    display: none; /* скрываем стандартные стрелки */
-  }
-`;
 
-const NextArrow = ({ className, style, onClick }) => {
+const NextArrow: React.FC<ArrowProps> = ({ className, style, onClick }) => {
   return (
-    <ArrowRight className={className} style={{ ...style }} onClick={onClick}>
+    <Arrow className={className} style={{ ...style }} onClick={onClick}>
       <img src="/public/assets/arrow-rigth.svg" alt="Next Arrow" />
-    </ArrowRight>
+    </Arrow>
   );
 };
 
-const PrevArrow = ({ className, style, onClick }) => {
+const PrevArrow: React.FC<ArrowProps> = ({ className, style, onClick }) => {
   return (
-    <ArrowLeft className={className} style={{ ...style }} onClick={onClick}>
+    <Arrow className={className} style={{ ...style }} onClick={onClick}>
       <img src="/public/assets/arrow-left.svg" alt="Prev Arrow" />
-    </ArrowLeft>
+    </Arrow>
   );
 };
 
 export { NextArrow, PrevArrow };
+
+const Arrow = styled.div`
+  display: flex !important;
+  position: static;
+  transform: translateY(0);
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  align-items: center;
+  justify-content: center;
+
+  &:before {
+    display: none;
+  }
+`;
