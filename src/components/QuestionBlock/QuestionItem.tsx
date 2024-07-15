@@ -71,7 +71,7 @@ const IconWrapper = styled.div<{ 'data-isopen': boolean }>`
 
 const AnswerDiv = styled.div<{ 'data-isopen': boolean }>`
   overflow: hidden;
-  max-height: ${({ 'data-isopen': isOpen }) => (isOpen ? '1000px' : '0')};
+  max-height: ${({ 'data-isopen': isOpen }) => (isOpen ? 'auto' : '0')};
   opacity: ${({ 'data-isopen': isOpen }) => (isOpen ? '1' : '0')};
   padding: ${({ 'data-isopen': isOpen }) => (isOpen ? '25px 0 0 0' : '0')};
   transition:
