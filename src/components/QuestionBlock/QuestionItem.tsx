@@ -71,11 +71,11 @@ const IconWrapper = styled.div<{ 'data-isopen': boolean }>`
 
 const AnswerDiv = styled.div<{ 'data-isopen': boolean }>`
   overflow: hidden;
-  max-height: ${({ 'data-isopen': isOpen }) => (isOpen ? 'auto' : '0')};
+  height: ${({ 'data-isopen': isOpen }) => (isOpen ? 'auto' : '0')};
   opacity: ${({ 'data-isopen': isOpen }) => (isOpen ? '1' : '0')};
   padding: ${({ 'data-isopen': isOpen }) => (isOpen ? '25px 0 0 0' : '0')};
   transition:
-    max-height 0.4s ease-in-out,
+    height 0.4s ease-in-out,
     opacity 0.4s ease-in-out,
     padding 0.4s ease-in-out;
 `;
