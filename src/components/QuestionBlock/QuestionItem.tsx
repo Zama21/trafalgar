@@ -25,7 +25,9 @@ const QuestionItem: React.FC<QuestionItemProps> = ({ question, answer }) => {
           </IconWrapper>
         </Wrapper>
         <AnswerDiv data-isopen={isOpen}>
-          <Typography variant="bodyM">{answer}</Typography>
+          <Wrapp data-isopen={isOpen}>
+            <Typography variant="bodyM">{answer}</Typography>
+          </Wrapp>
         </AnswerDiv>
       </QuestionButton>
     </ListItem>
@@ -70,12 +72,16 @@ const IconWrapper = styled.div<{ 'data-isopen': boolean }>`
 `;
 
 const AnswerDiv = styled.div<{ 'data-isopen': boolean }>`
-  overflow: hidden;
-  height: ${({ 'data-isopen': isOpen }) => (isOpen ? 'auto' : '0')};
-  opacity: ${({ 'data-isopen': isOpen }) => (isOpen ? '1' : '0')};
   padding: ${({ 'data-isopen': isOpen }) => (isOpen ? '25px 0 0 0' : '0')};
+  transition: padding 0.4s ease-in-out;
+`;
+
+const Wrapp = styled.div<{ 'data-isopen': boolean }>`
+  overflow: auto;
+  max-height: ${({ 'data-isopen': isOpen }) => (isOpen ? '500px' : '0')};
+  opacity: ${({ 'data-isopen': isOpen }) => (isOpen ? '1' : '0')};
+
   transition:
-    height 0.4s ease-in-out,
-    opacity 0.4s ease-in-out,
-    padding 0.4s ease-in-out;
+    max-height 0.4s ease-in-out,
+    opacity 0.4s ease-in-out;
 `;
