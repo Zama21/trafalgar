@@ -39,7 +39,6 @@ function Knowledge() {
 export default Knowledge;
 
 const Titles = styled.div`
-  margin: 80px 80px 0 80px;
   @media (max-width: 1200px) {
     margin: 48px 40px 0 40px;
   }
@@ -84,6 +83,10 @@ const TitleKnowledge = styled(Typography)`
 
 const PageKnowledge = styled.div`
   width: 100%;
+  padding: 80px;
+  @media (max-width: 1200px) {
+    padding: 16px;
+  }
 `;
 
 const ButtonWrapper = styled.div`
@@ -91,7 +94,6 @@ const ButtonWrapper = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   gap: 16px;
-  margin: 0 80px;
 
   @media (max-width: 1200px) {
     margin: 0 40px;
@@ -106,7 +108,6 @@ const SecondContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: baseline;
-  margin: 0 80px 80px 80px;
 
   @media (max-width: 1200px) {
     margin: 0 40px 32px 40px;
