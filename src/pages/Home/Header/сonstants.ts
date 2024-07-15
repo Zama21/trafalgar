@@ -4,6 +4,7 @@ import AboutProject from '../AboutProject';
 import Main from '../Main';
 import RequestSection from '../RequestSection/RequestSection';
 import ReviewPage from '../ReviewPage';
+import SectionPrice from '../SectionPrice';
 import SectionsSponsors from '../SectionSponsors';
 
 export const MEDICAL_SPECIALTY_OPTIONS = [
@@ -35,6 +36,7 @@ export const MENU_ITEMS = [
   { label: 'Отзывы', path: `/trafalgar/#${SECTION_IDS.reviews}`, id: SECTION_IDS.reviews, section: ReviewPage },
   { label: 'Знания', path: `/trafalgar/#${SECTION_IDS.knowledge}`, id: SECTION_IDS.knowledge, section: Knowledge },
   { label: 'Вопросы', path: `/trafalgar/#${SECTION_IDS.questions}`, id: SECTION_IDS.questions, section: QuestionBlock },
+  { label: 'Цены', path: `/trafalgar/#${SECTION_IDS.pricing}`, id: SECTION_IDS.pricing, section: SectionPrice },
   {
     label: 'Оставить заявку',
     path: `/trafalgar/#${SECTION_IDS.apply}`,
@@ -55,6 +57,5 @@ export const HEADER_HEIGHT = {
 };
 
 //   { label: 'Статьи', path: `/trafalgar/#${SECTION_IDS.articles}`, id: SECTION_IDS.articles, section: ArticlesPage },
-//   { label: 'Цены', path: `/trafalgar/#${SECTION_IDS.pricing}`, id: SECTION_IDS.pricing, section: PricingPage },
 
 export const HEADER_ID = 'headerMain';

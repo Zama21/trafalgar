@@ -1,24 +1,13 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { forwardRef } from 'react';
+
 import SearchBar from './SearchBar/SearchBar';
 import MenuBar from './MenuBar/MenuBar';
-import { Button } from '../../../components/CustomButton/CustomButton';
 import { ProfileButton } from './ProfileButton/ProfileButton';
 import { HeaderWrapper, HeaderProfileSection, HeaderShoppingCart, HeaderTopBar } from './Components/ComponentsHeader';
-import { forwardRef } from 'react';
 import Location from './Components/Location';
 import Logo from './Components/Logo';
-
-const NavBar = styled.div`
-  display: flex;
-  padding: 24px 80px 24px 80px;
-  gap: 24px;
-  height: 96px;
-  align-items: center;
-  background-color: ${({ theme }) => theme.colors.White};
-  @media (max-width: 1200px) {
-    padding: 8px 40px 8px 40px;
-  }
-`;
+import Button from '../../../components/Button';
 
 const HeaderBig = forwardRef<HTMLDivElement>((props, ref) => (
   <HeaderWrapper ref={ref}>
@@ -36,7 +25,9 @@ const HeaderBig = forwardRef<HTMLDivElement>((props, ref) => (
     <NavBar>
       <Logo />
       <SearchBar />
-      <Button onClick={() => alert('Button Clicked!')}>Поиск</Button>
+      <Button onClick={() => alert('Button Clicked!')} width="105px" height="48px" customStyles={CustomBtnStyles}>
+        Поиск
+      </Button>
     </NavBar>
     <MenuBar />
   </HeaderWrapper>
@@ -45,3 +36,19 @@ const HeaderBig = forwardRef<HTMLDivElement>((props, ref) => (
 HeaderBig.displayName = 'HeaderBig';
 
 export default HeaderBig;
+
+const NavBar = styled.div`
+  display: flex;
+  padding: 24px 80px 24px 80px;
+  gap: 24px;
+  height: 96px;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.White};
+  @media (max-width: 1200px) {
+    padding: 8px 40px 8px 40px;
+  }
+`;
+
+const CustomBtnStyles = css`
+  ${({ theme }) => theme.typography.buttonM}
+`;

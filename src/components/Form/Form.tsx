@@ -1,16 +1,16 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
 
 import Typography from '../../Typography';
-import Button from '../Button/Button';
 import { IFormLogin } from './Form.props';
 import ErrorValidation from '../ErrorValidation/ErrorValidation';
 import Input from '../Input/Input';
 import { LabelInput } from '../LabelInput/Label';
 import { schemaLoginPage } from '../../schema/schema';
+import Button from '../Button';
 
 function Form() {
   const navigate = useNavigate();
@@ -54,7 +54,9 @@ function Form() {
           <ForgotPasswordLink to="/forgot-password">Забыли пароль?</ForgotPasswordLink>
         </LoginContainer>
 
-        <Button type="submit">Вход</Button>
+        <Button height="48px" customStyles={BtnStl}>
+          Вход
+        </Button>
       </Field>
     </>
   );
@@ -84,6 +86,15 @@ const Checkbox = styled.input.attrs({ type: 'checkbox' })`
 
 const Label = styled.label`
   margin-right: auto;
+`;
+
+const BtnStl = css`
+  ${({ theme }) => theme.typography.buttonM}
+  margin-bottom: 48px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 32px;
+  }
 `;
 
 const ForgotPasswordLink = styled(Link)`

@@ -1,14 +1,14 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 
 import Input from '../Input/Input';
-import Button from '../Button/Button';
 import ErrorValidation from '../ErrorValidation/ErrorValidation';
 import { LabelInput } from '../LabelInput/Label';
 import { IFormRegistration } from './FormRegistration.interface';
 import { schema } from '../../schema/schema';
+import Button from '../Button';
 
 export function FormRegistration() {
   const navigate = useNavigate();
@@ -54,7 +54,9 @@ export function FormRegistration() {
       </LoginContainer>
       {<ErrorValidation>{errors.agreeToTerms?.message}</ErrorValidation>}
 
-      <Button>Зарегестрироваться</Button>
+      <Button height="48px" customStyles={BtnStl}>
+        Зарегистрироваться
+      </Button>
     </Field>
   );
 }
@@ -89,4 +91,12 @@ const Checkbox = styled.input.attrs({ type: 'checkbox' })`
 `;
 const Label = styled.label`
   margin-right: auto;
+`;
+
+const BtnStl = css`
+  margin-bottom: 48px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 32px;
+  }
 `;

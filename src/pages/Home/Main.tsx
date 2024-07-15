@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
-import Button from '../../components/Button.tsx';
+import styled, { css } from 'styled-components';
+
+import Button from '../../components/Button';
 
 const Main: React.FC = () => {
   return (
@@ -15,10 +16,10 @@ const Main: React.FC = () => {
             </Text>
           </SectionLeftText>
           <SectionButton>
-            <Button primary width="216px" height="56px">
+            <Button width="215px" height="56px" customStyles={BtnPrimaryStl}>
               Войти как врач
             </Button>
-            <Button width="172px" height="56px">
+            <Button secondary width="172px" height="56px" customStyles={BtnSecondaryStl}>
               Подробнее
             </Button>
           </SectionButton>
@@ -56,7 +57,6 @@ const MainContainer = styled.main`
 const Container = styled.div`
   margin: 0 auto;
   display: flex;
-  flex-direction: row;
   column-gap: 80px;
   max-width: 1440px;
   height: 681px;
@@ -152,8 +152,23 @@ const Text = styled.p`
 
 const SectionButton = styled.div`
   display: flex;
-  flex-direction: row;
   gap: 16px;
+`;
+
+const BtnPrimaryStl = css`
+  @media (max-width: 550px) {
+    ${({ theme }) => theme.typography.buttonS}
+    width: 164px;
+    height: 40px;
+  }
+`;
+
+const BtnSecondaryStl = css`
+  @media (max-width: 550px) {
+    ${({ theme }) => theme.typography.buttonS}
+    width: 133px;
+    height: 40px;
+  }
 `;
 
 const SectionLeftText = styled.div`
@@ -161,9 +176,6 @@ const SectionLeftText = styled.div`
   flex-direction: column;
   gap: 60px;
   @media (max-width: 1440px) {
-    gap: 48px;
-  }
-  @media (max-width: 1024px) {
     gap: 48px;
   }
   @media (max-width: 768px) {

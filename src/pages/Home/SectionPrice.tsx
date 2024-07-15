@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { items } from '../../constants/PriceConstant';
 import { CardPrice } from '../../components/CardPrice/Card';

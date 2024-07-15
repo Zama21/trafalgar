@@ -2,11 +2,11 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import Logo from './Header/Components/Logo';
 import { SearchInput } from './Header/Components/SearchInput';
-import { Button } from '../../components/CustomButton/CustomButton';
 import Divider from '../../components/Divider/Divider';
 import Typography from '../../Typography';
 import { footerData, socialLinks } from '../../constants/footer';
 import { NavLink } from 'react-router-dom';
+import Button from '../../components/Button';
 
 const Footer: React.FC = () => {
   return (
@@ -20,7 +20,9 @@ const Footer: React.FC = () => {
             placeholder="Подписаться на рассылку"
             wrapperSearchInputStyles={WrapperSearchInputStyles}
           />
-          <SubscribeButton>Подписаться</SubscribeButton>
+          <Button height="48px" width="160px" customStyles={BtnStl}>
+            Подписаться
+          </Button>
         </WrapperInputBtn>
       </TopSection>
       <Divider />
@@ -121,8 +123,8 @@ const WrapperSearchInputStyles = css`
   }
 `;
 
-const SubscribeButton = styled(Button)`
-  width: 160px;
+const BtnStl = css`
+  ${({ theme }) => theme.typography.buttonM}
 `;
 
 const LinksSection = styled.div`

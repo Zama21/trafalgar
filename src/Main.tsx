@@ -13,7 +13,6 @@ import { theme } from './theme';
 import RequireAuth from './pages/Auth/RequireAuth/RequireAuth';
 import Header from './pages/Home/Header/Header';
 
-
 const router = createBrowserRouter([
   {
     path: '/',

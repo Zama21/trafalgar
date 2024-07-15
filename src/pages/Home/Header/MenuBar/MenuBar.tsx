@@ -16,7 +16,7 @@ interface MenuBarProps {
 const MenuBar: React.FC<MenuBarProps> = ({ isSmallHeader, menuContainerStyles }) => {
   const [visibleItems, setVisibleItems] = useState<HeaderMenuItem[]>(MENU_ITEMS);
   const [hiddenItems, setHiddenItems] = useState<HeaderMenuItem[]>([]);
-  const [activeTab, setActiveTab] = useState<string>(MENU_ITEMS[0].id);
+  const [activeTab, setActiveTab] = useState<string>(MENU_ITEMS[0]?.id || undefined);
   const location = useLocation();
   const containerRef = useRef<HTMLUListElement | null>(null);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);

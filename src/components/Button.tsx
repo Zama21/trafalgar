@@ -3,16 +3,26 @@ import styled, { css } from 'styled-components';
 
 interface ButtonProps {
   children: React.ReactNode;
-  primary?: boolean;
+  secondary?: boolean;
   height?: string;
   width?: string;
-  customStyles?: string;
+  onClick?: () => void;
+  customStyles?: ReturnType<typeof css>;
 }
 
+const Button: React.FC<ButtonProps> = ({ children, secondary, height, width, onClick, customStyles }) => {
+  return (
+    <StyledButton $secondary={secondary} $height={height} $width={width} onClick={onClick} $customStyles={customStyles}>
+      {children}
+    </StyledButton>
+  );
+};
+
+export default Button;
+
 const baseStyles = css`
-  font-weight: ${({ theme }) => theme.typography.buttonL.fontWeight};
   padding: 16px;
-  font-size: ${({ theme }) => theme.typography.buttonL};
+  ${({ theme }) => theme.typography.buttonL};
   cursor: pointer;
   border: 2px solid transparent;
   font-family: ${({ theme }) => theme.fonts.primary};
@@ -20,17 +30,6 @@ const baseStyles = css`
   align-items: center;
   justify-content: center;
   text-align: center;
-
-  @media (max-width: 768px) {
-    height: 48px;
-    font-size: ${({ theme }) => theme.typography.buttonM};
-  }
-
-  @media (max-width: 360px) {
-    height: 40px;
-    font-size: ${({ theme }) => theme.typography.buttonS};
-    padding: 12px;
-  }
 `;
 
 const primaryStyles = css`
@@ -44,32 +43,18 @@ const secondaryStyles = css`
   border: 2px solid #458ff6;
 `;
 
-const StyledButton = styled.button<{ $primary?: boolean; height?: string; width?: string; customStyles?: string }>`
+const StyledButton = styled.button<{
+  $secondary?: boolean;
+  $height?: string;
+  $width?: string;
+  $customStyles?: ReturnType<typeof css>;
+}>`
   ${baseStyles}
-  ${(props) => (props.$primary ? primaryStyles : secondaryStyles)}
-    ${(props) =>
-    props.height &&
-    css`
-      height: ${props.height};
-    `}
-    ${(props) =>
-    props.width &&
-    css`
-      width: ${props.width};
-    `}
-    ${(props) =>
-    props.customStyles &&
-    css`
-      ${props.customStyles}
-    `}
+
+  ${(props) => (props.$secondary ? secondaryStyles : primaryStyles)}
+
+  height: ${({ $height }) => $height};
+  width: ${({ $width }) => $width};
+
+  ${({ $customStyles }) => $customStyles}
 `;
-
-const Button: React.FC<ButtonProps> = ({ children, primary, height, width, customStyles }) => {
-  return (
-    <StyledButton $primary={primary} height={height} width={width} customStyles={customStyles}>
-      {children}
-    </StyledButton>
-  );
-};
-
-export default Button;

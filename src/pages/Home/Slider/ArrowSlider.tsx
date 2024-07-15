@@ -6,7 +6,6 @@ interface ArrowProps {
   onClick?: () => void;
 }
 
-
 const NextArrow: React.FC<ArrowProps> = ({ className, style, onClick }) => {
   return (
     <Arrow className={className} style={{ ...style }} onClick={onClick}>

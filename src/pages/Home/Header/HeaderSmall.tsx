@@ -3,10 +3,10 @@ import { forwardRef } from 'react';
 
 import SearchBar from './SearchBar/SearchBar';
 import MenuBar from './MenuBar/MenuBar';
-import { Button } from '../../../components/CustomButton/CustomButton';
 import { ProfileButton } from './ProfileButton/ProfileButton';
 import { HeaderWrapper, HeaderProfileSection, HeaderShoppingCart, HeaderTopBar } from './Components/ComponentsHeader';
 import Location from './Components/Location';
+import Button from '../../../components/Button';
 
 const HeaderSmall = forwardRef<HTMLDivElement>((props, ref) => (
   <HeaderWrapper ref={ref}>
@@ -18,7 +18,9 @@ const HeaderSmall = forwardRef<HTMLDivElement>((props, ref) => (
           selectContainerStyles={SelectContainerStyles}
           selectStyles={SelectStyles}
         />
-        <SmallBtn onClick={() => alert('click')}>Поиск</SmallBtn>
+        <Button onClick={() => alert('click')} width="99px" height="32px" customStyles={BtnStyles}>
+          Поиск
+        </Button>
       </SearchSection>
       <HeaderProfileSection>
         <ProfileButton />
@@ -58,14 +60,8 @@ const SelectStyles = css`
   height: 32px;
 `;
 
-const SmallBtn = styled(Button)`
-  height: 32px;
-  padding: 8px 12px 8px 12px;
-
-  @media (max-width: 1000px) {
-    padding: 8px 8px 8px 8px;
-    width: 90px;
-  }
+const BtnStyles = css`
+  ${({ theme }) => theme.typography.buttonS}
 `;
 
 const MenuContainerStyles = css`
