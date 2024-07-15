@@ -22,7 +22,6 @@ export function FormRegistration() {
   const onSubmit: SubmitHandler<IFormRegistration> = (data) => {
     // Добавление данных с полей в localStorage
     localStorage.setItem('userData', JSON.stringify(data));
-    console.log(data);
     navigate('/trafalgar/auth/login');
   };
   return (
@@ -59,6 +58,12 @@ export function FormRegistration() {
     </Field>
   );
 }
+const Field = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+`;
 
 const WrapperNameSurname = styled.div`
   display: flex;
@@ -71,11 +76,6 @@ const WrapperOneInput = styled.div`
   gap: 5px;
   flex-grow: 1;
   flex-basis: 0;
-`;
-const Field = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
 `;
 
 const LoginContainer = styled.div`

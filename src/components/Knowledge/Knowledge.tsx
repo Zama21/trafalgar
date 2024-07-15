@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Headling from '../Headling/Headling';
 import Button from '../../components/Button/Button';
