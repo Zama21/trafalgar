@@ -17,6 +17,7 @@ const Home: React.FC = () => {
     navigate(`#${sectionId}`, { replace: true });
   }, 300);
 
+
   useEffect(() => {
     if (location.hash) {
       window.location.href = location.hash;
@@ -78,6 +79,7 @@ const Home: React.FC = () => {
         );
       })}
       <Footer />
+
     </div>
   );
 };
