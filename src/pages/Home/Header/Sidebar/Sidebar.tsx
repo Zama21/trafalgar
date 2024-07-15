@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 import Logo from '../Components/Logo';
 import { SearchInput } from '../Components/SearchInput';
 import { MENU_ITEMS } from '../сonstants';
-import { Button } from '../../../../components/CustomButton/CustomButton';
+import Button from '../../../../components/Button';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -34,7 +34,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           </MenuItemStyled>
         ))}
       </MenuList>
-      <CloseButton onClick={onClose}>Закрыть меню</CloseButton>
+      <Button onClick={onClose} height="48px" secondary customStyles={BtnStyles}>
+        Закрыть меню
+      </Button>
     </SidebarWrapper>
   );
 };
@@ -94,9 +96,8 @@ const MenuItemStyled = styled.li<{ $isActive: boolean }>`
   }
 `;
 
-const CloseButton = styled(Button)`
-  cursor: pointer;
-  color: #458ff6;
+const BtnStyles = css`
+  ${({ theme }) => theme.typography.buttonM}
   background-color: inherit;
   width: 100%;
 

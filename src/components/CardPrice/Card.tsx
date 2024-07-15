@@ -14,7 +14,7 @@ export const CardPrice: React.FC<CardPriceProps> = ({ title, description, oldPri
       <PriceNew>{newPrice}</PriceNew>
       <p>{newPrice} USD каждый месяц</p>
     </Price>
-    <Button width="135px" height="56px" $primary="primary">
+    <Button width="135px" height="56px">
       Начать
     </Button>
     <ListContainer>

@@ -33,14 +33,6 @@ export default function Typography({ variant = 'bodyL', as, children, htmlFor, .
 
   const additionalProps = Component === 'label' ? { htmlFor } : {};
 
-  // export interface TypographyProps extends HTMLAttributes<HTMLElement> {
-  //   variant?: Variant;
-  //   as?: ElementType;
-  // }
-
-  // export default function Typography({ variant = 'bodyL', as, children, ...props }: TypographyProps) {
-  //   const Component = as || getTagForVariant(variant);
-
   return (
     <TypographyStl as={Component} {...props} {...additionalProps} $variant={variant}>
       {children}

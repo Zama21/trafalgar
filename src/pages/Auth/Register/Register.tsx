@@ -30,7 +30,6 @@ const Wrapper = styled.div`
   margin: 80px;
 
   @media (max-width: 600px) {
-    /* border: 1px solid rebeccapurple; */
     margin: 32px 16px;
   }
 `;

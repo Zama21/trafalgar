@@ -12,7 +12,6 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
 import Header from './pages/Home/Header/Header';
 
-// React-Router
 const router = createBrowserRouter([
   {
     path: '/',
