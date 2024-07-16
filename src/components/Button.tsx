@@ -10,7 +10,7 @@ interface ButtonProps {
 }
 
 const baseStyles = css`
-  font-weight: ${({ theme }) => theme.typography.buttonL.fontWeight};
+  font-weight: ${({ theme }) => theme.typography.buttonL};
   padding: 16px;
   font-size: ${({ theme }) => theme.typography.buttonL};
   cursor: pointer;

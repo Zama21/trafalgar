@@ -28,6 +28,8 @@ export const ArticleCard: React.FC<Article> = ({ img, title, text }) => {
 };
 
 const Card = styled.div`
+  display: flex;
+  flex-direction: column;
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.colors.coolGray20};
   width: 100%;
@@ -73,7 +75,6 @@ const CardImage = styled.img`
 
 const CardTitle = styled.div`
   ${({ theme }) => theme.typography.h5};
-
   @media (min-width: 3000px) {
     font-size: ${({ theme }) => theme.typography.h3};
   }
@@ -88,6 +89,7 @@ const CardContent = styled.div`
   flex-direction: column;
   padding: 24px 16px 16px 16px;
   gap: 16px;
+  flex: 1;
   @media (min-width: 3840px) {
     padding: 48px 32px 32px 32px;
   }
@@ -112,6 +114,7 @@ const CardText = styled.div`
   }
   @media (max-width: 360px) {
     font-size: ${({ theme }) => theme.typography.bodyS};
+    -webkit-line-clamp: 6;
   }
 `;
 
