@@ -12,6 +12,7 @@ export function LabelInput({ children, htmlFor }: LabelInputProps) {
 }
 
 const LabelTag = styled.label`
+  font-family: ${({ theme }) => theme.fonts.primary};
   color: ${({ theme }) => theme.colors.coolGray90};
   text-align: left;
 `;

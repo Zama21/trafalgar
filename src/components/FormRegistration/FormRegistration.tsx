@@ -94,6 +94,7 @@ const Checkbox = styled.input.attrs({ type: 'checkbox' })`
   cursor: pointer;
 `;
 const Label = styled.label`
+  font-family: ${({ theme }) => theme.fonts.primary};
   margin-right: auto;
 `;
 

@@ -86,9 +86,11 @@ const Checkbox = styled.input.attrs({ type: 'checkbox' })`
 `;
 
 const Label = styled.label`
+  font-family: ${({ theme }) => theme.fonts.primary};
   margin-right: auto;
 `;
 const ForgotPasswordLink = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.primary};
   color: ${({ theme }) => theme.colors.Primary90};
   text-decoration: none;
 `;
