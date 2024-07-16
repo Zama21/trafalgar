@@ -8,32 +8,13 @@ const fadeIn = keyframes`
 
 const Loader: React.FC<{ images: string[] }> = ({ images }) => {
   return (
-    <AnimationContainer>
-      <AnimationImg>
-        {images.map((src, index) => (
-          <AnimatedImage key={index} src={src} alt={`img${index + 1}`} index={index} />
-        ))}
-      </AnimationImg>
-    </AnimationContainer>
+    <AnimationImg>
+      {images.map((src, index) => (
+        <AnimatedImage key={index} src={src} alt={`img${index + 1}`} index={index} />
+      ))}
+    </AnimationImg>
   );
 };
-
-const AnimationContainer = styled.div`
-  background-image: url('/assets/Article/picture.png');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 220px;
-  @media (min-width: 3840px) {
-    height: 400px;
-  }
-  @media (min-width: 1920px) {
-    height: 280px;
-  }
-`;
 
 const AnimationImg = styled.div`
   position: relative;
@@ -45,7 +26,7 @@ const AnimatedImage = styled.img<{ index: number }>`
   position: absolute;
   width: 100%;
   height: 100%;
-  animation: ${fadeIn} 2s linear infinite;
+  animation: ${fadeIn} 2s ease-in-out infinite;
   animation-delay: ${({ index }) => index * 0.1}s;
 `;
 

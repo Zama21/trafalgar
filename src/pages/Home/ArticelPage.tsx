@@ -32,9 +32,6 @@ const ArticleContainer = styled.div`
   width: 100%;
   padding: 80px;
   background-color: ${({ theme }) => theme.colors.White};
-  @media (min-width: 3840px) {
-    padding: 160px 64px;
-  }
   @media (min-width: 1920px) {
     padding: 120px 48px;
   }
@@ -44,8 +41,8 @@ const ArticleContainer = styled.div`
 `;
 
 const ArticleContent = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   align-items: center;
   gap: 64px;
   max-width: 1280px;
@@ -74,9 +71,6 @@ const ArticleHeader = styled.div`
 const ArticleTitle = styled.h1`
   ${({ theme }) => theme.typography.caption}
   color: #001D6C;
-  @media (min-width: 3840px) {
-    font-size: ${({ theme }) => theme.typography.h1};
-  }
 `;
 
 const ArticleSubtitle = styled.div`
@@ -91,45 +85,21 @@ const ArticleSubtitle = styled.div`
 `;
 
 const ArticleCardList = styled.div`
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
   gap: 16px;
   width: 100%;
   justify-content: center;
-  @media (min-width: 3840px) {
-    gap: 48px;
-    & > div {
-      flex: 1 1 calc(20% - 48px);
-      max-width: calc(20% - 48px);
-    }
-  }
-  @media (min-width: 1920px) {
-    gap: 32px;
-    & > div {
-      flex: 1 1 calc(25% - 32px);
-      max-width: calc(25% - 32px);
-    }
+  grid-template-columns: repeat(4, 1fr);
+  @media (max-width: 1920px) {
   }
   @media (max-width: 1339px) {
-    justify-content: space-around;
-    & > div {
-      flex: 1 1 calc(50% - 16px);
-      max-width: calc(50% - 16px);
-    }
+    grid-template-columns: repeat(2, 1fr);
   }
   @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
-    & > div {
-      flex: 1 1 calc(50% );
-      max-width: calc(50% );
-    }
   }
-  @media (max-width: 768px) {
-    gap: 8px;
-    & > div {
-      flex: 1 1 calc(50% - 8px);
-      max-width: calc(50% - 8px);
-    }
 `;
 
 export default ArticlePage;

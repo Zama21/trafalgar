@@ -7,7 +7,9 @@ export const ArticleCard: React.FC<Article> = ({ img, title, text }) => {
   return (
     <Card>
       {Array.isArray(img) ? (
-        <Loader images={img} />
+        <AnimationContainer>
+          <Loader images={img} />
+        </AnimationContainer>
       ) : (
         <CardImageContainer>
           <CardImage src={img} alt="img" />
@@ -29,7 +31,7 @@ const Card = styled.div`
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.colors.coolGray20};
   width: 100%;
-  max-width: 308px;
+  height: 100%;
   margin: 0 auto;
   @media (min-width: 3840px) {
     max-width: 480px;
@@ -39,7 +41,6 @@ const Card = styled.div`
 const CardImageContainer = styled.div`
   width: 100%;
   height: 220px;
-  overflow: hidden;
   @media (min-width: 3840px) {
     height: 400px;
   }
@@ -47,7 +48,22 @@ const CardImageContainer = styled.div`
     height: 280px;
   }
 `;
-
+const AnimationContainer = styled.div`
+  background-image: url('/assets/Article/picture.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 220px;
+  @media (min-width: 3840px) {
+    height: 400px;
+  }
+  @media (min-width: 1920px) {
+    height: 280px;
+  }
+`;
 const CardImage = styled.img`
   width: 100%;
   height: 100%;
@@ -57,10 +73,8 @@ const CardImage = styled.img`
 
 const CardTitle = styled.div`
   ${({ theme }) => theme.typography.h5};
-  @media (min-width: 3840px) {
-    font-size: ${({ theme }) => theme.typography.h1};
-  }
-  @media (min-width: 1920px) {
+
+  @media (min-width: 3000px) {
     font-size: ${({ theme }) => theme.typography.h3};
   }
   @media (max-width: 768px) {
@@ -80,8 +94,8 @@ const CardContent = styled.div`
   @media (min-width: 1920px) {
     padding: 32px 24px 24px 24px;
   }
-  @media (max-width: 768px) {
-    gap: 8px;
+  @media (max-width: 360px) {
+    max-height: 212px;
   }
 `;
 
@@ -89,11 +103,10 @@ const CardText = styled.div`
   font-size: ${({ theme }) => theme.typography.bodyM};
   color: ${({ theme }) => theme.colors.coolGray90};
   max-height: 66px;
-  overflow: hidden;
-  text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  overflow: hidden;
   @media (min-width: 1920px) {
     font-size: ${({ theme }) => theme.typography.bodyL};
   }
