@@ -28,6 +28,7 @@ const ArticlePage = () => {
 };
 
 const ArticleContainer = styled.div`
+  font-family: 'Roboto';
   width: 100%;
   padding: 80px;
   background-color: ${({ theme }) => theme.colors.White};

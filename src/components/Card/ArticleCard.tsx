@@ -1,23 +1,13 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import React from 'react';
 import { Article } from '../../constants/ArtikleConstants..ts';
-
-const fadeIn = keyframes`
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-`;
+import Loader from '../Article/Loader.tsx';
 
 export const ArticleCard: React.FC<Article> = ({ img, title, text }) => {
   return (
     <Card>
       {Array.isArray(img) ? (
-        <AnimationContainer>
-          <AnimationImg>
-            {img.map((src, index) => (
-              <AnimatedImage key={index} src={src} alt={`img${index + 1}`} index={index} />
-            ))}
-          </AnimationImg>
-        </AnimationContainer>
+        <Loader images={img} />
       ) : (
         <CardImageContainer>
           <CardImage src={img} alt="img" />
@@ -43,9 +33,6 @@ const Card = styled.div`
   margin: 0 auto;
   @media (min-width: 3840px) {
     max-width: 480px;
-  }
-  @media (min-width: 1920px) {
-    max-width: 360px;
   }
 `;
 
@@ -139,35 +126,4 @@ const CustomButton = styled.button`
   &:active {
     color: #0d47a1;
   }
-`;
-
-const AnimationContainer = styled.div`
-  background-image: url('/assets/Article/picture.png');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 220px;
-  @media (min-width: 3840px) {
-    height: 400px;
-  }
-  @media (min-width: 1920px) {
-    height: 280px;
-  }
-`;
-
-const AnimationImg = styled.div`
-  position: relative;
-  width: 56px;
-  height: 39px;
-`;
-
-const AnimatedImage = styled.img<{ index: number }>`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  animation: ${fadeIn} 2s linear infinite;
-  animation-delay: ${({ index }) => index * 0.1}s;
 `;
