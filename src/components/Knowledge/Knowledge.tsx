@@ -69,9 +69,7 @@ const PageKnowledge = styled.div`
 const ButtonWrapper = styled.div`
   display: flex;
   gap: 16px;
-  margin: 0 80px;
   margin-bottom: 48px;
-
 
   @media (max-width: 1200px) {
     margin: 0 40px 48px 40px;
