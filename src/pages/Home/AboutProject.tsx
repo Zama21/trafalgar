@@ -53,6 +53,7 @@ const AboutProject: React.FC = () => {
 };
 
 const MainContainer = styled.div`
+  font-family: 'Roboto';
   padding: 80px;
   width: 100vw;
   display: flex;
@@ -109,9 +110,6 @@ const AboutProjectContainer = styled.div`
     }
     @media (max-width: 1920px) {
       ${({ theme }) => theme.typography.h3}
-    }
-    @media (max-width: 1440px) {
-      ${({ theme }) => theme.typography.h2}
     }
 
     @media (max-width: 1024px) {
