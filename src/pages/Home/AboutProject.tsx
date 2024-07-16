@@ -57,6 +57,7 @@ const MainContainer = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  font-family: 'Roboto';
   @media (max-width: 1024px) {
     padding: 50px 0px 24px;
   }
@@ -196,6 +197,7 @@ const CustomButton = styled.button`
   ${({ theme }) => theme.typography.bodyM}
   margin-left: 16px;
   margin-right: 16px;
+  cursor: pointer;
 `;
 
 export default AboutProject;

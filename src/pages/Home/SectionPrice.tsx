@@ -68,6 +68,7 @@ const SectionPrice = () => {
 
 const MainContainer = styled.main`
   max-width: 100vw;
+  font-family: 'Roboto';
 `;
 
 const Container = styled.div`
