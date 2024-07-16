@@ -3,10 +3,25 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useMediaQuery } from 'bbbchut_test1_bbbchut13';
 
+import QuestionBlock from '../../components/QuestionBlock/QuestionBlock';
+import { listQuestions } from '../../constants/Questions';
+
+import Knowledge from '../../components/Knowledge/Knowledge';
+
+import { BREAKPOINTS } from '../../constants';
+import SectionPrice from './SectionPrice';
+
+import RequestSection from './RequestSection/RequestSection';
+
+import SectionsSponsors from './SectionSponsors';
+import Main from './Main.tsx';
+
+const Div = styled.div<{ $isSmallScreen: boolean }>`
+  margin-top: ${(props) => (props.$isSmallScreen ? '80px' : '208px')};
+`;
 import Footer from './Footer';
 import { HEADER_HEIGHT, MENU_ITEMS } from './Header/сonstants';
 import useDebounce from '../../hooks/useDebounce';
-import { BREAKPOINTS } from '../../constants';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();

@@ -56,7 +56,6 @@ const MainContainer = styled.div`
   padding: 80px;
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
   @media (max-width: 1024px) {
     padding: 50px 0px 24px;

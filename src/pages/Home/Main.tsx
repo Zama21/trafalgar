@@ -33,6 +33,7 @@ const Main: React.FC = () => {
 };
 
 const MainContainer = styled.main`
+  max-width: 100%;
   background-color: ${({ theme }) => theme.colors.coolGray10};
   display: flex;
   justify-content: center;
@@ -43,9 +44,10 @@ const MainContainer = styled.main`
   }
   @media (max-width: 1024px) {
     align-items: center;
-    padding: 48px 80px 24px;
+    padding: 48px 16px 64px 16px;
   }
   @media (max-width: 768px) {
+    max-width: 100%;
     padding: 48px 16px 64px 16px;
   }
   @media (max-width: 360px) {
@@ -59,7 +61,6 @@ const Container = styled.div`
   display: flex;
   column-gap: 80px;
   max-width: 1440px;
-  height: 681px;
   align-items: center;
 
   @media (max-width: 1024px) {
@@ -67,25 +68,19 @@ const Container = styled.div`
     flex-direction: column;
     gap: 32px;
   }
-
   @media (max-width: 768px) {
     max-width: 100%;
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  @media (max-width: 360px) {
-    max-width: 100%;
-    flex-direction: column;
-    gap: 32px;
   }
 `;
 
 const SectionLeft = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding: 80px 0px 80px 0px;
   max-width: 100%;
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `;
 
 const SectionRight = styled.div`
@@ -114,16 +109,10 @@ const SectionRight = styled.div`
 const Title = styled.h1`
   ${({ theme }) => theme.typography.h1};
   font-family: ${({ theme }) => theme.fonts.primary};
-
   @media (max-width: 3240px) {
     ${({ theme }) => theme.typography.h1};
   }
-
-  @media (max-width: 1920px) {
-    ${({ theme }) => theme.typography.h1};
-  }
-
-  @media (max-width: 1024px) {
+  @media (max-width: 1339px) {
     ${({ theme }) => theme.typography.h3};
   }
   @media (max-width: 768px) {
@@ -134,9 +123,8 @@ const Title = styled.h1`
 const Text = styled.p`
   ${({ theme }) => theme.typography.bodyL};
   color: ${({ theme }) => theme.colors.coolGray90};
-  margin-bottom: 80px;
+  margin-bottom: 64px;
   font-family: ${({ theme }) => theme.fonts.primary};
-
   @media (max-width: 3240px) {
     ${({ theme }) => theme.typography.customXXL};
   }
@@ -147,6 +135,9 @@ const Text = styled.p`
   @media (max-width: 1024px) {
     ${({ theme }) => theme.typography.bodyL};
     margin-bottom: 48px;
+  }
+  @media (max-width: 360px) {
+    ${({ theme }) => theme.typography.bodyM};
   }
 `;
 
