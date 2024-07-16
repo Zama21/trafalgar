@@ -1,12 +1,9 @@
-import { useState, forwardRef, InputHTMLAttributes } from 'react';
-import styled from 'styled-components';
+import { useState, forwardRef } from 'react';
+import styled, { css } from 'styled-components';
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  ref?: React.RefObject<HTMLInputElement>;
-  error?: string;
-}
+import { InputProps } from './Input.props';
 
-const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+const Input = forwardRef<HTMLInputElement, InputProps>(({ error, ...props }, ref) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -15,23 +12,22 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
   return (
     <InputWrapper>
-      <TagInput
+      <StyledInput
         {...props}
         ref={ref}
         type={props.type === 'password' && passwordVisible ? 'text' : props.type}
-        $error={props.error}
+        $error={error}
       />
       {props.type === 'password' && (
         <TogglePasswordButton type="button" onClick={togglePasswordVisibility}>
           {passwordVisible ? 'Скрыть' : 'Показать'}
         </TogglePasswordButton>
       )}
-      {props.error && <ErrorValidation>{props.error}</ErrorValidation>}
+      {error && <ErrorValidation>{error}</ErrorValidation>}
     </InputWrapper>
   );
 });
 Input.displayName = 'Input';
-
 export default Input;
 
 const InputWrapper = styled.div`
@@ -39,32 +35,28 @@ const InputWrapper = styled.div`
   width: 100%;
 `;
 
-const TagInput = styled.input<{ $error?: string }>`
+const StyledInput = styled.input<{ $error?: string }>`
   font-family: ${({ theme }) => theme.fonts.primary};
   color: ${({ theme }) => theme.colors.coolGray60};
-
   font-size: 16px;
   font-weight: 400;
   line-height: 140%;
   letter-spacing: 0%;
   text-align: left;
-
   border: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.coolGray30};
   box-shadow: 15px 20px 45px 0px rgba(233, 233, 233, 0.25);
-
   padding: ${({ theme }) => theme.spacing(2, 2)};
   margin: ${({ theme }) => theme.spacing(1)} 0px;
-
   box-sizing: border-box;
   background: ${({ theme }) => theme.colors.coolGray10};
   width: 100%;
 
   ${({ $error }) =>
     $error &&
-    `
-    border-bottom-color: tomato;
-  `}
+    css`
+      border-bottom-color: tomato;
+    `}
 `;
 
 const TogglePasswordButton = styled.button`
