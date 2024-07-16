@@ -75,6 +75,7 @@ const WrapperSearchInputStyles = css`
 `;
 
 const MenuList = styled.ul`
+  overflow-y: auto;
   flex: 1;
   color: ${({ theme }) => theme.colors.coolGray90};
 `;
