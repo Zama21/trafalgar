@@ -20,6 +20,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/trafalgar/',
+
     element: (
       <RequireAuth>
         <Header />

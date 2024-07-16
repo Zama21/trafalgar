@@ -35,6 +35,7 @@ const Wrapper = styled.div`
 `;
 
 const LinkToRegistration = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.primary};
   color: ${({ theme }) => theme.colors.Primary90};
   text-align: left;
   text-decoration: none;

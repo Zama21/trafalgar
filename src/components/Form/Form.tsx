@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 
 import Typography from '../../Typography';
 import { IFormLogin } from './Form.props';
-import ErrorValidation from '../ErrorValidation/ErrorValidation';
 import Input from '../Input/Input';
 import { LabelInput } from '../LabelInput/Label';
 import { schemaLoginPage } from '../../schema/schema';
@@ -29,7 +28,7 @@ function Form() {
       setValue('email', userData.email);
       setValue('password', userData.password);
     }
-  }, [setValue]);
+  }, []);
 
   const onSubmit: SubmitHandler<IFormLogin> = () => {
     navigate('/trafalgar/');
@@ -39,14 +38,16 @@ function Form() {
     <>
       <Field onSubmit={handleSubmit(onSubmit)}>
         <LabelInput htmlFor="email">Email</LabelInput>
-        <Input id="email" placeholder="Email" {...register('email')} />
-
-        {<ErrorValidation>{errors.email?.message}</ErrorValidation>}
+        <Input id="email" placeholder="Email" {...register('email')} error={errors.email?.message} />
 
         <LabelInput htmlFor="password">Пароль</LabelInput>
-        <Input id="password" type="password" placeholder="Password" {...register('password')} />
-
-        {<ErrorValidation>{errors.password?.message}</ErrorValidation>}
+        <Input
+          id="password"
+          type="password"
+          placeholder="Password"
+          {...register('password')}
+          error={errors.password?.message}
+        />
 
         <LoginContainer variant="bodyS">
           <Checkbox id="rememberMe" />
@@ -85,7 +86,13 @@ const Checkbox = styled.input.attrs({ type: 'checkbox' })`
 `;
 
 const Label = styled.label`
+  font-family: ${({ theme }) => theme.fonts.primary};
   margin-right: auto;
+`;
+const ForgotPasswordLink = styled(Link)`
+  font-family: ${({ theme }) => theme.fonts.primary};
+  color: ${({ theme }) => theme.colors.Primary90};
+  text-decoration: none;
 `;
 
 const BtnStl = css`
@@ -95,9 +102,4 @@ const BtnStl = css`
   @media (max-width: 768px) {
     margin-bottom: 32px;
   }
-`;
-
-const ForgotPasswordLink = styled(Link)`
-  color: ${({ theme }) => theme.colors.Primary90};
-  text-decoration: none;
 `;
