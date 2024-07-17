@@ -53,9 +53,9 @@ const AboutProject: React.FC = () => {
 };
 
 const MainContainer = styled.div`
-  font-family: 'Roboto';
+  font-family: ${({ theme }) => theme.fonts.primary};
   padding: 80px;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
