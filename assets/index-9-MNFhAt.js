@@ -2192,7 +2192,7 @@ attempted value: ${a}
   height: 48px;
   padding: 12px 8px 12px 8px;
   gap: 8px;
-`,Cx=$.forwardRef((e,t)=>f.jsxs(Sx,{ref:t,children:[f.jsxs(bx,{children:[f.jsx(_x,{location:"Москва"}),f.jsxs(Ex,{children:[f.jsx(wx,{}),f.jsxs(kx,{children:[f.jsx("img",{src:"/trafalgar//public/assets/Header/icons/shopping-cart.svg",alt:"ShoppingCartIcon"}),"Корзина",f.jsx("img",{src:"/trafalgar//public/assets/Header/icons/chevron-down.svg",alt:"ArrowDownIcon"})]})]})]}),f.jsxs(f2,{children:[f.jsx(ka,{}),f.jsx(vx,{}),f.jsx(Kt,{onClick:()=>alert("Button Clicked!"),width:"105px",height:"48px",customStyles:p2,children:"Поиск"})]}),f.jsx(xx,{})]}));Cx.displayName="HeaderBig";const f2=S.div`
+`,Cx=$.forwardRef((e,t)=>f.jsxs(Sx,{ref:t,children:[f.jsxs(bx,{children:[f.jsx(_x,{location:"Москва"}),f.jsxs(Ex,{children:[f.jsx(wx,{}),f.jsxs(kx,{children:[f.jsx("img",{src:"/trafalgar/assets/Header/icons/shopping-cart.svg",alt:"ShoppingCartIcon"}),"Корзина",f.jsx("img",{src:"/trafalgar/assets/Header/icons/chevron-down.svg",alt:"ArrowDownIcon"})]})]})]}),f.jsxs(f2,{children:[f.jsx(ka,{}),f.jsx(vx,{}),f.jsx(Kt,{onClick:()=>alert("Button Clicked!"),width:"105px",height:"48px",customStyles:p2,children:"Поиск"})]}),f.jsx(xx,{})]}));Cx.displayName="HeaderBig";const f2=S.div`
   display: flex;
   padding: 24px 80px 24px 80px;
   gap: 24px;
