@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import NestedCheckboxes, { TreeNode } from './NestedCheckboxes';
 
@@ -21,20 +21,6 @@ const DropdownNestedCheckboxes: React.FC<DropdownNestedCheckboxesProps> = ({
   const handleSelectionChange = (selection: string[]) => {
     onSelectionChange(selection);
   };
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-        onBlur && onBlur();
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
 
   return (
     <DropdownContainer ref={wrapperRef}>
