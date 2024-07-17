@@ -32,7 +32,7 @@ const Header: React.FC = () => {
       <HeaderContainer id={HEADER_ID}>
         {!isSmallScreen && !isScrolled && <HeaderBig />}
         {!isSmallScreen && isScrolled && <HeaderSmall />}
-        {isSmallScreen && <HeaderMobile></HeaderMobile>}
+        {isSmallScreen && <HeaderMobile />}
       </HeaderContainer>
 
       <Outlet />

@@ -7,9 +7,7 @@ function RequireAuth({ children }: { children: ReactNode }) {
   });
 
   useEffect(() => {
-    const handleStorageChange = () => {
-      setIsAuthenticated(!!localStorage.getItem('userData'));
-    };
+    const handleStorageChange = () => setIsAuthenticated(!!localStorage.getItem('userData'));
 
     window.addEventListener('storage', handleStorageChange);
 

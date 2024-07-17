@@ -27,6 +27,7 @@ const RequestSection: React.FC = () => {
     register,
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm<IFormInput>({
     resolver: yupResolver(validationSchema),
@@ -38,6 +39,7 @@ const RequestSection: React.FC = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     setIsModalOpen(true);
+    reset();
   };
 
   return (

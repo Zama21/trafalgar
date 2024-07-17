@@ -47,6 +47,7 @@ const Card = styled.article`
 `;
 
 const CardHeader = styled.header`
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,6 +66,7 @@ const CardText = styled.p<{ $variant: string }>`
 `;
 
 const Price = styled.div`
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;

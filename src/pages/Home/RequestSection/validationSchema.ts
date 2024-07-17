@@ -7,7 +7,7 @@ export const validationSchema = yup
     lastName: yup.string().required('Фамилия обязательна для заполнения'),
     topic: yup.string().required('Тема обязательна для заполнения'),
     question: yup.string().required('Вопрос обязателен для заполнения'),
-    group: yup.array().of(yup.string().required()).min(1, 'Группа обязательна для выбора'),
+    group: yup.array().of(yup.string().required()).min(1, 'Группа обязательна для выбора').required(),
     privacyPolicy: yup
       .boolean()
       .oneOf([true], 'Требуется согласие с политикой обработки данных')

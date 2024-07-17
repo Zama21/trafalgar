@@ -53,11 +53,12 @@ const AboutProject: React.FC = () => {
 };
 
 const MainContainer = styled.div`
+  font-family: ${({ theme }) => theme.fonts.primary};
   padding: 80px;
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  font-family: 'Roboto';
   @media (max-width: 1024px) {
     padding: 50px 0px 24px;
   }
@@ -109,9 +110,6 @@ const AboutProjectContainer = styled.div`
     }
     @media (max-width: 1920px) {
       ${({ theme }) => theme.typography.h3}
-    }
-    @media (max-width: 1440px) {
-      ${({ theme }) => theme.typography.h2}
     }
 
     @media (max-width: 1024px) {
@@ -197,6 +195,7 @@ const CustomButton = styled.button`
   ${({ theme }) => theme.typography.bodyM}
   margin-left: 16px;
   margin-right: 16px;
+  cursor: pointer;
 `;
 
 export default AboutProject;
