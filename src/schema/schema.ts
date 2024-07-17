@@ -43,9 +43,9 @@ const validateUserExists = (email: string) => {
   return userData ? email === userData.email : false;
 };
 
-const validatePassword = (password: string, email: string) => {
+const validatePassword = (password: string) => {
   const userData = getUserData();
-  return userData ? email === userData.email && password === userData.password : false;
+  return userData ? password === userData.password : false;
 };
 
 export const schemaLoginPage = yup.object().shape({
@@ -57,8 +57,5 @@ export const schemaLoginPage = yup.object().shape({
   password: yup
     .string()
     .required('Поле Пароль должно быть заполнено')
-    .test('checkPassword', 'Неверный пароль', (password, { parent }) => {
-      const email = parent.email as string;
-      return validatePassword(password, email);
-    }),
+    .test('checkPassword', 'Неверный пароль', validatePassword),
 });
