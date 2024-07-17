@@ -10,7 +10,7 @@ const Loader: React.FC<{ images: string[] }> = ({ images }) => {
   return (
     <AnimationImg>
       {images.map((src, index) => (
-        <AnimatedImage key={index} src={src} alt={`img${index + 1}`} index={index} />
+        <AnimatedImage key={index} src={src} alt={`img${index + 1}`} $index={index} />
       ))}
     </AnimationImg>
   );
@@ -22,12 +22,12 @@ const AnimationImg = styled.div`
   height: 39px;
 `;
 
-const AnimatedImage = styled.img<{ index: number }>`
+const AnimatedImage = styled.img<{ $index: number }>`
   position: absolute;
   width: 100%;
   height: 100%;
   animation: ${fadeIn} 2s ease-in-out infinite;
-  animation-delay: ${({ index }) => index * 0.1}s;
+  animation-delay: ${({ $index }) => $index * 0.1}s;
 `;
 
 export default Loader;
