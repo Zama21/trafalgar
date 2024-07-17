@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import React from 'react';
-import Headling from '../../../components/Headling/Headling';
 import { Link } from 'react-router-dom';
+
+import Headling from '../../../components/Headling/Headling';
 import ButtonLink from '../../../components/ButtonLink/ButtonLink';
 import Form from '../../../components/Form/Form';
+import Typography from '../../../Typography';
 
 const Login: React.FC = () => {
   return (
@@ -12,7 +13,9 @@ const Login: React.FC = () => {
       <Form />
       <ButtonLink />
       <Hr />
-      <LinkToRegistration to="/trafalgar/auth/register">Нет аккаута? Зарегестрироваться</LinkToRegistration>
+      <Typography variant="bodyS">
+        <LinkToRegistration to="/trafalgar/auth/register">Нет аккаута? Зарегестрироваться</LinkToRegistration>
+      </Typography>
     </Wrapper>
   );
 };
@@ -32,11 +35,8 @@ const Wrapper = styled.div`
 `;
 
 const LinkToRegistration = styled(Link)`
-  color: rgb(0, 29, 108);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 140%;
-  letter-spacing: 0%;
+  font-family: ${({ theme }) => theme.fonts.primary};
+  color: ${({ theme }) => theme.colors.Primary90};
   text-align: left;
   text-decoration: none;
 `;

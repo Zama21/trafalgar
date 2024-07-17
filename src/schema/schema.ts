@@ -2,8 +2,6 @@ import * as yup from 'yup';
 
 const regExpEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
-// Функция для проверки в localStorage
-// Нельзя зарегать двух пользователей с одинаковым email
 const localStorageCheck = (value: string | undefined) => {
   try {
     const key = localStorage.getItem('userData');
@@ -40,13 +38,11 @@ export const getUserData = () => {
   return storedUserData ? JSON.parse(storedUserData) : null;
 };
 
-// Функция, проверяющая существование email в localStorage
 const validateUserExists = (email: string) => {
   const userData = getUserData();
   return userData ? email === userData.email : false;
 };
 
-// Функция, проверяющая правильность пароля пользователя + она еще также берет и сравнивает email
 const validatePassword = (password: string, email: string) => {
   const userData = getUserData();
   return userData ? email === userData.email && password === userData.password : false;

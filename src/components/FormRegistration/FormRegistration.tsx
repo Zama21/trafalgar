@@ -1,14 +1,13 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 
 import Input from '../Input/Input';
-import Button from '../Button/Button';
-import ErrorValidation from '../ErrorValidation/ErrorValidation';
 import { LabelInput } from '../LabelInput/Label';
 import { IFormRegistration } from './FormRegistration.interface';
 import { schema } from '../../schema/schema';
+import Button from '../Button';
 
 export function FormRegistration() {
   const navigate = useNavigate();
@@ -20,45 +19,51 @@ export function FormRegistration() {
   } = useForm<IFormRegistration>({ resolver: yupResolver(schema) });
 
   const onSubmit: SubmitHandler<IFormRegistration> = (data) => {
-    // Добавление данных с полей в localStorage
     localStorage.setItem('userData', JSON.stringify(data));
-    console.log(data);
     navigate('/trafalgar/auth/login');
   };
+
   return (
     <Field onSubmit={handleSubmit(onSubmit)}>
       <WrapperNameSurname>
         <WrapperOneInput>
           <LabelInput htmlFor="name">Имя</LabelInput>
-          <Input id="name" placeholder="Имя" {...register('name')} />
-          {<ErrorValidation>{errors.name?.message}</ErrorValidation>}
+          <Input id="name" placeholder="Имя" {...register('name')} error={errors.name?.message} />
         </WrapperOneInput>
 
         <WrapperOneInput>
           <LabelInput htmlFor="surname">Фамилия</LabelInput>
-          <Input id="surname" placeholder="Фамилия" {...register('surname')} />
-          {<ErrorValidation>{errors.surname?.message}</ErrorValidation>}
+          <Input id="surname" placeholder="Фамилия" {...register('surname')} error={errors.surname?.message} />
         </WrapperOneInput>
       </WrapperNameSurname>
 
       <LabelInput htmlFor="email">Email</LabelInput>
-      <Input id="email" placeholder="Email" {...register('email')} />
-      {<ErrorValidation>{errors.email?.message}</ErrorValidation>}
+      <Input id="email" placeholder="Email" {...register('email')} error={errors.email?.message} />
 
       <LabelInput htmlFor="password">Пароль</LabelInput>
-      <Input id="password" type="password" placeholder="Password" {...register('password')} />
-      {<ErrorValidation>{errors.password?.message}</ErrorValidation>}
+      <PasswordWrapper>
+        <Input
+          id="password"
+          type="password"
+          placeholder="Password"
+          {...register('password')}
+          error={errors.password?.message}
+        />
+      </PasswordWrapper>
 
       <LoginContainer>
         <Checkbox id="agreeToTerms" {...register('agreeToTerms')} />
         <Label htmlFor="agreeToTerms">Согласен с политикой обработки персональных данных</Label>
       </LoginContainer>
-      {<ErrorValidation>{errors.agreeToTerms?.message}</ErrorValidation>}
+      {errors.agreeToTerms && <ErrorText>{errors.agreeToTerms.message}</ErrorText>}
 
-      <Button>Зарегестрироваться</Button>
+      <Button height="48px" customStyles={BtnStl}>
+        Зарегистрироваться
+      </Button>
     </Field>
   );
 }
+
 const Field = styled.form`
   display: flex;
   flex-direction: column;
@@ -89,5 +94,28 @@ const Checkbox = styled.input.attrs({ type: 'checkbox' })`
   cursor: pointer;
 `;
 const Label = styled.label`
+  font-family: ${({ theme }) => theme.fonts.primary};
   margin-right: auto;
+`;
+
+const BtnStl = css`
+  ${({ theme }) => theme.typography.buttonM}
+  margin-bottom: 48px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 32px;
+  }
+`;
+
+const PasswordWrapper = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
+
+const ErrorText = styled.div`
+  font-family: ${({ theme }) => theme.fonts.primary};
+  color: tomato;
+  font-size: 12px;
+  margin-top: ${({ theme }) => theme.spacing(1)};
 `;

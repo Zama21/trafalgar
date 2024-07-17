@@ -10,9 +10,9 @@ import { Error } from './pages/Error/Error';
 
 import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
+import RequireAuth from './pages/Auth/RequireAuth/RequireAuth';
 import Header from './pages/Home/Header/Header';
 
-// React-Router
 const router = createBrowserRouter([
   {
     path: '/',
@@ -20,7 +20,13 @@ const router = createBrowserRouter([
   },
   {
     path: '/trafalgar/',
-    element: <Header />,
+
+    element: (
+      <RequireAuth>
+        <Header />
+      </RequireAuth>
+    ),
+
     children: [
       {
         path: '',
@@ -34,7 +40,12 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'login',
-        element: <Login />,
+
+        element: (
+          <RequireAuth>
+            <Login />
+          </RequireAuth>
+        ),
       },
       {
         path: 'register',

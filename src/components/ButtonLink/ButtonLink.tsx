@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { ButtonLinkProps } from './ButtonLink.props';
 import Typography from '../../Typography';
 
-const SignInButton: React.FC<ButtonLinkProps> = ({ provider, text, logo, link }) => (
+const SignInButton: React.FC<ButtonLinkProps> = ({ text, logo, link }) => (
   <StyledButton to={link}>
     {logo === 'google' && <GoogleLogo src="/assets/google-icon.svg" alt="Google Logo" />}
     {logo === 'apple' && <AppleLogo src="/assets/apple-icon.svg" alt="Apple Logo" />}
@@ -28,7 +28,7 @@ const StyledContainer = styled(Typography)`
   display: flex;
   gap: 10px;
   width: 100%;
-  @media (max-width: 500px) {
+  @media (max-width: 1100px) {
     display: flex;
     flex-direction: column;
     gap: 16px;

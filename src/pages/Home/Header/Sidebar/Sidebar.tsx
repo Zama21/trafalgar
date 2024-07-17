@@ -1,11 +1,11 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import Logo from '../Components/Logo';
 import { SearchInput } from '../Components/SearchInput';
 import { MENU_ITEMS } from '../сonstants';
-import { Button } from '../../../../components/CustomButton/CustomButton';
+import Button from '../../../../components/Button';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -13,6 +13,7 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+  const location = useLocation();
   return (
     <SidebarWrapper $isOpen={isOpen}>
       <Logo height="39px" />
@@ -24,12 +25,18 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       />
       <MenuList>
         {MENU_ITEMS.map((item) => (
-          <li key={item.path}>
-            <NavLink to={item.path}>{item.label}</NavLink>
-          </li>
+          <MenuItemStyled
+            key={item.path}
+            $isActive={item.path === `${location.pathname}${location.hash}`}
+            onClick={onClose}
+          >
+            <a href={item.path}>{item.label}</a>
+          </MenuItemStyled>
         ))}
       </MenuList>
-      <CloseButton onClick={onClose}>Закрыть меню</CloseButton>
+      <Button onClick={onClose} height="48px" secondary customStyles={BtnStyles}>
+        Закрыть меню
+      </Button>
     </SidebarWrapper>
   );
 };
@@ -70,8 +77,11 @@ const WrapperSearchInputStyles = css`
 const MenuList = styled.ul`
   flex: 1;
   color: ${({ theme }) => theme.colors.coolGray90};
+`;
+const MenuItemStyled = styled.li<{ $isActive: boolean }>`
+  background-color: ${({ $isActive }) => ($isActive ? '#ddd' : 'none')};
 
-  li a {
+  a {
     display: block;
     padding: 12px 8px 12px 8px;
     border-bottom: 1px solid;
@@ -86,9 +96,8 @@ const MenuList = styled.ul`
   }
 `;
 
-const CloseButton = styled(Button)`
-  cursor: pointer;
-  color: #458ff6;
+const BtnStyles = css`
+  ${({ theme }) => theme.typography.buttonM}
   background-color: inherit;
   width: 100%;
 

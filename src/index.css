@@ -190,7 +190,7 @@ input {
         margin: 0;
         outline:0;
         border:0;
-        min-width: 100px;
+        min-width: 0;
         padding: 0;
         font-family: inherit;
         font-size: inherit;
@@ -199,5 +199,9 @@ input {
 
 #modals {
     position: relative;
-     z-index: 1000;
+    z-index: 1000;
+}
+
+html {
+    scroll-behavior: smooth;
 }

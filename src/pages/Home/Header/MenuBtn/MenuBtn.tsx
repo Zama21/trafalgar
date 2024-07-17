@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 interface Option {
@@ -8,11 +9,13 @@ interface Option {
 
 interface MenuBtnProps {
   options: Option[];
+  isActive: boolean;
 }
 
-export const MenuBtn: React.FC<MenuBtnProps> = ({ options }) => {
+export const MenuBtn: React.FC<MenuBtnProps> = ({ options, isActive }) => {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
 
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
@@ -34,14 +37,16 @@ export const MenuBtn: React.FC<MenuBtnProps> = ({ options }) => {
 
   return (
     <ProfileButtonContainer ref={containerRef}>
-      <HeaderBtn $isOpen={isOpen} onClick={toggleDropdown}>
+      <HeaderBtn $isOpen={isOpen} onClick={toggleDropdown} $isActive={isActive}>
         <img src="/public/assets/Header/icons/menu.svg" alt="MenuIcon" />
         Меню
       </HeaderBtn>
       {options.length !== 0 && (
         <DropdownMenu $isOpen={isOpen}>
           {options.map((item) => (
-            <MenuItemStyled key={item.path}>{item.label}</MenuItemStyled>
+            <MenuItemStyled key={item.path} $isActive={item.path === `${location.pathname}${location.hash}`}>
+              <MenuItemStyledLink href={item.path}>{item.label}</MenuItemStyledLink>
+            </MenuItemStyled>
           ))}
         </DropdownMenu>
       )}
@@ -54,7 +59,7 @@ const ProfileButtonContainer = styled.div`
   display: inline-block;
 `;
 
-const DropdownMenu = styled.div<{ $isOpen: boolean }>`
+const DropdownMenu = styled.ul<{ $isOpen: boolean }>`
   display: ${(props) => (props.$isOpen ? 'flex' : 'none')};
   flex-direction: column;
   position: absolute;
@@ -69,27 +74,36 @@ const DropdownMenu = styled.div<{ $isOpen: boolean }>`
   border-radius: 4px;
 `;
 
-const MenuItemStyled = styled.div`
-  padding: 12px 16px;
+const MenuItemStyled = styled.li<{ $isActive: boolean }>`
   cursor: pointer;
-  text-decoration: none;
   color: inherit;
 
+  background-color: ${({ $isActive }) => ($isActive ? '#ddd' : 'none')};
   &:hover {
     background-color: #ddd;
   }
 `;
 
-const HeaderBtn = styled.button<{ $isOpen: boolean }>`
+const MenuItemStyledLink = styled.a`
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+`;
+
+const HeaderBtn = styled.button<{ $isOpen: boolean; $isActive: boolean }>`
   display: flex;
   align-items: center;
-  padding: 8px 16px 8px 16px;
+  padding: 4px 16px 4px 16px;
   gap: 8px;
   cursor: pointer;
   white-space: nowrap;
   user-select: none;
+  height: 32px;
   ${({ theme }) => theme.typography.menuTabs}
   font-family: ${({ theme }) => theme.fonts.primary};
+
+  background-color: ${({ $isActive, theme }) => ($isActive ? theme.colors.White : theme.colors.coolGray10)};
+  border: ${({ $isActive, theme }) => ($isActive ? `1px solid ${theme.colors.coolGray30}` : 'none')};
 
   img:last-child {
     transition: transform 0.2s;

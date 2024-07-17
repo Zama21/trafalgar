@@ -24,6 +24,7 @@ const StyledHeading = styled(Typography)`
     font-weight: 700;
     line-height: 110%;
     letter-spacing: 0%;
+  }
 
   @media (max-width: 600px) {
     font-size: 32px;

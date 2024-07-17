@@ -1,10 +1,6 @@
 import styled from 'styled-components';
-import { HEADER_Z_INDEX } from '../../../../constants/constants';
 
 export const HeaderWrapper = styled.header`
-  z-index: ${HEADER_Z_INDEX};
-  position: fixed;
-  top: 0;
   width: 100%;
   color: ${({ theme }) => theme.colors.White};
   border-bottom: 1px solid;

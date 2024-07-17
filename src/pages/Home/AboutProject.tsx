@@ -9,7 +9,7 @@ const AboutProject: React.FC = () => {
           <div>О проекте</div>
           <p>
             Наш проект создан группой врачей для популяризации современных медицинских знаний их доступности для всех,
-            кто в этомзаинтересован.
+            кто в этом заинтересован.
           </p>
         </AboutProjectContainer>
         <CardList>
@@ -57,8 +57,8 @@ const MainContainer = styled.div`
   padding: 80px;
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  font-family: 'Roboto';
   @media (max-width: 1024px) {
     padding: 50px 0px 24px;
   }
@@ -195,6 +195,7 @@ const CustomButton = styled.button`
   ${({ theme }) => theme.typography.bodyM}
   margin-left: 16px;
   margin-right: 16px;
+  cursor: pointer;
 `;
 
 export default AboutProject;

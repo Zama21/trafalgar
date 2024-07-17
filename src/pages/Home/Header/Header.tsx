@@ -1,52 +1,40 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useMediaQuery } from 'bbbchut_test1_bbbchut13';
 
 import HeaderMobile from './HeaderMobile';
 import { BREAKPOINTS } from '../../../constants';
 import HeaderBig from './HeaderBig';
 import HeaderSmall from './HeaderSmall';
+import { HEADER_Z_INDEX } from '../../../constants/constants';
+import { HEADER_ID } from './сonstants';
+import useDebounce from '../../../hooks/useDebounce';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const headerBigRef = useRef<HTMLDivElement>(null);
-  const headerSmallRef = useRef<HTMLDivElement>(null);
 
   const isSmallScreen = useMediaQuery({ query: `(max-width: ${BREAKPOINTS.IPAD})` });
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+  const handleScroll = () => setIsScrolled(window.scrollY > 0);
+  const deb = useDebounce(handleScroll, 50);
 
-    window.addEventListener('scroll', handleScroll);
+  useEffect(() => {
+    window.addEventListener('scroll', deb);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', deb);
     };
   }, []);
 
   return (
     <>
-      {!isSmallScreen && (
-        <HeaderContainer>
-          <TransitionGroup component={null}>
-            {!isScrolled && (
-              <CSSTransition nodeRef={headerBigRef} key="headerBig" timeout={500} classNames="header">
-                <HeaderBig ref={headerBigRef} />
-              </CSSTransition>
-            )}
+      <HeaderContainer id={HEADER_ID}>
+        {!isSmallScreen && !isScrolled && <HeaderBig />}
+        {!isSmallScreen && isScrolled && <HeaderSmall />}
+        {isSmallScreen && <HeaderMobile />}
+      </HeaderContainer>
 
-            {isScrolled && (
-              <CSSTransition nodeRef={headerSmallRef} key="headerSmall" timeout={500} classNames="header">
-                <HeaderSmall ref={headerSmallRef} />
-              </CSSTransition>
-            )}
-          </TransitionGroup>
-        </HeaderContainer>
-      )}
-
-      {isSmallScreen && <HeaderMobile></HeaderMobile>}
       <Outlet />
     </>
   );
@@ -55,26 +43,8 @@ const Header: React.FC = () => {
 export default Header;
 
 const HeaderContainer = styled.div`
-  .header-enter {
-    opacity: 1;
-    transform: translateY(-70%);
-  }
-  .header-enter-active {
-    opacity: 1;
-    transform: translateY(0);
-    transition:
-      opacity 500ms,
-      transform 500ms;
-  }
-  .header-exit {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .header-exit-active {
-    opacity: 0;
-    transform: translateY(-100%);
-    transition:
-      opacity 100ms,
-      transform 500ms;
-  }
+  position: sticky;
+  z-index: ${HEADER_Z_INDEX};
+  top: 0;
+  width: 100%;
 `;

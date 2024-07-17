@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import styled, { css } from 'styled-components';
-import Typography from '../../../Typography';
 import { yupResolver } from '@hookform/resolvers/yup';
+
+import Typography from '../../../Typography';
 import { validationSchema } from './validationSchema';
 import FormControl from './FormControl';
 import DropdownNestedCheckboxes from '../../../components/NestedCheckboxes/DropdownNestedCheckboxes';
 import { GROUP_DATA } from '../../../constants/constants';
-import { Button } from '../../../components/CustomButton/CustomButton';
 import Modal from './ModalOverlay';
+import Button from '../../../components/Button';
 
 interface IFormInput {
   firstName: string;
@@ -123,7 +124,9 @@ const RequestSection: React.FC = () => {
               {errors.privacyPolicy && <ErrorMessage>{errors.privacyPolicy.message}</ErrorMessage>}
             </CheckboxGroup>
             <WrapperButtonForm>
-              <ButtonForm>Отправить</ButtonForm>
+              <Button width="141px" height="48px" customStyles={BtnStl}>
+                Отправить
+              </Button>
             </WrapperButtonForm>
           </Form>
         </FormWrapper>
@@ -256,15 +259,16 @@ const Checkbox = styled.input`
 `;
 
 const Label = styled.label`
-  font-size: 14px;
+  ${({ theme }) => theme.typography.bodyS}
 `;
 
 const WrapperButtonForm = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
-const ButtonForm = styled(Button)`
-  width: 141px;
+
+const BtnStl = css`
+  ${({ theme }) => theme.typography.buttonM}
 `;
 
 const ErrorMessage = styled.span`

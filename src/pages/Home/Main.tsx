@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
-import Button from '../../components/Button.tsx';
+import styled, { css } from 'styled-components';
+
+import Button from '../../components/Button';
 
 const Main: React.FC = () => {
   return (
@@ -15,10 +16,10 @@ const Main: React.FC = () => {
             </Text>
           </SectionLeftText>
           <SectionButton>
-            <Button primary width="216px" height="56px">
+            <Button width="215px" height="56px" customStyles={BtnPrimaryStl}>
               Войти как врач
             </Button>
-            <Button width="172px" height="56px">
+            <Button secondary width="172px" height="56px" customStyles={BtnSecondaryStl}>
               Подробнее
             </Button>
           </SectionButton>
@@ -32,7 +33,7 @@ const Main: React.FC = () => {
 };
 
 const MainContainer = styled.main`
-  max-width: 100vw;
+  max-width: 100%;
   background-color: ${({ theme }) => theme.colors.coolGray10};
   display: flex;
   justify-content: center;
@@ -43,11 +44,11 @@ const MainContainer = styled.main`
   }
   @media (max-width: 1024px) {
     align-items: center;
-    padding: 48px 80px 24px;
+    padding: 48px 16px 64px 16px;
   }
   @media (max-width: 768px) {
-    padding: 48px 16px 64px 16px;
     max-width: 100%;
+    padding: 48px 16px 64px 16px;
   }
   @media (max-width: 360px) {
     gap: 32px;
@@ -58,10 +59,8 @@ const MainContainer = styled.main`
 const Container = styled.div`
   margin: 0 auto;
   display: flex;
-  flex-direction: row;
   column-gap: 80px;
   max-width: 1440px;
-  height: 681px;
   align-items: center;
 
   @media (max-width: 1024px) {
@@ -69,25 +68,19 @@ const Container = styled.div`
     flex-direction: column;
     gap: 32px;
   }
-
   @media (max-width: 768px) {
     max-width: 100%;
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  @media (max-width: 360px) {
-    max-width: 100%;
-    flex-direction: column;
-    gap: 32px;
   }
 `;
 
 const SectionLeft = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding: 80px 0px 80px 0px;
   max-width: 100%;
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `;
 
 const SectionRight = styled.div`
@@ -116,16 +109,10 @@ const SectionRight = styled.div`
 const Title = styled.h1`
   ${({ theme }) => theme.typography.h1};
   font-family: ${({ theme }) => theme.fonts.primary};
-
   @media (max-width: 3240px) {
     ${({ theme }) => theme.typography.h1};
   }
-
-  @media (max-width: 1920px) {
-    ${({ theme }) => theme.typography.h1};
-  }
-
-  @media (max-width: 1024px) {
+  @media (max-width: 1339px) {
     ${({ theme }) => theme.typography.h3};
   }
   @media (max-width: 768px) {
@@ -136,9 +123,8 @@ const Title = styled.h1`
 const Text = styled.p`
   ${({ theme }) => theme.typography.bodyL};
   color: ${({ theme }) => theme.colors.coolGray90};
-  margin-bottom: 80px;
+  margin-bottom: 64px;
   font-family: ${({ theme }) => theme.fonts.primary};
-
   @media (max-width: 3240px) {
     ${({ theme }) => theme.typography.customXXL};
   }
@@ -150,12 +136,30 @@ const Text = styled.p`
     ${({ theme }) => theme.typography.bodyL};
     margin-bottom: 48px;
   }
+  @media (max-width: 360px) {
+    ${({ theme }) => theme.typography.bodyM};
+  }
 `;
 
 const SectionButton = styled.div`
   display: flex;
-  flex-direction: row;
   gap: 16px;
+`;
+
+const BtnPrimaryStl = css`
+  @media (max-width: 550px) {
+    ${({ theme }) => theme.typography.buttonS}
+    width: 164px;
+    height: 40px;
+  }
+`;
+
+const BtnSecondaryStl = css`
+  @media (max-width: 550px) {
+    ${({ theme }) => theme.typography.buttonS}
+    width: 133px;
+    height: 40px;
+  }
 `;
 
 const SectionLeftText = styled.div`
@@ -163,9 +167,6 @@ const SectionLeftText = styled.div`
   flex-direction: column;
   gap: 60px;
   @media (max-width: 1440px) {
-    gap: 48px;
-  }
-  @media (max-width: 1024px) {
     gap: 48px;
   }
   @media (max-width: 768px) {
