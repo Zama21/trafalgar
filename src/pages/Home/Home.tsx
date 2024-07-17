@@ -1,22 +1,9 @@
-import React from 'react';
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useMediaQuery } from 'bbbchut_test1_bbbchut13';
 
 import { BREAKPOINTS } from '../../constants';
-import SectionPrice from './SectionPrice';
-
-import RequestSection from './RequestSection/RequestSection';
-
-import SectionsSponsors from './SectionSponsors';
-import Main from './Main.tsx';
-import ArtiklePage from './ArticelPage.tsx';
-import AboutProject from './AboutProject.tsx';
-
-const Div = styled.div<{ $isSmallScreen: boolean }>`
-  margin-top: ${(props) => (props.$isSmallScreen ? '80px' : '208px')};
-`;
 import Footer from './Footer';
 import { HEADER_HEIGHT, MENU_ITEMS } from './Header/сonstants';
 import useDebounce from '../../hooks/useDebounce';

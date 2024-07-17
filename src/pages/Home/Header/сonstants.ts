@@ -1,6 +1,7 @@
 import Knowledge from '../../../components/Knowledge/Knowledge';
 import QuestionBlock from '../../../components/QuestionBlock/QuestionBlock';
 import AboutProject from '../AboutProject';
+import ArticlePage from '../ArticelPage';
 import Main from '../Main';
 import RequestSection from '../RequestSection/RequestSection';
 import ReviewPage from '../ReviewPage';
@@ -33,6 +34,7 @@ export const SECTION_IDS = {
 export const MENU_ITEMS = [
   { label: 'Главная', path: `/trafalgar/#${SECTION_IDS.top}`, id: SECTION_IDS.top, section: Main },
   { label: 'О проекте', path: `/trafalgar/#${SECTION_IDS.about}`, id: SECTION_IDS.about, section: AboutProject },
+  { label: 'Статьи', path: `/trafalgar/#${SECTION_IDS.articles}`, id: SECTION_IDS.articles, section: ArticlePage },
   { label: 'Отзывы', path: `/trafalgar/#${SECTION_IDS.reviews}`, id: SECTION_IDS.reviews, section: ReviewPage },
   { label: 'Знания', path: `/trafalgar/#${SECTION_IDS.knowledge}`, id: SECTION_IDS.knowledge, section: Knowledge },
   { label: 'Вопросы', path: `/trafalgar/#${SECTION_IDS.questions}`, id: SECTION_IDS.questions, section: QuestionBlock },
@@ -55,7 +57,5 @@ export const HEADER_HEIGHT = {
   mobileHeight: 80,
   desktopHeight: 129,
 };
-
-//   { label: 'Статьи', path: `/trafalgar/#${SECTION_IDS.articles}`, id: SECTION_IDS.articles, section: ArticlesPage },
 
 export const HEADER_ID = 'headerMain';

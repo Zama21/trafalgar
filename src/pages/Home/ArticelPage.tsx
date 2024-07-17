@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { ArticleCard } from '../../components/Card/ArticleCard';
 import { articles } from '../../constants/ArtikleConstants.';
@@ -19,7 +18,7 @@ const ArticlePage = () => {
             <ArticleCard key={index} img={el.img} title={el.title} text={el.text} />
           ))}
         </ArticleCardList>
-        <Button primary="primary" width="171px" height="56px">
+        <Button width="171px" height="56px">
           Все статьи
         </Button>
       </ArticleContent>
@@ -43,6 +42,7 @@ const ArticleContainer = styled.div`
 const ArticleContent = styled.div`
   display: grid;
   grid-template-columns: 1fr;
+  justify-items: center;
   align-items: center;
   gap: 64px;
   max-width: 1280px;

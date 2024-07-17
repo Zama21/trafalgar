@@ -59,6 +59,8 @@ const MainContainer = styled.div`
   display: flex;
   align-items: center;
   font-family: 'Roboto';
+  border-bottom: 1px solid;
+  border-color: ${({ theme }) => theme.colors.coolGray20};
   @media (max-width: 1024px) {
     padding: 50px 0px 24px;
   }

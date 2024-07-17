@@ -3,6 +3,15 @@ import styled from 'styled-components';
 import { items } from '../../constants/PriceConstant';
 import { CardPrice } from '../../components/CardPrice/Card';
 
+interface SwitchProps {
+  checked: boolean;
+  onClick: () => void;
+}
+
+interface SwitchToggleProps {
+  checked: boolean;
+}
+
 const SectionPrice = () => {
   const [checked, setChecked] = useState(false);
 
@@ -159,7 +168,7 @@ const TimeOption = styled.span`
   cursor: pointer;
 `;
 
-const Switch = styled.div`
+const Switch = styled.div<SwitchProps>`
   position: relative;
   width: 32px;
   height: 16px;
@@ -171,7 +180,7 @@ const Switch = styled.div`
   align-items: center;
 `;
 
-const SwitchToggle = styled.div`
+const SwitchToggle = styled.div<SwitchToggleProps>`
   transition: 300ms all;
   content: '';
   position: absolute;
