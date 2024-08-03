@@ -9,7 +9,7 @@ import Location from './Components/Location';
 import Logo from './Components/Logo';
 import Button from '../../../components/Button';
 
-const HeaderBig = forwardRef<HTMLDivElement>((props, ref) => (
+const HeaderBig = forwardRef<HTMLDivElement>((_, ref) => (
   <HeaderWrapper ref={ref}>
     <HeaderTopBar>
       <Location location="Москва" />

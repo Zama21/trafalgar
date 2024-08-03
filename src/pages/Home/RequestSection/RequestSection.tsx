@@ -37,7 +37,7 @@ const RequestSection: React.FC = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+  const onSubmit: SubmitHandler<IFormInput> = () => {
     setIsModalOpen(true);
     reset();
   };

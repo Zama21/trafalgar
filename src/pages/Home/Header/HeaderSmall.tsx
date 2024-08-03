@@ -8,7 +8,7 @@ import { HeaderWrapper, HeaderProfileSection, HeaderShoppingCart, HeaderTopBar }
 import Location from './Components/Location';
 import Button from '../../../components/Button';
 
-const HeaderSmall = forwardRef<HTMLDivElement>((props, ref) => (
+const HeaderSmall = forwardRef<HTMLDivElement>((_, ref) => (
   <HeaderWrapper ref={ref}>
     <HeaderTopBar>
       <Location location="Москва" />
